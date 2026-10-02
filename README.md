@@ -5,101 +5,106 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-ILP（整数線形計画法）によるマテリアライズドビュー（MV）選択でクエリ実行時間を最適化するシステムです。
+**English** | **[日本語](README.ja.md)**
 
-## 概要
+A system that speeds up query execution by selecting materialized views (MVs) with integer linear programming (ILP).
 
-- **クエリ解析**: PostgreSQL `EXPLAIN (FORMAT JSON)` のクエリプランを解析
-- **MV選択**: ILP による 5 種類のアルゴリズム（下表）
-- **クエリ書き換え**: 選択した MV を使うよう SQL を自動書き換え
-- **メンテナンスコスト推定**: [pg_ivm](https://github.com/sraoss/pg_ivm) による差分更新（IVM）と `REFRESH` のコスト計測・推定（`src/maintenance/`）
-- **ベンチマーク**: JOB / CEB / RedBench
+## Overview
 
-| アルゴリズム (`--algorithms`) | 説明 |
+- **Query analysis**: parses PostgreSQL `EXPLAIN (FORMAT JSON)` query plans
+- **MV selection**: five ILP-based algorithms (see table below)
+- **Query rewriting**: automatically rewrites SQL to use the selected MVs
+- **Maintenance cost estimation**: measures and estimates the cost of incremental view maintenance ([pg_ivm](https://github.com/sraoss/pg_ivm)) and `REFRESH` (`src/maintenance/`)
+- **Benchmarks**: JOB / CEB / RedBench
+
+| Algorithm (`--algorithms`) | Description |
 |---|---|
-| `none` | MV なし（ベースライン） |
-| `normal` | 基本的な ILP 定式化 |
-| `bigsubs` | BigSubs（確率的フリップ） |
-| `utility` | 効用最大化 |
-| `utility_capacity` | 効用/容量比最大化 |
-| `frequency` | 頻度ベース選択 |
+| `none` | No MVs (baseline) |
+| `normal` | Basic ILP formulation |
+| `bigsubs` | BigSubs (probabilistic flipping) |
+| `utility` | Utility maximization |
+| `utility_capacity` | Utility / capacity ratio maximization |
+| `frequency` | Frequency-based selection |
 
-## セットアップ
+## Setup
 
-構成: **ホスト**（Python + Gurobi）↔ **Docker**（PostgreSQL + IMDb）。コード修正のたびにコンテナを再ビルドする必要はありません。
+Architecture: **host** (Python + Gurobi) ↔ **Docker** (PostgreSQL + IMDb). Code changes never require rebuilding the container.
 
-### 前提条件
+### Prerequisites
 
-- Python 3.11 以上
+- Python 3.11+
 - Docker Desktop
-- Gurobi Optimizer 12.0.1（[アカデミックライセンス](https://www.gurobi.com/academia/academic-program-and-licenses/)は無料）
+- Gurobi Optimizer 12.0.1 (free [academic license](https://www.gurobi.com/academia/academic-program-and-licenses/) available)
 
-### 1. PostgreSQL（Docker）
+### 1. PostgreSQL (Docker)
 
 ```bash
-# IMDb データを取得してイメージをビルド（初回 15〜20 分）
+# Download IMDb data and build the image (15-20 min on first build)
 docker build -t mv_postgres:1.0 .
 
-# 起動（初回はデータロードに 5〜10 分）
+# Start the container (5-10 min to load data on first start)
 docker run -d --name mv_postgres -p 5432:5432 \
   -v mv_postgres_data:/var/lib/postgresql/data mv_postgres:1.0
 
-# 接続確認
+# Verify
 docker exec -it mv_postgres psql -U postgres -d imdbload -c "SELECT count(*) FROM title;"
 ```
 
-接続情報（デフォルト）: `localhost:5432` / DB `imdbload` / ユーザー `postgres` / パスワード `pass`
-（`config/default.yaml` の `database:` で変更可能）。
+Default connection: `localhost:5432` / database `imdbload` / user `postgres` / password `pass`
+(configurable under `database:` in `config/default.yaml`).
 
-IVM 関連の実験（`src/maintenance/`, `scripts/measure_*`）では pg_ivm 拡張が必要です。
-`data/setup.sql` を参照し、`CREATE EXTENSION pg_ivm;` を実行してください。
+The IVM experiments (`src/maintenance/`, `scripts/measure_*`) require the pg_ivm extension.
+See `data/setup.sql` and run `CREATE EXTENSION pg_ivm;`.
 
-### 2. Python 環境
+### 2. Python environment
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt    # 開発用: pip install -r requirements-dev.txt
+pip install -r requirements.txt    # for development: pip install -r requirements-dev.txt
 ```
 
-### 3. Gurobi ライセンス
+### 3. Gurobi license
 
-取得した `gurobi.lic` をプロジェクトルートに置くか、`GRB_LICENSE_FILE` 環境変数でパスを指定します（`gurobi.lic` は `.gitignore` 済み）。
+Place your `gurobi.lic` in the project root, or point to it with the `GRB_LICENSE_FILE` environment variable (`gurobi.lic` is git-ignored).
 
-### 4. データセット
+### 4. Datasets
 
-`dataset/RED_JSON/`, `dataset/RED_SQL/`（クエリプラン JSON / SQL）は容量の都合で Git 管理外です。
-RedBench の生成手順（`dataset/redbench/README.md`）や JOB / CEB の配布元から用意してください。
-ワークロード定義は `dataset/redbench/workloads/` を使用します。
+`dataset/` is not tracked in Git because of its size. Prepare it yourself:
 
-## 使い方
+- `dataset/RED_JSON/` and `dataset/RED_SQL/`: query plan JSON / SQL files
+- `dataset/redbench/`: RedBench (see its README for generation steps); workload definitions are read from `dataset/redbench/workloads/`
 
-### 実験の実行
+JOB / CEB queries come from their upstream distributions.
+
+## Usage
+
+### Running experiments
 
 ```bash
 source .venv/bin/activate
 docker start mv_postgres
 
-python scripts/run_experiment.py --algorithms frequency              # 単一
-python scripts/run_experiment.py --algorithms normal bigsubs utility  # 複数
-python scripts/run_experiment.py                                     # 全アルゴリズム
+python scripts/run_experiment.py --algorithms frequency              # single algorithm
+python scripts/run_experiment.py --algorithms normal bigsubs utility  # several
+python scripts/run_experiment.py                                     # all algorithms
 python scripts/run_experiment.py --algorithms normal --verbose
 ```
 
-主なオプション:
+Main options:
 
-| オプション | 説明 |
+| Option | Description |
 |---|---|
-| `--algorithms` | `none normal bigsubs utility utility_capacity frequency`（複数可） |
+| `--algorithms` | `none normal bigsubs utility utility_capacity frequency` (multiple allowed) |
 | `--workload-type` | `job` / `ceb` / `ceb-1a` / `redbench` / `redbench-job` / `redbench-ceb` |
-| `--phases` / `--start-from` / `--end-at` | 実行フェーズの制御（下記） |
-| `--storage-limit` | ストレージ上限 |
-| `--insert-queries` | 更新クエリ数（メンテナンスコスト計算用） |
-| `--config` | 設定 YAML を指定（`config/experiments/*.yaml` など） |
-| `--no-warmup` | ベンチマーク前のキャッシュウォームアップを無効化 |
-| `--output` | 出力ディレクトリ（デフォルト `Output`） |
+| `--phases` / `--start-from` / `--end-at` | Control which phases run (see below) |
+| `--storage-limit` | Storage limit for selected MVs |
+| `--insert-queries` | Number of update queries (for maintenance cost) |
+| `--config` | Path to a settings YAML (e.g. `config/experiments/*.yaml`) |
+| `--no-warmup` | Disable the cache warmup before benchmarking |
+| `--output` | Output directory (default: `Output`) |
 
-実行フェーズ（順に実行）: `query_parsing` → `optimization` → `sql_generation` → `mv_creation` → `query_rewriting` → `benchmark`
+Phases (executed in order): `query_parsing` → `optimization` → `sql_generation` → `mv_creation` → `query_rewriting` → `benchmark`
 
 ```bash
 python scripts/run_experiment.py --phases query_parsing optimization
@@ -107,10 +112,10 @@ python scripts/run_experiment.py --start-from query_rewriting
 python scripts/run_experiment.py --end-at mv_creation
 ```
 
-`--skip-mv-creation` / `--skip-rewrite` / `--skip-benchmark` は非推奨です（`--phases` を使用）。
-全オプションは `python scripts/run_experiment.py --help` で確認できます。詳細は [scripts/README.md](scripts/README.md)、[docs/phase_control.md](docs/phase_control.md) を参照。
+`--skip-mv-creation`, `--skip-rewrite` and `--skip-benchmark` are deprecated; use `--phases`.
+Run `python scripts/run_experiment.py --help` for all options. See also [scripts/README.md](scripts/README.md) and [docs/phase_control.md](docs/phase_control.md).
 
-### RedBench ワークロードの実行
+### Running RedBench workloads
 
 ```bash
 python scripts/run_redbench_workload.py --list
@@ -118,116 +123,118 @@ python scripts/run_redbench_workload.py --mode redbench-job --algorithm frequenc
 python scripts/run_redbench_workload.py --mode redbench-job --algorithm none --no-warmup
 ```
 
-`--mode`: `job`（JOB 全クエリ）/ `ceb`（CEB 全クエリ）/ `redbench`（JOB+CEB 混在・グループ別）/ `redbench-job` / `redbench-ceb`。
-`--algorithm` は `run_experiment.py` と同じ。その他 `--timeout`, `--output`, `--verbose` など。
+`--mode`: `job` (all JOB queries) / `ceb` (all CEB queries) / `redbench` (JOB + CEB, grouped) / `redbench-job` / `redbench-ceb`.
+`--algorithm` takes the same values as `run_experiment.py`. Other options include `--timeout`, `--output` and `--verbose`.
 
-### IVM / メンテナンスコスト実験
+### IVM / maintenance-cost experiments
 
-| スクリプト | 内容 |
+| Script | Purpose |
 |---|---|
-| `scripts/measure_v10_mj.py`, `measure_v11_mj.py` | 1% サンプルの IMMV を作り IVM トリガー時間を計測し、フルサイズの `m_j`（秒/更新）を推定 |
-| `scripts/measure_v10_refresh.py` | `REFRESH MATERIALIZED VIEW` 時間の計測と更新コスト推定 |
-| `scripts/run_v12_zero_m_cost.py` | `m_cost=0` での bigsubs vs topk-F 比較 |
-| `scripts/run_v13_bigsubs_no_mcost.py`, `run_v13_topku_topke.py` | `m_cost` なし BigSubs と topk 系の比較 |
-| `scripts/compare_rewrite_plans.py` | 書き換え前後の `EXPLAIN ANALYZE` 比較 |
-| `scripts/check_join_order_change.py` | 書き換え前後で結合順序が変化したクエリ数の集計 |
+| `scripts/measure_v10_mj.py`, `measure_v11_mj.py` | Build 1% sample IMMVs, time the IVM triggers, and extrapolate the full-size per-update cost `m_j` (sec/update) |
+| `scripts/measure_v10_refresh.py` | Time `REFRESH MATERIALIZED VIEW` and estimate update cost |
+| `scripts/run_v12_zero_m_cost.py` | bigsubs vs. topk-F with `m_cost=0` |
+| `scripts/run_v13_bigsubs_no_mcost.py`, `run_v13_topku_topke.py` | BigSubs without `m_cost` vs. topk variants |
+| `scripts/compare_rewrite_plans.py` | Compare `EXPLAIN ANALYZE` before/after rewriting |
+| `scripts/check_join_order_change.py` | Count queries whose join order changed after rewriting |
 
-これらは `run_experiment.py` で対象アルゴリズムの MV が作成済みであること、および `Output/` 配下の成果物（`qp_class.pkl` 等）を前提とします。
+These assume the MVs of the target algorithm have already been created via `run_experiment.py`, and that artifacts such as `qp_class.pkl` exist under `Output/`.
 
-### 結果の確認
+### Results
 
-結果は `Output/`（Git 管理外）に保存されます。
+Results are written to `Output/` (git-ignored):
 
 ```
 Output/
-├── experiments/   # アルゴリズム別の結果
-├── logs/          # 実行ログ
-└── artifacts/     # 中間ファイル（qp_class.pkl など）
+├── experiments/   # per-algorithm results
+├── logs/          # execution logs
+└── artifacts/     # intermediate files (qp_class.pkl, ...)
 ```
 
-比較: `python scripts/compare_algorithms.py`。出力形式は [docs/output_files.md](docs/output_files.md) を参照。
+Compare algorithms with `python scripts/compare_algorithms.py`. Output formats are described in [docs/output_files.md](docs/output_files.md).
 
-### ダッシュボード（任意）
+### Dashboard (optional)
 
-Streamlit ダッシュボードで実験の実行・結果比較ができます。
+A Streamlit dashboard lets you run experiments and compare results.
 
 ```bash
 pip install -r requirements-dashboard.txt
 streamlit run dashboard/app.py
 ```
 
-詳細は [dashboard/README.md](dashboard/README.md)。
+See [dashboard/README.md](dashboard/README.md).
 
-## テスト・開発
+## Testing and development
 
 ```bash
-pytest                      # 全テスト
-pytest -m unit              # ユニットのみ（Docker 不要）
-pytest -m integration       # 統合テスト（Docker 必須）
+pytest                      # all tests
+pytest -m unit              # unit tests only (no Docker needed)
+pytest -m integration       # integration tests (requires Docker)
 pytest --cov=src --cov-report=html
 
-black src/ tests/           # フォーマット（line-length=100）
-ruff check src/             # リント
-mypy src/                   # 型チェック
+black src/ tests/           # format (line-length=100)
+ruff check src/             # lint
+mypy src/                   # type check
 ```
 
-コーディング規約・ブランチ/コミット規則は [AGENTS.md](AGENTS.md) を参照してください。
+Coding conventions and the branch/commit workflow are documented in [AGENTS.md](AGENTS.md).
 
-## プロジェクト構造
+## Project structure
 
 ```
 mv-query-optimization/
 ├── src/
-│   ├── core/            # データモデル・クエリプラン解析
-│   ├── optimization/    # ILP アルゴリズム（BaseILPOptimizer 継承）
-│   ├── rewrite/         # クエリ書き換え・MV 生成 SQL
-│   ├── maintenance/     # IVM / REFRESH のメンテナンスコスト推定
-│   ├── estimation/      # カーディナリティ推定（NeuroCard 連携）
-│   ├── benchmark/       # クエリ実行・ワークロード実行
-│   ├── runners/         # 実験ランナー
-│   ├── database/        # 接続管理・MV 管理・スキーマ
+│   ├── core/            # data models, query-plan parsing
+│   ├── optimization/    # ILP algorithms (subclasses of BaseILPOptimizer)
+│   ├── rewrite/         # query rewriting, MV-creation SQL
+│   ├── maintenance/     # IVM / REFRESH maintenance-cost estimation
+│   ├── estimation/      # cardinality estimation (NeuroCard integration)
+│   ├── benchmark/       # query and workload execution
+│   ├── runners/         # experiment runners
+│   ├── database/        # connections, MV management, schema
 │   └── utils/
-├── scripts/             # CLI スクリプト（実験・計測・比較）
+├── scripts/             # CLI scripts (experiments, measurements, comparisons)
 ├── config/              # settings.py, default.yaml, experiments/
 ├── tests/               # unit / integration / performance
-├── data/                # スキーマ・初期化 SQL
-├── dataset/             # ベンチマークデータ（RedBench など）
-├── docs/                # ドキュメント
-├── dashboard/           # Streamlit ダッシュボード
-└── Output/              # 実験結果（自動生成・Git 管理外）
+├── data/                # schema and initialization SQL
+├── experiments/         # experiment inputs and intermediate artifacts
+├── dataset/             # benchmark data (not tracked; see Setup)
+├── docs/                # documentation
+├── dashboard/           # Streamlit dashboard
+├── original_project/    # original (pre-refactoring) implementation
+└── Output/              # experiment results (generated, not tracked)
 ```
 
-## Docker 運用
+## Docker operations
 
 ```bash
-docker start mv_postgres            # 起動
-docker stop mv_postgres             # 停止
-docker logs -f mv_postgres          # ログ
+docker start mv_postgres            # start
+docker stop mv_postgres             # stop
+docker logs -f mv_postgres          # logs
 docker exec -it mv_postgres psql -U postgres -d imdbload
 
-# 完全再構築（データも削除されます）
+# Full rebuild (this deletes the data!)
 docker rm -f mv_postgres && docker volume rm mv_postgres_data
 docker build -t mv_postgres:1.0 .
 ```
 
-### トラブルシューティング
+### Troubleshooting
 
-- **コンテナが起動しない**: Docker Desktop の起動を確認（`open -a Docker`）。
-- **DB に接続できない**: `docker ps | grep mv_postgres` と `docker logs mv_postgres | tail -50` を確認。接続情報は `config/default.yaml`。
-- **Gurobi ライセンスエラー**: `gurobi.lic` の配置または `GRB_LICENSE_FILE` を確認。
-- **Output が書き込めない**: `mkdir -p Output && chmod -R 755 Output`。
+- **Container does not start**: make sure Docker Desktop is running (`open -a Docker` on macOS).
+- **Cannot connect to the DB**: check `docker ps | grep mv_postgres` and `docker logs mv_postgres | tail -50`; connection settings live in `config/default.yaml`.
+- **Gurobi license error**: check the location of `gurobi.lic` or `GRB_LICENSE_FILE`.
+- **Cannot write to Output**: `mkdir -p Output && chmod -R 755 Output`.
 
-## 参考文献
+## References
 
 - [Join Order Benchmark (JOB)](https://github.com/gregrahn/join-order-benchmark)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 - [Gurobi Optimizer](https://www.gurobi.com/documentation/)
 - [pg_ivm](https://github.com/sraoss/pg_ivm)
 
-## ライセンス
+## License
 
-研究目的で開発されています。
+Developed for research purposes.
 
 ---
 
-**開発者**: [Kaina3](https://github.com/Kaina3)
+**Author**: [Kaina3](https://github.com/Kaina3)
