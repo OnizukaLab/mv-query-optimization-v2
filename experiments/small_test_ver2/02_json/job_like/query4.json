@@ -1,0 +1,77 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Result",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 0.55,
+      "Total Cost": 0.56,
+      "Plan Rows": 1,
+      "Plan Width": 8,
+      "Disabled": false,
+      "Plans": [
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 1",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.14,
+          "Total Cost": 0.27,
+          "Plan Rows": 1,
+          "Plan Width": 4,
+          "Disabled": false,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "orders_pkey",
+              "Relation Name": "orders",
+              "Alias": "o",
+              "Startup Cost": 0.14,
+              "Total Cost": 18.14,
+              "Plan Rows": 141,
+              "Plan Width": 4,
+              "Disabled": false,
+              "Filter": "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))"
+            }
+          ]
+        },
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 2",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.15,
+          "Total Cost": 0.28,
+          "Plan Rows": 1,
+          "Plan Width": 4,
+          "Disabled": false,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "idx_orders_date",
+              "Relation Name": "orders",
+              "Alias": "o_1",
+              "Startup Cost": 0.15,
+              "Total Cost": 18.6,
+              "Plan Rows": 141,
+              "Plan Width": 4,
+              "Disabled": false,
+              "Index Cond": "((order_date IS NOT NULL) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))",
+              "Filter": "(total_amount >= '100'::numeric)"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

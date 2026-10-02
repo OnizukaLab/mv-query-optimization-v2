@@ -1,0 +1,42 @@
+{
+  "timesteps": [
+    {
+      "time_id": "morning",
+      "label": "朝（9:00-12:00）",
+      "duration_hours": 3,
+      "frequencies": {
+        "query1.json": 500,
+        "query2.json": 5,
+        "query3.json": 100,
+        "query4.json": 400,
+        "query5.json": 10,
+        "query6.json": 150,
+        "query7.json": 600,
+        "query8.json": 5,
+        "query9.json": 50
+      },
+      "comment": "朝はユーザー集計(query1)、時間帯分析(query4)、高額商品分析(query7)が非常に頻繁"
+    },
+    {
+      "time_id": "evening",
+      "label": "夕方（17:00-20:00）",
+      "duration_hours": 3,
+      "frequencies": {
+        "query1.json": 5,
+        "query2.json": 700,
+        "query3.json": 200,
+        "query4.json": 10,
+        "query5.json": 500,
+        "query6.json": 100,
+        "query7.json": 5,
+        "query8.json": 800,
+        "query9.json": 400
+      },
+      "comment": "夕方はカテゴリ別売上(query2)、年齢層分析(query5)、Electronics分析(query8)、若年層分析(query9)が非常に頻繁"
+    }
+  ],
+  "time_ids": [
+    "morning",
+    "evening"
+  ]
+}

@@ -1,0 +1,63 @@
+# =====================================================
+# 小規模実験用設定ファイル
+# =====================================================
+
+# データベース接続設定
+database:
+  host: localhost
+  port: 5432
+  database: mv_small_test  # 小規模実験用DB
+  user: postgres
+  password: ""
+  timeout: 300
+
+# 最適化パラメータ（小規模実験用）
+optimization:
+  storage_limit_mb: 0.01              
+  storage_limit_bytes: 10240  # 10KB
+  insert_queries: 50               # 挿入クエリ数: 50回
+  
+  # 使用するアルゴリズム（normalのみ使用）
+  algorithms:
+    normal: true                   # 基本ILP
+    bigsubs: false                 # 未使用
+    utility: false                 # 未使用
+    utility_capacity: false        # 未使用
+    frequency: false               # 未使用
+
+# ベンチマーク設定
+benchmark:
+  type: custom
+  queries_dir: experiments/small_test/02_json
+  sql_dir: experiments/small_test/01_queries
+  workloads_dir: ""
+  query_selection_mode: all_job    # すべてのJOBクエリを使用
+
+# パス設定（すべて experiments/small_test/ 配下に集約）
+paths:
+  output_dir: experiments/small_test
+  experiments_dir: experiments/small_test/04_optimized
+  logs_dir: experiments/small_test/logs
+  artifacts_dir: experiments/small_test/artifacts
+  query_rewrite_dir: experiments/small_test/06_rewritten
+  mv_list_dir: experiments/small_test
+
+# クエリ設定
+query:
+  num_queries: 3
+
+# 実行制御（段階的実行用）
+execution:
+  phases:
+    query_parsing: true            # フェーズ1: クエリパース
+    optimization: true             # フェーズ2: ILP最適化
+    sql_generation: true           # フェーズ3: MV生成SQL作成
+    mv_creation: false             # フェーズ4: MV作成（初回はfalse）
+    query_rewriting: true          # フェーズ5: クエリリライト
+    benchmark: false               # フェーズ6: ベンチマーク（初回はfalse）
+
+# ログ設定
+logging:
+  level: INFO
+  console: true
+  file: experiments/small_test/logs/experiment.log

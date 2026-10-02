@@ -1,0 +1,46 @@
+[
+  {
+    "query_id": 1,
+    "sql": "SELECT * FROM users WHERE age > 20",
+    "plan": {
+      "Node Type": "Seq Scan",
+      "Relation Name": "users",
+      "Alias": "u",
+      "Filter": "(age > 20)",
+      "Total Cost": 100.0,
+      "Plan Rows": 1000,
+      "Plan Width": 10
+    }
+  },
+  {
+    "query_id": 2,
+    "sql": "SELECT u.name, COUNT(*) FROM users u GROUP BY u.name",
+    "plan": {
+      "Node Type": "Aggregate",
+      "Total Cost": 200.0,
+      "Plan Rows": 50,
+      "Plan Width": 20,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "users",
+          "Alias": "u",
+          "Total Cost": 100.0
+        }
+      ]
+    }
+  },
+  {
+    "query_id": 3,
+    "sql": "SELECT t.title FROM title t WHERE t.production_year > 2000",
+    "plan": {
+      "Node Type": "Seq Scan",
+      "Relation Name": "title",
+      "Alias": "t",
+      "Filter": "(production_year > 2000)",
+      "Total Cost": 150.0,
+      "Plan Rows": 5000,
+      "Plan Width": 50
+    }
+  }
+]

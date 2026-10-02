@@ -1,0 +1,246 @@
+{
+  "algorithm": "NormalOptimizer",
+  "total_utility": 2697.0,
+  "total_storage": 10609,
+  "total_storage_mb": 0.01,
+  "execution_time": 0.12724518775939941,
+  "num_selected_views": 9,
+  "selected_views": [
+    {
+      "view_id": "mv_leaf_1",
+      "node_id": "leaf_1",
+      "create_sql": "CREATE MATERIALIZED VIEW leaf_1 AS\nSELECT u.*\nFROM users AS u\nWHERE (age >= 25)\n;",
+      "size": 588,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_leaf_2",
+      "node_id": "leaf_2",
+      "create_sql": "CREATE MATERIALIZED VIEW leaf_2 AS\nSELECT o.*\nFROM orders AS o\nWHERE (order_date >= (CURRENT_DATE - '60 days'::interval))\n;",
+      "size": 1377,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_leaf_4",
+      "node_id": "leaf_4",
+      "create_sql": "CREATE MATERIALIZED VIEW leaf_4 AS\nSELECT o.*\nFROM orders AS o\nWHERE (order_date >= (CURRENT_DATE - '90 days'::interval))\n;",
+      "size": 2331,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_leaf_5",
+      "node_id": "leaf_5",
+      "create_sql": "CREATE MATERIALIZED VIEW leaf_5 AS\nSELECT u.*\nFROM users AS u\nWHERE (age >= 30)\n;",
+      "size": 320,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          6
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_leaf_6",
+      "node_id": "leaf_6",
+      "create_sql": "CREATE MATERIALIZED VIEW leaf_6 AS\nSELECT p.*\nFROM products AS p\nWHERE (price >= '500'::numeric)\n;",
+      "size": 351,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          8
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_non_leaf_5",
+      "node_id": "non_leaf_5",
+      "create_sql": "CREATE MATERIALIZED VIEW non_leaf_5 AS\nSELECT o.*,\n    p.*\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '60 days'::interval));",
+      "size": 1782,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_non_leaf_9",
+      "node_id": "non_leaf_9",
+      "create_sql": "CREATE MATERIALIZED VIEW non_leaf_9 AS\nSELECT o.*,\n    u.*\nFROM orders AS o , users AS u\nWHERE o.user_id = u.user_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 30);",
+      "size": 1633,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_non_leaf_11",
+      "node_id": "non_leaf_11",
+      "create_sql": "CREATE MATERIALIZED VIEW non_leaf_11 AS\nSELECT non_leaf_9.*,\n    p.*\nFROM non_leaf_9 AS non_leaf_9 , products AS p\nWHERE o.product_id = p.product_id AND o.user_id = u.user_id AND (p.price >= '500'::numeric);",
+      "size": 1792,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "view_id": "mv_non_leaf_12",
+      "node_id": "non_leaf_12",
+      "create_sql": "CREATE MATERIALIZED VIEW non_leaf_12 AS\nSELECT non_leaf_11.*\nFROM non_leaf_11 AS non_leaf_11\nWHERE o.product_id = p.product_id AND o.user_id = u.user_id;",
+      "size": 435,
+      "size_mb": 0.0,
+      "maintenance_cost": 0.0,
+      "usage_count": 1,
+      "usage_positions": [
+        [
+          2,
+          1
+        ]
+      ]
+    }
+  ],
+  "metadata": {
+    "y_ij": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "z_j": [
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "storage_used": 10609,
+    "materialized_count": 9,
+    "materialized_nodes": [
+      "leaf_1",
+      "leaf_2",
+      "leaf_4",
+      "leaf_5",
+      "leaf_6",
+      "non_leaf_5",
+      "non_leaf_9",
+      "non_leaf_11",
+      "non_leaf_12"
+    ]
+  }
+}

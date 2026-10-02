@@ -1,0 +1,22 @@
+# Extends default.yaml
+# Specific configuration for CEB benchmark (Experiment 1 with CEB)
+
+query:
+  num_queries: 3000  # CEB 1a template
+  use_ceb: true
+
+benchmark:
+  type: ceb
+  queries_dir: dataset/RED_JSON
+  sql_dir: dataset/RED_SQL
+  query_selection_mode: all_ceb  # Use all CEB queries for view selection
+  ceb_template: 1a              # CEB template to use
+  ceb_limit: null               # null = all queries, or set a number to limit
+
+optimization:
+  storage_limit_mb: 50
+  insert_queries: 1000
+
+logging:
+  level: INFO
+  file: output/logs/ceb_experiment.log

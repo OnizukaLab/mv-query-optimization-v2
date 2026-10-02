@@ -1,0 +1,48 @@
+{
+  "description": "時刻依存型クエリ頻度設定（9クエリ版・現実的な差）",
+  "timesteps": [
+    {
+      "time_id": "0",
+      "frequencies": {
+        "query1.json": 1,
+        "query2.json": 1,
+        "query3.json": 1,
+        "query4.json": 0,
+        "query5.json": 0,
+        "query6.json": 0,
+        "query7.json": 0,
+        "query8.json": 0,
+        "query9.json": 0
+      }
+    },
+    {
+      "time_id": "1",
+      "frequencies": {
+        "query1.json": 0,
+        "query2.json": 0,
+        "query3.json": 0,
+        "query4.json": 1,
+        "query5.json": 1,
+        "query6.json": 1,
+        "query7.json": 0,
+        "query8.json": 0,
+        "query9.json": 0
+      }
+    },
+    {
+      "time_id": "2",
+      "frequencies": {
+        "query1.json": 0,
+        "query2.json": 0,
+        "query3.json": 0,
+        "query4.json": 0,
+        "query5.json": 0,
+        "query6.json": 0,
+        "query7.json": 1,
+        "query8.json": 1,
+        "query9.json": 1
+      }
+    }
+  ]
+}
+

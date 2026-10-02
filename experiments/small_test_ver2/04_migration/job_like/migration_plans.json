@@ -1,0 +1,472 @@
+{
+  "leaf_1": {
+    "['leaf_1']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_1 AS\nSELECT u.user_id, u.name, u.age, u.city, u.registered_date\nFROM users AS u\nWHERE (age >= 25);"
+  },
+  "leaf_2": {
+    "['leaf_2']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_2 AS\nSELECT u_1.user_id, u_1.name, u_1.age, u_1.city, u_1.registered_date\nFROM users AS u_1;"
+  },
+  "leaf_3": {
+    "['leaf_3']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_3 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o\nWHERE (order_date >= (CURRENT_DATE - '60 days'::interval));"
+  },
+  "leaf_4": {
+    "['leaf_4']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_4 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p;"
+  },
+  "leaf_5": {
+    "['leaf_5']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_5 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o\nWHERE (order_date >= (CURRENT_DATE - '90 days'::interval));"
+  },
+  "leaf_6": {
+    "['leaf_6']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_6 AS\nSELECT u.user_id, u.name, u.age, u.city, u.registered_date\nFROM users AS u\nWHERE (age >= 30);"
+  },
+  "leaf_7": {
+    "['leaf_7']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_7 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p\nWHERE (price >= '500'::numeric);"
+  },
+  "leaf_8": {
+    "['leaf_8']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_8 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o\nWHERE ((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)));"
+  },
+  "leaf_9": {
+    "['leaf_9']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_9 AS\nSELECT o_1.order_id, o_1.user_id, o_1.product_id, o_1.quantity, o_1.order_date, o_1.total_amount\nFROM orders AS o_1\nWHERE (total_amount >= '100'::numeric);"
+  },
+  "leaf_10": {
+    "['leaf_10']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_10 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o\nWHERE (total_amount >= '1000'::numeric);"
+  },
+  "leaf_11": {
+    "['leaf_11']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_11 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p\nWHERE (price >= '300'::numeric);"
+  },
+  "leaf_12": {
+    "['leaf_12']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_12 AS\nSELECT u.user_id, u.name, u.age, u.city, u.registered_date\nFROM users AS u\nWHERE (age >= 25);"
+  },
+  "leaf_13": {
+    "['leaf_13']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_13 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o;"
+  },
+  "leaf_14": {
+    "['leaf_14']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_14 AS\nSELECT o.order_id, o.user_id, o.product_id, o.quantity, o.order_date, o.total_amount\nFROM orders AS o\nWHERE (order_date >= '2024-01-01'::date);"
+  },
+  "leaf_15": {
+    "['leaf_15']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_15 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p\nWHERE ((category)::text = 'Electronics'::text);"
+  },
+  "leaf_16": {
+    "['leaf_16']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_16 AS\nSELECT u.user_id, u.name, u.age, u.city, u.registered_date\nFROM users AS u;"
+  },
+  "leaf_17": {
+    "['leaf_17']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_17 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p\nWHERE (price < '300'::numeric);"
+  },
+  "leaf_18": {
+    "['leaf_18']": "NON_MIGRATE",
+    "[]": "CREATE MATERIALIZED VIEW leaf_18 AS\nSELECT u.user_id, u.name, u.age, u.city, u.registered_date\nFROM users AS u\nWHERE (age < 25);"
+  },
+  "non_leaf_1": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_1 AS\nSELECT u.user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM users AS u\nWHERE (u.age >= 25);",
+    "['non_leaf_1']": "NON_MIGRATE",
+    "['leaf_1']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_2": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_2 AS\nSELECT u_1.user_id,\n    u_1.name,\n    u_1.age,\n    u_1.city,\n    u_1.registered_date\nFROM users AS u_1;",
+    "['non_leaf_2']": "NON_MIGRATE",
+    "['leaf_2']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_3": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_3 AS\nSELECT u.user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    u_1.user_id AS u_1_user_id,\n    u_1.name AS u_1_name,\n    u_1.age AS u_1_age,\n    u_1.city AS u_1_city,\n    u_1.registered_date AS u_1_registered_date\nFROM users AS u , users AS u_1\nWHERE (u.age >= 25);",
+    "['non_leaf_3']": "NON_MIGRATE",
+    "['leaf_1']": "CREATE MATERIALIZED VIEW",
+    "['leaf_2']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_1']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_2']": "CREATE MATERIALIZED VIEW",
+    "['leaf_1', 'leaf_2']": "CREATE MATERIALIZED VIEW",
+    "['leaf_1', 'non_leaf_2']": "CREATE MATERIALIZED VIEW",
+    "['leaf_2', 'non_leaf_1']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_1', 'non_leaf_2']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_4": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_4 AS\nSELECT p.product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM products AS p;",
+    "['non_leaf_4']": "NON_MIGRATE",
+    "['leaf_4']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_5": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_5 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '60 days'::interval));",
+    "['non_leaf_5']": "NON_MIGRATE",
+    "['leaf_3']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_3', 'leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_3', 'non_leaf_4']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_6": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_6 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '60 days'::interval));",
+    "['non_leaf_6']": "NON_MIGRATE",
+    "['leaf_3']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_3', 'leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_3', 'non_leaf_4']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_7": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_7 AS\nSELECT u.user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM users AS u\nWHERE (u.age >= 30);",
+    "['non_leaf_7']": "NON_MIGRATE",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_8": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_8 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , users AS u\nWHERE o.user_id = u.user_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 30);",
+    "['non_leaf_8']": "NON_MIGRATE",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_7']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_9": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_9 AS\nSELECT p.product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM products AS p\nWHERE (p.price >= '500'::numeric);",
+    "['non_leaf_9']": "NON_MIGRATE",
+    "['leaf_7']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_10": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_10 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 30) AND (p.price >= '500'::numeric);",
+    "['non_leaf_10']": "NON_MIGRATE",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_8']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_8']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_8', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_11": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_11 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 30) AND (p.price >= '500'::numeric);",
+    "['non_leaf_11']": "NON_MIGRATE",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_10']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_8']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_8']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_8', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_12": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_12 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount\nFROM orders AS o\nWHERE ((o.total_amount >= '100'::numeric) AND (o.order_date >= (CURRENT_DATE - '120 days'::interval)));",
+    "['non_leaf_12']": "NON_MIGRATE",
+    "['leaf_8']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_13": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_13 AS\nSELECT o_1.order_id,\n    o_1.user_id,\n    o_1.product_id,\n    o_1.quantity,\n    o_1.order_date,\n    o_1.total_amount\nFROM orders AS o_1\nWHERE (o_1.total_amount >= '100'::numeric);",
+    "['non_leaf_13']": "NON_MIGRATE",
+    "['leaf_9']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_14": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_14 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    o_1.order_id AS o_1_order_id,\n    o_1.user_id AS o_1_user_id,\n    o_1.product_id AS o_1_product_id,\n    o_1.quantity AS o_1_quantity,\n    o_1.order_date AS o_1_order_date,\n    o_1.total_amount AS o_1_total_amount\nFROM orders AS o , orders AS o_1\nWHERE ((o.total_amount >= '100'::numeric) AND (o.order_date >= (CURRENT_DATE - '120 days'::interval))) AND (o_1.total_amount >= '100'::numeric);",
+    "['non_leaf_14']": "NON_MIGRATE",
+    "['leaf_8']": "CREATE MATERIALIZED VIEW",
+    "['leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_12']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_8', 'leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_8', 'non_leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_9', 'non_leaf_12']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_12', 'non_leaf_13']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_15": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_15 AS\nSELECT p.product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM products AS p\nWHERE (p.price >= '300'::numeric);",
+    "['non_leaf_15']": "NON_MIGRATE",
+    "['leaf_11']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_16": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_16 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.total_amount >= '1000'::numeric) AND (p.price >= '300'::numeric);",
+    "['non_leaf_16']": "NON_MIGRATE",
+    "['leaf_10']": "CREATE MATERIALIZED VIEW",
+    "['leaf_11']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_10', 'leaf_11']": "CREATE MATERIALIZED VIEW",
+    "['leaf_10', 'non_leaf_15']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_17": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_17 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.total_amount >= '1000'::numeric) AND (p.price >= '300'::numeric);",
+    "['non_leaf_17']": "NON_MIGRATE",
+    "['leaf_10']": "CREATE MATERIALIZED VIEW",
+    "['leaf_11']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_10', 'leaf_11']": "CREATE MATERIALIZED VIEW",
+    "['leaf_10', 'non_leaf_15']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_18": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_18 AS\nSELECT u.user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM users AS u\nWHERE (u.age >= 25);",
+    "['non_leaf_18']": "NON_MIGRATE",
+    "['leaf_12']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_19": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_19 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , users AS u\nWHERE o.user_id = u.user_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 25);",
+    "['non_leaf_19']": "NON_MIGRATE",
+    "['leaf_12']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_18']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_20": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_20 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 25);",
+    "['non_leaf_20']": "NON_MIGRATE",
+    "['leaf_12']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_19']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'non_leaf_19']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_18', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_19', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_4', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_5', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'leaf_5', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_18', 'non_leaf_4']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_21": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_21 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= (CURRENT_DATE - '90 days'::interval)) AND (u.age >= 25);",
+    "['non_leaf_21']": "NON_MIGRATE",
+    "['leaf_12']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_19']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_20']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'non_leaf_19']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_18', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_19', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_4', 'leaf_5']": "CREATE MATERIALIZED VIEW",
+    "['leaf_12', 'leaf_5', 'non_leaf_4']": "CREATE MATERIALIZED VIEW",
+    "['leaf_4', 'leaf_5', 'non_leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_5', 'non_leaf_18', 'non_leaf_4']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_22": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_22 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , users AS u\nWHERE o.user_id = u.user_id AND (u.age >= 30);",
+    "['non_leaf_22']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_7']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_23": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_23 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (u.age >= 30) AND (p.price >= '500'::numeric);",
+    "['non_leaf_23']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_22']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_22']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_22', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_24": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_24 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    u.user_id AS u_user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date,\n    p.product_id AS p_product_id,\n    p.name AS p_name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , users AS u , products AS p\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (u.age >= 30) AND (p.price >= '500'::numeric);",
+    "['non_leaf_24']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_22']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_23']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_22']": "CREATE MATERIALIZED VIEW",
+    "['leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_22', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6', 'leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_6', 'non_leaf_9']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_7', 'non_leaf_7']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_7', 'non_leaf_9']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_25": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_25 AS\nSELECT p.product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM products AS p\nWHERE ((p.category)::text = 'Electronics'::text);",
+    "['non_leaf_25']": "NON_MIGRATE",
+    "['leaf_15']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_26": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_26 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (o.order_date >= '2024-01-01'::date) AND ((p.category)::text = 'Electronics'::text);",
+    "['non_leaf_26']": "NON_MIGRATE",
+    "['leaf_14']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_25']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_27": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_27 AS\nSELECT u.user_id,\n    u.name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM users AS u;",
+    "['non_leaf_27']": "NON_MIGRATE",
+    "['leaf_16']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_28": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_28 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock,\n    u.user_id AS u_user_id,\n    u.name AS u_name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , products AS p , users AS u\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= '2024-01-01'::date) AND ((p.category)::text = 'Electronics'::text);",
+    "['non_leaf_28']": "NON_MIGRATE",
+    "['leaf_14']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_26']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16', 'non_leaf_26']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_25', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_26', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_16', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_25', 'non_leaf_27']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_29": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_29 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock,\n    u.user_id AS u_user_id,\n    u.name AS u_name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , products AS p , users AS u\nWHERE o.user_id = u.user_id AND o.product_id = p.product_id AND (o.order_date >= '2024-01-01'::date) AND ((p.category)::text = 'Electronics'::text);",
+    "['non_leaf_29']": "NON_MIGRATE",
+    "['leaf_14']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_26']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_28']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_15', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_16', 'non_leaf_26']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_25', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_26', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15', 'leaf_16']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_15', 'non_leaf_27']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'leaf_16', 'non_leaf_25']": "CREATE MATERIALIZED VIEW",
+    "['leaf_14', 'non_leaf_25', 'non_leaf_27']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_30": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_30 AS\nSELECT p.product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM products AS p\nWHERE (p.price < '300'::numeric);",
+    "['non_leaf_30']": "NON_MIGRATE",
+    "['leaf_17']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_31": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_31 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM orders AS o , products AS p\nWHERE o.product_id = p.product_id AND (p.price < '300'::numeric);",
+    "['non_leaf_31']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_30']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_32": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_32 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock,\n    u.user_id AS u_user_id,\n    u.name AS u_name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , products AS p , users AS u\nWHERE o.product_id = p.product_id AND u.user_id = o.user_id AND (p.price < '300'::numeric) AND (u.age < 25);",
+    "['non_leaf_32']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_31']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['leaf_17', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18', 'non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18', 'non_leaf_31']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_17', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_18', 'non_leaf_30']": "CREATE MATERIALIZED VIEW"
+  },
+  "non_leaf_33": {
+    "[]": "CREATE MATERIALIZED VIEW non_leaf_33 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock,\n    u.user_id AS u_user_id,\n    u.name AS u_name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM orders AS o , products AS p , users AS u\nWHERE o.product_id = p.product_id AND u.user_id = o.user_id AND (p.price < '300'::numeric) AND (u.age < 25);",
+    "['non_leaf_33']": "NON_MIGRATE",
+    "['leaf_13']": "CREATE MATERIALIZED VIEW",
+    "['leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_31']": "CREATE MATERIALIZED VIEW",
+    "['non_leaf_32']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_17']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['leaf_17', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18', 'non_leaf_30']": "CREATE MATERIALIZED VIEW",
+    "['leaf_18', 'non_leaf_31']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_17', 'leaf_18']": "CREATE MATERIALIZED VIEW",
+    "['leaf_13', 'leaf_18', 'non_leaf_30']": "CREATE MATERIALIZED VIEW"
+  }
+}

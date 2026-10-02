@@ -1,0 +1,39 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Nested Loop",
+      "Actual Rows": 5000,
+      "Plan Rows": 5000,
+      "Plans": [
+        {
+          "Node Type": "Hash Join",
+          "Actual Rows": 1000,
+          "Plan Rows": 1000,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "customers",
+              "Alias": "c",
+              "Actual Rows": 200,
+              "Plan Rows": 200
+            },
+            {
+              "Node Type": "Seq Scan",
+              "Relation Name": "orders",
+              "Alias": "o",
+              "Actual Rows": 1000,
+              "Plan Rows": 1000
+            }
+          ]
+        },
+        {
+          "Node Type": "Index Scan using order_items_order_id_idx on order_items",
+          "Alias": "oi",
+          "Actual Rows": 5,
+          "Plan Rows": 5,
+          "Actual Loops": 1000
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,191 @@
+/* Main Dashboard Styles */
+
+/* Global Styles */
+.main {
+    padding: 2rem;
+}
+
+/* Header Styles */
+h1 {
+    color: #667eea;
+    font-weight: 700;
+}
+
+h2 {
+    color: #4c51bf;
+    font-weight: 600;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0.5rem 0;
+}
+
+.metric-card h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.metric-card p {
+    margin: 0.5rem 0 0 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Progress Bar Styles */
+.stProgress > div > div > div {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Button Styles */
+.stButton > button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Card Container */
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 1rem 0;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-success {
+    background-color: #48bb78;
+    color: white;
+}
+
+.status-warning {
+    background-color: #ed8936;
+    color: white;
+}
+
+.status-error {
+    background-color: #f56565;
+    color: white;
+}
+
+.status-info {
+    background-color: #4299e1;
+    color: white;
+}
+
+/* Table Styles */
+.dataframe {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dataframe thead tr {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.dataframe tbody tr:nth-child(even) {
+    background-color: #f7fafc;
+}
+
+.dataframe tbody tr:hover {
+    background-color: #edf2f7;
+    transition: background-color 0.2s ease;
+}
+
+/* Log Container */
+.log-container {
+    background: #1a202c;
+    color: #a0aec0;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 0.85rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Sidebar Styles */
+.sidebar .sidebar-content {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Alert Boxes */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.alert-success {
+    background-color: #c6f6d5;
+    border-left: 4px solid #48bb78;
+    color: #22543d;
+}
+
+.alert-warning {
+    background-color: #feebc8;
+    border-left: 4px solid #ed8936;
+    color: #7c2d12;
+}
+
+.alert-error {
+    background-color: #fed7d7;
+    border-left: 4px solid #f56565;
+    color: #742a2a;
+}
+
+.alert-info {
+    background-color: #bee3f8;
+    border-left: 4px solid #4299e1;
+    color: #2c5282;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main {
+        padding: 1rem;
+    }
+    
+    .metric-card p {
+        font-size: 1.5rem;
+    }
+}

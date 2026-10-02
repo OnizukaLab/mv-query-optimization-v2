@@ -1,0 +1,70 @@
+# Database Configuration
+database:
+  host: localhost
+  port: 5432
+  database: imdbload
+  user: postgres
+  password: "pass"
+  timeout: 1800  # 30 minutes in seconds
+
+# Optimization Parameters
+optimization:
+  storage_limit_mb: 50
+  storage_limit_bytes: 52428800  # 50 * 1024 * 1024
+  insert_queries: 1000
+  
+  # Which algorithms to run
+  algorithms:
+    normal: true
+    bigsubs: true
+    utility_capacity: true
+    utility: true
+    frequency: true
+
+# Benchmark Configuration
+benchmark:
+  type: job  # 'job' or 'ceb'
+  workloads_dir: dataset/redbench/workloads
+  queries_dir: dataset/RED_JSON
+  sql_dir: dataset/RED_SQL
+  
+  # クエリ選択モード
+  # 'redbench': RedBenchワークロードCSVに基づいてクエリを選択 (83クエリ)
+  # 'all_job': dataset/RED_JSON/job/ の全JOBクエリを使用 (113クエリ)
+  query_selection_mode: redbench  # 'redbench' or 'all_job'
+
+# Query Configuration
+query:
+  num_queries: 83  # RedBench JOB queries
+  use_ceb: false    # Use CEB queries in addition to JOB
+
+# Paths
+paths:
+  output_dir: Output
+  experiments_dir: Output/experiments
+  logs_dir: Output/logs
+  artifacts_dir: Output/artifacts
+  query_rewrite_dir: Output/query_rewrite
+  mv_list_dir: Output
+
+# Execution Phases Configuration
+# フェーズごとに実行するかどうかを制御
+execution:
+  phases:
+    query_parsing: true       # [1/6] クエリパース
+    optimization: true         # [2/6] MV選択（ILP最適化）
+    sql_generation: true      # [3/6] MV作成SQL生成
+    mv_creation: true         # [4/6] MV作成（データベース）
+    query_rewriting: true      # [5/6] クエリ書き換え
+    benchmark: true            # [6/6] ベンチマーク実行
+  
+  # または start_from / end_at で範囲指定も可能
+  # start_from: query_parsing     # このフェーズから開始
+  # end_at: query_rewriting       # このフェーズで終了
+
+# Logging Configuration
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: output/logs/experiment.log
+  console: true

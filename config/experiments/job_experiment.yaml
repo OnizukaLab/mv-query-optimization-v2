@@ -1,0 +1,21 @@
+# JOB Experiment 1 Configuration
+# View selection and benchmark using all 113 JOB queries
+
+query:
+  num_queries: 113
+  use_ceb: false
+
+benchmark:
+  type: job
+  queries_dir: dataset/RED_JSON
+  sql_dir: dataset/RED_SQL
+  query_selection_mode: all_job  # Use all 113 JOB queries for view selection
+  ceb_template: null
+
+optimization:
+  storage_limit_mb: 50
+  insert_queries: 1000
+
+logging:
+  level: INFO
+  file: output/logs/job_experiment.log

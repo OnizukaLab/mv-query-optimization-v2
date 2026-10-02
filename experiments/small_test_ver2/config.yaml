@@ -1,0 +1,39 @@
+# =====================================================
+# 小規模実験用設定ファイル (run_experiment_normal.py用)
+# =====================================================
+# 注: このファイルは run_experiment_normal.py で実際に使用される
+#     設定のみを含んでいます。
+# =====================================================
+
+# データベース接続設定
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: "1608"
+  timeout: 300
+  # === データベース切り替え ===
+  # 小規模実験用: mv_small_test
+  # JOBベンチマーク用: imdbload（推奨）
+  database: imdbload
+
+# 最適化パラメータ
+optimization:
+  # === ストレージ制限切り替え ===
+  # 小規模実験用: 10KB
+  # storage_limit_mb: 0.01
+  # storage_limit_bytes: 10240
+  # JOBベンチマーク用: 100MB（推奨）
+  storage_limit_mb: 100
+  storage_limit_bytes: 104857600  # 100MB
+  
+  # 挿入クエリ数（QueryParserで使用）
+  insert_queries: 50
+  
+  # 使用するアルゴリズム
+  algorithms:
+    normal: true
+    bigsubs: false
+    utility: false
+    utility_capacity: false
+    frequency: false

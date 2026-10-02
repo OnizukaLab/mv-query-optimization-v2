@@ -1,0 +1,5758 @@
+{
+  "_metadata": {
+    "type": "QueryParser",
+    "source_pickle": "C:\\Users\\kanji masuda\\query\\mv-query-optimization\\experiments\\small_test_ver2\\03_parsed\\job_like\\qp_class.pkl"
+  },
+  "qm": {
+    "_type": "QueryManager",
+    "leaf_nodes_map": {
+      "('Index Scan', 'users', 'u', '(age >= 25)')": "leaf_1",
+      "('Index Only Scan', 'users', 'u_1', '')": "leaf_2",
+      "('Seq Scan', 'orders', 'o', \"(order_date >= (CURRENT_DATE - '60 days'::interval))\")": "leaf_3",
+      "('Seq Scan', 'products', 'p', '')": "leaf_4",
+      "('Seq Scan', 'orders', 'o', \"(order_date >= (CURRENT_DATE - '90 days'::interval))\")": "leaf_5",
+      "('Seq Scan', 'users', 'u', '(age >= 30)')": "leaf_6",
+      "('Seq Scan', 'products', 'p', \"(price >= '500'::numeric)\")": "leaf_7",
+      "('Index Scan', 'orders', 'o', \"((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))\")": "leaf_8",
+      "('Index Scan', 'orders', 'o_1', \"(total_amount >= '100'::numeric)\")": "leaf_9",
+      "('Seq Scan', 'orders', 'o', \"(total_amount >= '1000'::numeric)\")": "leaf_10",
+      "('Seq Scan', 'products', 'p', \"(price >= '300'::numeric)\")": "leaf_11",
+      "('Seq Scan', 'users', 'u', '(age >= 25)')": "leaf_12",
+      "('Seq Scan', 'orders', 'o', '')": "leaf_13",
+      "('Seq Scan', 'orders', 'o', \"(order_date >= '2024-01-01'::date)\")": "leaf_14",
+      "('Seq Scan', 'products', 'p', \"((category)::text = 'Electronics'::text)\")": "leaf_15",
+      "('Seq Scan', 'users', 'u', '')": "leaf_16",
+      "('Seq Scan', 'products', 'p', \"(price < '300'::numeric)\")": "leaf_17",
+      "('Index Scan', 'users', 'u', '(age < 25)')": "leaf_18"
+    },
+    "leaf_nodes_map_r": {
+      "leaf_1": [
+        "Index Scan",
+        "users",
+        "u",
+        "(age >= 25)"
+      ],
+      "leaf_2": [
+        "Index Only Scan",
+        "users",
+        "u_1",
+        ""
+      ],
+      "leaf_3": [
+        "Seq Scan",
+        "orders",
+        "o",
+        "(order_date >= (CURRENT_DATE - '60 days'::interval))"
+      ],
+      "leaf_4": [
+        "Seq Scan",
+        "products",
+        "p",
+        ""
+      ],
+      "leaf_5": [
+        "Seq Scan",
+        "orders",
+        "o",
+        "(order_date >= (CURRENT_DATE - '90 days'::interval))"
+      ],
+      "leaf_6": [
+        "Seq Scan",
+        "users",
+        "u",
+        "(age >= 30)"
+      ],
+      "leaf_7": [
+        "Seq Scan",
+        "products",
+        "p",
+        "(price >= '500'::numeric)"
+      ],
+      "leaf_8": [
+        "Index Scan",
+        "orders",
+        "o",
+        "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))"
+      ],
+      "leaf_9": [
+        "Index Scan",
+        "orders",
+        "o_1",
+        "(total_amount >= '100'::numeric)"
+      ],
+      "leaf_10": [
+        "Seq Scan",
+        "orders",
+        "o",
+        "(total_amount >= '1000'::numeric)"
+      ],
+      "leaf_11": [
+        "Seq Scan",
+        "products",
+        "p",
+        "(price >= '300'::numeric)"
+      ],
+      "leaf_12": [
+        "Seq Scan",
+        "users",
+        "u",
+        "(age >= 25)"
+      ],
+      "leaf_13": [
+        "Seq Scan",
+        "orders",
+        "o",
+        ""
+      ],
+      "leaf_14": [
+        "Seq Scan",
+        "orders",
+        "o",
+        "(order_date >= '2024-01-01'::date)"
+      ],
+      "leaf_15": [
+        "Seq Scan",
+        "products",
+        "p",
+        "((category)::text = 'Electronics'::text)"
+      ],
+      "leaf_16": [
+        "Seq Scan",
+        "users",
+        "u",
+        ""
+      ],
+      "leaf_17": [
+        "Seq Scan",
+        "products",
+        "p",
+        "(price < '300'::numeric)"
+      ],
+      "leaf_18": [
+        "Index Scan",
+        "users",
+        "u",
+        "(age < 25)"
+      ]
+    },
+    "non_leaf_nodes_map": {
+      "('leaf_1',)": "non_leaf_1",
+      "('leaf_2',)": "non_leaf_2",
+      "('non_leaf_1', 'non_leaf_2')": "non_leaf_3",
+      "('leaf_4',)": "non_leaf_4",
+      "('leaf_3', 'non_leaf_4')": "non_leaf_5",
+      "('non_leaf_5',)": "non_leaf_6",
+      "('leaf_6',)": "non_leaf_7",
+      "('leaf_5', 'non_leaf_7')": "non_leaf_8",
+      "('leaf_7',)": "non_leaf_9",
+      "('non_leaf_8', 'non_leaf_9')": "non_leaf_10",
+      "('non_leaf_10',)": "non_leaf_11",
+      "('leaf_8',)": "non_leaf_12",
+      "('leaf_9',)": "non_leaf_13",
+      "('non_leaf_12', 'non_leaf_13')": "non_leaf_14",
+      "('leaf_11',)": "non_leaf_15",
+      "('leaf_10', 'non_leaf_15')": "non_leaf_16",
+      "('non_leaf_16',)": "non_leaf_17",
+      "('leaf_12',)": "non_leaf_18",
+      "('leaf_5', 'non_leaf_18')": "non_leaf_19",
+      "('non_leaf_19', 'non_leaf_4')": "non_leaf_20",
+      "('non_leaf_20',)": "non_leaf_21",
+      "('leaf_13', 'non_leaf_7')": "non_leaf_22",
+      "('non_leaf_22', 'non_leaf_9')": "non_leaf_23",
+      "('non_leaf_23',)": "non_leaf_24",
+      "('leaf_15',)": "non_leaf_25",
+      "('leaf_14', 'non_leaf_25')": "non_leaf_26",
+      "('leaf_16',)": "non_leaf_27",
+      "('non_leaf_26', 'non_leaf_27')": "non_leaf_28",
+      "('non_leaf_28',)": "non_leaf_29",
+      "('leaf_17',)": "non_leaf_30",
+      "('leaf_13', 'non_leaf_30')": "non_leaf_31",
+      "('leaf_18', 'non_leaf_31')": "non_leaf_32",
+      "('non_leaf_32',)": "non_leaf_33"
+    },
+    "non_leaf_nodes_map_r": {
+      "non_leaf_1": [
+        "leaf_1"
+      ],
+      "non_leaf_2": [
+        "leaf_2"
+      ],
+      "non_leaf_3": [
+        "non_leaf_1",
+        "non_leaf_2"
+      ],
+      "non_leaf_4": [
+        "leaf_4"
+      ],
+      "non_leaf_5": [
+        "leaf_3",
+        "non_leaf_4"
+      ],
+      "non_leaf_6": [
+        "non_leaf_5"
+      ],
+      "non_leaf_7": [
+        "leaf_6"
+      ],
+      "non_leaf_8": [
+        "leaf_5",
+        "non_leaf_7"
+      ],
+      "non_leaf_9": [
+        "leaf_7"
+      ],
+      "non_leaf_10": [
+        "non_leaf_8",
+        "non_leaf_9"
+      ],
+      "non_leaf_11": [
+        "non_leaf_10"
+      ],
+      "non_leaf_12": [
+        "leaf_8"
+      ],
+      "non_leaf_13": [
+        "leaf_9"
+      ],
+      "non_leaf_14": [
+        "non_leaf_12",
+        "non_leaf_13"
+      ],
+      "non_leaf_15": [
+        "leaf_11"
+      ],
+      "non_leaf_16": [
+        "leaf_10",
+        "non_leaf_15"
+      ],
+      "non_leaf_17": [
+        "non_leaf_16"
+      ],
+      "non_leaf_18": [
+        "leaf_12"
+      ],
+      "non_leaf_19": [
+        "leaf_5",
+        "non_leaf_18"
+      ],
+      "non_leaf_20": [
+        "non_leaf_19",
+        "non_leaf_4"
+      ],
+      "non_leaf_21": [
+        "non_leaf_20"
+      ],
+      "non_leaf_22": [
+        "leaf_13",
+        "non_leaf_7"
+      ],
+      "non_leaf_23": [
+        "non_leaf_22",
+        "non_leaf_9"
+      ],
+      "non_leaf_24": [
+        "non_leaf_23"
+      ],
+      "non_leaf_25": [
+        "leaf_15"
+      ],
+      "non_leaf_26": [
+        "leaf_14",
+        "non_leaf_25"
+      ],
+      "non_leaf_27": [
+        "leaf_16"
+      ],
+      "non_leaf_28": [
+        "non_leaf_26",
+        "non_leaf_27"
+      ],
+      "non_leaf_29": [
+        "non_leaf_28"
+      ],
+      "non_leaf_30": [
+        "leaf_17"
+      ],
+      "non_leaf_31": [
+        "leaf_13",
+        "non_leaf_30"
+      ],
+      "non_leaf_32": [
+        "leaf_18",
+        "non_leaf_31"
+      ],
+      "non_leaf_33": [
+        "non_leaf_32"
+      ]
+    },
+    "non_leaf_nodes_filter": {
+      "non_leaf_1": "",
+      "non_leaf_2": "",
+      "non_leaf_3": "",
+      "non_leaf_4": "",
+      "non_leaf_5": "",
+      "non_leaf_6": "",
+      "non_leaf_7": "",
+      "non_leaf_8": "",
+      "non_leaf_9": "",
+      "non_leaf_10": "",
+      "non_leaf_11": "",
+      "non_leaf_12": "",
+      "non_leaf_13": "",
+      "non_leaf_14": "",
+      "non_leaf_15": "",
+      "non_leaf_16": "",
+      "non_leaf_17": "",
+      "non_leaf_18": "",
+      "non_leaf_19": "",
+      "non_leaf_20": "",
+      "non_leaf_21": "",
+      "non_leaf_22": "",
+      "non_leaf_23": "",
+      "non_leaf_24": "",
+      "non_leaf_25": "",
+      "non_leaf_26": "",
+      "non_leaf_27": "",
+      "non_leaf_28": "",
+      "non_leaf_29": "",
+      "non_leaf_30": "",
+      "non_leaf_31": "",
+      "non_leaf_32": "",
+      "non_leaf_33": ""
+    },
+    "non_leaf_nodes_info": {
+      "non_leaf_1": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_1",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "children": [
+          "leaf_1"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 32
+      },
+      "non_leaf_2": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_2",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "children": [
+          "leaf_2"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 4
+      },
+      "non_leaf_3": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_3",
+        "operator": "Result",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_1",
+          "non_leaf_2"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 36
+      },
+      "non_leaf_4": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_4",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_4"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 30,
+        "width": 14
+      },
+      "non_leaf_5": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_5",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_3",
+          "non_leaf_4"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 7.42,
+        "rows": 81,
+        "width": 14
+      },
+      "non_leaf_6": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_6",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_5"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 36
+      },
+      "non_leaf_7": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_7",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_6"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 32,
+        "width": 11
+      },
+      "non_leaf_8": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_8",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_5",
+          "non_leaf_7"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 7.84,
+        "rows": 71,
+        "width": 15
+      },
+      "non_leaf_9": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_9",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_7"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 27,
+        "width": 14
+      },
+      "non_leaf_10": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_10",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_8",
+          "non_leaf_9"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 9.76,
+        "rows": 64,
+        "width": 21
+      },
+      "non_leaf_11": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_11",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_10"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 68
+      },
+      "non_leaf_12": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_12",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "children": [
+          "leaf_8"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 4
+      },
+      "non_leaf_13": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_13",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "children": [
+          "leaf_9"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 4
+      },
+      "non_leaf_14": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_14",
+        "operator": "Result",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_12",
+          "non_leaf_13"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 8
+      },
+      "non_leaf_15": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_15",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_11"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 29,
+        "width": 14
+      },
+      "non_leaf_16": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_16",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_10",
+          "non_leaf_15"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 6.76,
+        "rows": 167,
+        "width": 14
+      },
+      "non_leaf_17": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_17",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_16"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 36
+      },
+      "non_leaf_18": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_18",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_12"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 42,
+        "width": 17
+      },
+      "non_leaf_19": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_19",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_5",
+          "non_leaf_18"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 7.96,
+        "rows": 93,
+        "width": 17
+      },
+      "non_leaf_20": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_20",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_19",
+          "non_leaf_4"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 9.92,
+        "rows": 93,
+        "width": 23
+      },
+      "non_leaf_21": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_21",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_20"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 96
+      },
+      "non_leaf_22": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_22",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_13",
+          "non_leaf_7"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 6.59,
+        "rows": 128,
+        "width": 17
+      },
+      "non_leaf_23": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_23",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_22",
+          "non_leaf_9"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 8.69,
+        "rows": 115,
+        "width": 23
+      },
+      "non_leaf_24": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_24",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_23"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 96
+      },
+      "non_leaf_25": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_25",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_15"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 10,
+        "width": 14
+      },
+      "non_leaf_26": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_26",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_14",
+          "non_leaf_25"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 6.6,
+        "rows": 67,
+        "width": 14
+      },
+      "non_leaf_27": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_27",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_16"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 50,
+        "width": 17
+      },
+      "non_leaf_28": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_28",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_26",
+          "non_leaf_27"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 8.91,
+        "rows": 67,
+        "width": 23
+      },
+      "non_leaf_29": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_29",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_28"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 96
+      },
+      "non_leaf_30": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_30",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "children": [
+          "leaf_17"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 23
+      },
+      "non_leaf_31": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_31",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "children": [
+          "leaf_13",
+          "non_leaf_30"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 5.99,
+        "rows": 7,
+        "width": 23
+      },
+      "non_leaf_32": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_32",
+        "operator": "Nested Loop",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_31",
+          "leaf_18"
+        ],
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "u",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "o",
+            "right_column": "user_id",
+            "condition_type": "Index Cond",
+            "original_text": "(user_id = o.user_id)"
+          }
+        ],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 26
+      },
+      "non_leaf_33": {
+        "_type": "NonLeafNodeInfo",
+        "node_id": "non_leaf_33",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "children": [
+          "non_leaf_32"
+        ],
+        "join_conditions": [],
+        "filters": [],
+        "output_columns": null,
+        "cost": 0.0,
+        "rows": 1,
+        "width": 96
+      }
+    },
+    "join_conditions": {
+      "non_leaf_1": [],
+      "non_leaf_2": [],
+      "non_leaf_3": [],
+      "non_leaf_4": [],
+      "non_leaf_5": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_6": [],
+      "non_leaf_7": [],
+      "non_leaf_8": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "user_id",
+          "operator": "=",
+          "right_table": "u",
+          "right_column": "user_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.user_id = u.user_id)"
+        }
+      ],
+      "non_leaf_9": [],
+      "non_leaf_10": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_11": [],
+      "non_leaf_12": [],
+      "non_leaf_13": [],
+      "non_leaf_14": [],
+      "non_leaf_15": [],
+      "non_leaf_16": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_17": [],
+      "non_leaf_18": [],
+      "non_leaf_19": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "user_id",
+          "operator": "=",
+          "right_table": "u",
+          "right_column": "user_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.user_id = u.user_id)"
+        }
+      ],
+      "non_leaf_20": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_21": [],
+      "non_leaf_22": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "user_id",
+          "operator": "=",
+          "right_table": "u",
+          "right_column": "user_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.user_id = u.user_id)"
+        }
+      ],
+      "non_leaf_23": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_24": [],
+      "non_leaf_25": [],
+      "non_leaf_26": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_27": [],
+      "non_leaf_28": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "user_id",
+          "operator": "=",
+          "right_table": "u",
+          "right_column": "user_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.user_id = u.user_id)"
+        }
+      ],
+      "non_leaf_29": [],
+      "non_leaf_30": [],
+      "non_leaf_31": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "o",
+          "left_column": "product_id",
+          "operator": "=",
+          "right_table": "p",
+          "right_column": "product_id",
+          "condition_type": "Hash Cond",
+          "original_text": "(o.product_id = p.product_id)"
+        }
+      ],
+      "non_leaf_32": [
+        {
+          "_type": "JoinCondition",
+          "left_table": "u",
+          "left_column": "user_id",
+          "operator": "=",
+          "right_table": "o",
+          "right_column": "user_id",
+          "condition_type": "Index Cond",
+          "original_text": "(user_id = o.user_id)"
+        }
+      ],
+      "non_leaf_33": []
+    },
+    "node_operators": {
+      "non_leaf_1": "Limit",
+      "non_leaf_2": "Limit",
+      "non_leaf_3": "Result",
+      "non_leaf_4": "Hash",
+      "non_leaf_5": "Hash Join",
+      "non_leaf_6": "Aggregate",
+      "non_leaf_7": "Hash",
+      "non_leaf_8": "Hash Join",
+      "non_leaf_9": "Hash",
+      "non_leaf_10": "Hash Join",
+      "non_leaf_11": "Aggregate",
+      "non_leaf_12": "Limit",
+      "non_leaf_13": "Limit",
+      "non_leaf_14": "Result",
+      "non_leaf_15": "Hash",
+      "non_leaf_16": "Hash Join",
+      "non_leaf_17": "Aggregate",
+      "non_leaf_18": "Hash",
+      "non_leaf_19": "Hash Join",
+      "non_leaf_20": "Hash Join",
+      "non_leaf_21": "Aggregate",
+      "non_leaf_22": "Hash Join",
+      "non_leaf_23": "Hash Join",
+      "non_leaf_24": "Aggregate",
+      "non_leaf_25": "Hash",
+      "non_leaf_26": "Hash Join",
+      "non_leaf_27": "Hash",
+      "non_leaf_28": "Hash Join",
+      "non_leaf_29": "Aggregate",
+      "non_leaf_30": "Hash",
+      "non_leaf_31": "Hash Join",
+      "non_leaf_32": "Nested Loop",
+      "non_leaf_33": "Aggregate"
+    },
+    "leaf_id_counter": 18,
+    "non_leaf_id_counter": 33,
+    "subquery_positions": {
+      "leaf_1": [
+        [
+          0,
+          2
+        ]
+      ],
+      "non_leaf_1": [
+        [
+          0,
+          1
+        ]
+      ],
+      "leaf_2": [
+        [
+          0,
+          4
+        ]
+      ],
+      "non_leaf_2": [
+        [
+          0,
+          3
+        ]
+      ],
+      "non_leaf_3": [
+        [
+          0,
+          0
+        ]
+      ],
+      "leaf_3": [
+        [
+          1,
+          2
+        ]
+      ],
+      "leaf_4": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "non_leaf_4": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "non_leaf_5": [
+        [
+          1,
+          1
+        ]
+      ],
+      "non_leaf_6": [
+        [
+          1,
+          0
+        ]
+      ],
+      "leaf_5": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "leaf_6": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ],
+      "non_leaf_7": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ],
+      "non_leaf_8": [
+        [
+          2,
+          2
+        ]
+      ],
+      "leaf_7": [
+        [
+          2,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "non_leaf_9": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "non_leaf_10": [
+        [
+          2,
+          1
+        ]
+      ],
+      "non_leaf_11": [
+        [
+          2,
+          0
+        ]
+      ],
+      "leaf_8": [
+        [
+          3,
+          2
+        ]
+      ],
+      "non_leaf_12": [
+        [
+          3,
+          1
+        ]
+      ],
+      "leaf_9": [
+        [
+          3,
+          4
+        ]
+      ],
+      "non_leaf_13": [
+        [
+          3,
+          3
+        ]
+      ],
+      "non_leaf_14": [
+        [
+          3,
+          0
+        ]
+      ],
+      "leaf_10": [
+        [
+          4,
+          2
+        ]
+      ],
+      "leaf_11": [
+        [
+          4,
+          4
+        ]
+      ],
+      "non_leaf_15": [
+        [
+          4,
+          3
+        ]
+      ],
+      "non_leaf_16": [
+        [
+          4,
+          1
+        ]
+      ],
+      "non_leaf_17": [
+        [
+          4,
+          0
+        ]
+      ],
+      "leaf_12": [
+        [
+          5,
+          5
+        ]
+      ],
+      "non_leaf_18": [
+        [
+          5,
+          4
+        ]
+      ],
+      "non_leaf_19": [
+        [
+          5,
+          2
+        ]
+      ],
+      "non_leaf_20": [
+        [
+          5,
+          1
+        ]
+      ],
+      "non_leaf_21": [
+        [
+          5,
+          0
+        ]
+      ],
+      "leaf_13": [
+        [
+          6,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "non_leaf_22": [
+        [
+          6,
+          2
+        ]
+      ],
+      "non_leaf_23": [
+        [
+          6,
+          1
+        ]
+      ],
+      "non_leaf_24": [
+        [
+          6,
+          0
+        ]
+      ],
+      "leaf_14": [
+        [
+          7,
+          3
+        ]
+      ],
+      "leaf_15": [
+        [
+          7,
+          5
+        ]
+      ],
+      "non_leaf_25": [
+        [
+          7,
+          4
+        ]
+      ],
+      "non_leaf_26": [
+        [
+          7,
+          2
+        ]
+      ],
+      "leaf_16": [
+        [
+          7,
+          7
+        ]
+      ],
+      "non_leaf_27": [
+        [
+          7,
+          6
+        ]
+      ],
+      "non_leaf_28": [
+        [
+          7,
+          1
+        ]
+      ],
+      "non_leaf_29": [
+        [
+          7,
+          0
+        ]
+      ],
+      "leaf_17": [
+        [
+          8,
+          5
+        ]
+      ],
+      "non_leaf_30": [
+        [
+          8,
+          4
+        ]
+      ],
+      "non_leaf_31": [
+        [
+          8,
+          2
+        ]
+      ],
+      "leaf_18": [
+        [
+          8,
+          6
+        ]
+      ],
+      "non_leaf_32": [
+        [
+          8,
+          1
+        ]
+      ],
+      "non_leaf_33": [
+        [
+          8,
+          0
+        ]
+      ]
+    },
+    "subquery_costs": {
+      "leaf_1": 13.14,
+      "non_leaf_1": 0.0,
+      "leaf_2": 0.0,
+      "non_leaf_2": 0.0,
+      "non_leaf_3": 0.0,
+      "leaf_3": 5.5,
+      "leaf_4": 0.0,
+      "non_leaf_4": 0.0,
+      "non_leaf_5": 7.42,
+      "non_leaf_6": 0.0,
+      "leaf_5": 5.5,
+      "leaf_6": 1.62,
+      "non_leaf_7": 0.0,
+      "non_leaf_8": 7.84,
+      "leaf_7": 1.38,
+      "non_leaf_9": 0.0,
+      "non_leaf_10": 9.76,
+      "non_leaf_11": 0.0,
+      "leaf_8": 18.14,
+      "non_leaf_12": 0.0,
+      "leaf_9": 18.6,
+      "non_leaf_13": 0.0,
+      "non_leaf_14": 0.0,
+      "leaf_10": 4.5,
+      "leaf_11": 1.38,
+      "non_leaf_15": 0.0,
+      "non_leaf_16": 6.76,
+      "non_leaf_17": 0.0,
+      "leaf_12": 1.62,
+      "non_leaf_18": 0.0,
+      "non_leaf_19": 7.96,
+      "non_leaf_20": 9.92,
+      "non_leaf_21": 0.0,
+      "leaf_13": 0.0,
+      "non_leaf_22": 6.59,
+      "non_leaf_23": 8.69,
+      "non_leaf_24": 0.0,
+      "leaf_14": 4.5,
+      "leaf_15": 1.38,
+      "non_leaf_25": 0.0,
+      "non_leaf_26": 6.6,
+      "leaf_16": 0.0,
+      "non_leaf_27": 0.0,
+      "non_leaf_28": 8.91,
+      "non_leaf_29": 0.0,
+      "leaf_17": 1.38,
+      "non_leaf_30": 0.0,
+      "non_leaf_31": 5.99,
+      "leaf_18": 0.22,
+      "non_leaf_32": 0.0,
+      "non_leaf_33": 0.0
+    },
+    "original_subquery_costs": {
+      "leaf_1": 13.14,
+      "non_leaf_1": 0.45,
+      "leaf_2": 12.98,
+      "non_leaf_2": 0.45,
+      "non_leaf_3": 0.91,
+      "leaf_3": 5.5,
+      "leaf_4": 1.3,
+      "non_leaf_4": 1.3,
+      "non_leaf_5": 7.42,
+      "non_leaf_6": 7.84,
+      "leaf_5": 5.5,
+      "leaf_6": 1.62,
+      "non_leaf_7": 1.62,
+      "non_leaf_8": 7.84,
+      "leaf_7": 1.38,
+      "non_leaf_9": 1.38,
+      "non_leaf_10": 9.76,
+      "non_leaf_11": 10.25,
+      "leaf_8": 18.14,
+      "non_leaf_12": 0.27,
+      "leaf_9": 18.6,
+      "non_leaf_13": 0.28,
+      "non_leaf_14": 0.56,
+      "leaf_10": 4.5,
+      "leaf_11": 1.38,
+      "non_leaf_15": 1.38,
+      "non_leaf_16": 6.76,
+      "non_leaf_17": 7.6,
+      "leaf_12": 1.62,
+      "non_leaf_18": 1.62,
+      "non_leaf_19": 7.96,
+      "non_leaf_20": 9.92,
+      "non_leaf_21": 10.62,
+      "leaf_13": 4.0,
+      "non_leaf_22": 6.59,
+      "non_leaf_23": 8.69,
+      "non_leaf_24": 9.56,
+      "leaf_14": 4.5,
+      "leaf_15": 1.38,
+      "non_leaf_25": 1.38,
+      "non_leaf_26": 6.6,
+      "leaf_16": 1.5,
+      "non_leaf_27": 1.5,
+      "non_leaf_28": 8.91,
+      "non_leaf_29": 9.43,
+      "leaf_17": 1.38,
+      "non_leaf_30": 1.38,
+      "non_leaf_31": 5.99,
+      "leaf_18": 0.22,
+      "non_leaf_32": 7.55,
+      "non_leaf_33": 7.57
+    },
+    "subquery_sizes": {
+      "leaf_1": 1344,
+      "non_leaf_1": 32,
+      "leaf_2": 168,
+      "non_leaf_2": 4,
+      "non_leaf_3": 36,
+      "leaf_3": 648,
+      "leaf_4": 420,
+      "non_leaf_4": 420,
+      "non_leaf_5": 1134,
+      "non_leaf_6": 36,
+      "leaf_5": 888,
+      "leaf_6": 544,
+      "non_leaf_7": 544,
+      "non_leaf_8": 1065,
+      "leaf_7": 378,
+      "non_leaf_9": 378,
+      "non_leaf_10": 1344,
+      "non_leaf_11": 68,
+      "leaf_8": 564,
+      "non_leaf_12": 4,
+      "leaf_9": 564,
+      "non_leaf_13": 4,
+      "non_leaf_14": 8,
+      "leaf_10": 1384,
+      "leaf_11": 406,
+      "non_leaf_15": 406,
+      "non_leaf_16": 2338,
+      "non_leaf_17": 36,
+      "leaf_12": 714,
+      "non_leaf_18": 714,
+      "non_leaf_19": 1581,
+      "non_leaf_20": 2139,
+      "non_leaf_21": 96,
+      "leaf_13": 1600,
+      "non_leaf_22": 2176,
+      "non_leaf_23": 2645,
+      "non_leaf_24": 96,
+      "leaf_14": 1600,
+      "leaf_15": 140,
+      "non_leaf_25": 140,
+      "non_leaf_26": 938,
+      "leaf_16": 850,
+      "non_leaf_27": 850,
+      "non_leaf_28": 1541,
+      "non_leaf_29": 96,
+      "leaf_17": 23,
+      "non_leaf_30": 23,
+      "non_leaf_31": 161,
+      "leaf_18": 11,
+      "non_leaf_32": 26,
+      "non_leaf_33": 96
+    },
+    "relation_tables": {
+      "leaf_1": "users",
+      "leaf_2": "users",
+      "leaf_3": "orders",
+      "leaf_4": "products",
+      "leaf_5": "orders",
+      "leaf_6": "users",
+      "leaf_7": "products",
+      "leaf_8": "orders",
+      "leaf_9": "orders",
+      "leaf_10": "orders",
+      "leaf_11": "products",
+      "leaf_12": "users",
+      "leaf_13": "orders",
+      "leaf_14": "orders",
+      "leaf_15": "products",
+      "leaf_16": "users",
+      "leaf_17": "products",
+      "leaf_18": "users"
+    },
+    "subquery_widths": {
+      "leaf_1": 32,
+      "non_leaf_1": 32,
+      "leaf_2": 4,
+      "non_leaf_2": 4,
+      "non_leaf_3": 36,
+      "leaf_3": 8,
+      "leaf_4": 14,
+      "non_leaf_4": 14,
+      "non_leaf_5": 14,
+      "non_leaf_6": 36,
+      "leaf_5": 8,
+      "leaf_6": 17,
+      "non_leaf_7": 17,
+      "non_leaf_8": 15,
+      "leaf_7": 14,
+      "non_leaf_9": 14,
+      "non_leaf_10": 21,
+      "non_leaf_11": 68,
+      "leaf_8": 4,
+      "non_leaf_12": 4,
+      "leaf_9": 4,
+      "non_leaf_13": 4,
+      "non_leaf_14": 8,
+      "leaf_10": 8,
+      "leaf_11": 14,
+      "non_leaf_15": 14,
+      "non_leaf_16": 14,
+      "non_leaf_17": 36,
+      "leaf_12": 17,
+      "non_leaf_18": 17,
+      "non_leaf_19": 17,
+      "non_leaf_20": 23,
+      "non_leaf_21": 96,
+      "leaf_13": 8,
+      "non_leaf_22": 17,
+      "non_leaf_23": 23,
+      "non_leaf_24": 96,
+      "leaf_14": 8,
+      "leaf_15": 14,
+      "non_leaf_25": 14,
+      "non_leaf_26": 14,
+      "leaf_16": 17,
+      "non_leaf_27": 17,
+      "non_leaf_28": 23,
+      "non_leaf_29": 96,
+      "leaf_17": 23,
+      "non_leaf_30": 23,
+      "non_leaf_31": 23,
+      "leaf_18": 11,
+      "non_leaf_32": 26,
+      "non_leaf_33": 96
+    }
+  },
+  "s_num": 51,
+  "node_list": [
+    "leaf_1",
+    "leaf_2",
+    "leaf_3",
+    "leaf_4",
+    "leaf_5",
+    "leaf_6",
+    "leaf_7",
+    "leaf_8",
+    "leaf_9",
+    "leaf_10",
+    "leaf_11",
+    "leaf_12",
+    "leaf_13",
+    "leaf_14",
+    "leaf_15",
+    "leaf_16",
+    "leaf_17",
+    "leaf_18",
+    "non_leaf_1",
+    "non_leaf_2",
+    "non_leaf_3",
+    "non_leaf_4",
+    "non_leaf_5",
+    "non_leaf_6",
+    "non_leaf_7",
+    "non_leaf_8",
+    "non_leaf_9",
+    "non_leaf_10",
+    "non_leaf_11",
+    "non_leaf_12",
+    "non_leaf_13",
+    "non_leaf_14",
+    "non_leaf_15",
+    "non_leaf_16",
+    "non_leaf_17",
+    "non_leaf_18",
+    "non_leaf_19",
+    "non_leaf_20",
+    "non_leaf_21",
+    "non_leaf_22",
+    "non_leaf_23",
+    "non_leaf_24",
+    "non_leaf_25",
+    "non_leaf_26",
+    "non_leaf_27",
+    "non_leaf_28",
+    "non_leaf_29",
+    "non_leaf_30",
+    "non_leaf_31",
+    "non_leaf_32",
+    "non_leaf_33"
+  ],
+  "m_cost": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "U_j_max": [
+    13.14,
+    0.0,
+    5.5,
+    0.0,
+    11.0,
+    3.24,
+    2.76,
+    18.14,
+    18.6,
+    4.5,
+    1.38,
+    1.62,
+    0.0,
+    4.5,
+    1.38,
+    0.0,
+    1.38,
+    0.22,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    7.42,
+    0.0,
+    0.0,
+    7.84,
+    0.0,
+    9.76,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    6.76,
+    0.0,
+    0.0,
+    7.96,
+    9.92,
+    0.0,
+    6.59,
+    8.69,
+    0.0,
+    0.0,
+    6.6,
+    0.0,
+    8.91,
+    0.0,
+    0.0,
+    5.99,
+    0.0,
+    0.0
+  ],
+  "b_j": [
+    1344,
+    168,
+    648,
+    420,
+    888,
+    544,
+    378,
+    564,
+    564,
+    1384,
+    406,
+    714,
+    1600,
+    1600,
+    140,
+    850,
+    23,
+    11,
+    32,
+    4,
+    36,
+    420,
+    1134,
+    36,
+    544,
+    1065,
+    378,
+    1344,
+    68,
+    4,
+    4,
+    8,
+    406,
+    2338,
+    36,
+    714,
+    1581,
+    2139,
+    96,
+    2176,
+    2645,
+    96,
+    140,
+    938,
+    850,
+    1541,
+    96,
+    23,
+    161,
+    26,
+    96
+  ],
+  "q_s_list": [
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "u_ij": [
+    [
+      13.14,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      5.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      7.42,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      5.5,
+      1.62,
+      1.38,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      7.84,
+      0.0,
+      9.76,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      18.14,
+      18.6,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.5,
+      1.38,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      6.76,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      5.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.62,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      7.96,
+      9.92,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.62,
+      1.38,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      6.59,
+      8.69,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.5,
+      1.38,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      6.6,
+      0.0,
+      8.91,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.38,
+      0.22,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      5.99,
+      0.0,
+      0.0
+    ]
+  ],
+  "position_node_id": {
+    "(0, 2)": "leaf_1",
+    "(0, 1)": "non_leaf_1",
+    "(0, 4)": "leaf_2",
+    "(0, 3)": "non_leaf_2",
+    "(0, 0)": "non_leaf_3",
+    "(1, 2)": "leaf_3",
+    "(1, 4)": "leaf_4",
+    "(5, 7)": "leaf_4",
+    "(1, 3)": "non_leaf_4",
+    "(5, 6)": "non_leaf_4",
+    "(1, 1)": "non_leaf_5",
+    "(1, 0)": "non_leaf_6",
+    "(2, 3)": "leaf_5",
+    "(5, 3)": "leaf_5",
+    "(2, 5)": "leaf_6",
+    "(6, 5)": "leaf_6",
+    "(2, 4)": "non_leaf_7",
+    "(6, 4)": "non_leaf_7",
+    "(2, 2)": "non_leaf_8",
+    "(2, 7)": "leaf_7",
+    "(6, 7)": "leaf_7",
+    "(2, 6)": "non_leaf_9",
+    "(6, 6)": "non_leaf_9",
+    "(2, 1)": "non_leaf_10",
+    "(2, 0)": "non_leaf_11",
+    "(3, 2)": "leaf_8",
+    "(3, 1)": "non_leaf_12",
+    "(3, 4)": "leaf_9",
+    "(3, 3)": "non_leaf_13",
+    "(3, 0)": "non_leaf_14",
+    "(4, 2)": "leaf_10",
+    "(4, 4)": "leaf_11",
+    "(4, 3)": "non_leaf_15",
+    "(4, 1)": "non_leaf_16",
+    "(4, 0)": "non_leaf_17",
+    "(5, 5)": "leaf_12",
+    "(5, 4)": "non_leaf_18",
+    "(5, 2)": "non_leaf_19",
+    "(5, 1)": "non_leaf_20",
+    "(5, 0)": "non_leaf_21",
+    "(6, 3)": "leaf_13",
+    "(8, 3)": "leaf_13",
+    "(6, 2)": "non_leaf_22",
+    "(6, 1)": "non_leaf_23",
+    "(6, 0)": "non_leaf_24",
+    "(7, 3)": "leaf_14",
+    "(7, 5)": "leaf_15",
+    "(7, 4)": "non_leaf_25",
+    "(7, 2)": "non_leaf_26",
+    "(7, 7)": "leaf_16",
+    "(7, 6)": "non_leaf_27",
+    "(7, 1)": "non_leaf_28",
+    "(7, 0)": "non_leaf_29",
+    "(8, 5)": "leaf_17",
+    "(8, 4)": "non_leaf_30",
+    "(8, 2)": "non_leaf_31",
+    "(8, 6)": "leaf_18",
+    "(8, 1)": "non_leaf_32",
+    "(8, 0)": "non_leaf_33"
+  },
+  "deeplist": [
+    [
+      0,
+      1,
+      2,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      2
+    ]
+  ],
+  "query": [
+    [
+      {
+        "type": "leaf",
+        "operator": "Index Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "(age >= 25)",
+        "cost": 13.14,
+        "original_cost": 13.14,
+        "size": 1344,
+        "width": 32
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.45,
+        "size": 32,
+        "rows": 1,
+        "width": 32,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Index Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "(age >= 25)",
+            "cost": 13.14,
+            "original_cost": 13.14,
+            "size": 1344,
+            "width": 32
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Index Only Scan",
+        "table": "users",
+        "alias": "u_1",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 12.98,
+        "size": 168,
+        "width": 4
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.45,
+        "size": 4,
+        "rows": 1,
+        "width": 4,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Index Only Scan",
+            "table": "users",
+            "alias": "u_1",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 12.98,
+            "size": 168,
+            "width": 4
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Result",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.91,
+        "size": 36,
+        "rows": 1,
+        "width": 36,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Limit",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 0.45,
+            "size": 32,
+            "rows": 1,
+            "width": 32,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Index Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "(age >= 25)",
+                "cost": 13.14,
+                "original_cost": 13.14,
+                "size": 1344,
+                "width": 32
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Limit",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 0.45,
+            "size": 4,
+            "rows": 1,
+            "width": 4,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Index Only Scan",
+                "table": "users",
+                "alias": "u_1",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 12.98,
+                "size": 168,
+                "width": 4
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "(order_date >= (CURRENT_DATE - '60 days'::interval))",
+        "cost": 5.5,
+        "original_cost": 5.5,
+        "size": 648,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.3,
+        "size": 420,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.3,
+        "size": 420,
+        "rows": 30,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.3,
+            "size": 420,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 7.42,
+        "original_cost": 7.42,
+        "size": 1134,
+        "rows": 81,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "(order_date >= (CURRENT_DATE - '60 days'::interval))",
+            "cost": 5.5,
+            "original_cost": 5.5,
+            "size": 648,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.3,
+            "size": 420,
+            "rows": 30,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.3,
+                "size": 420,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 7.84,
+        "size": 36,
+        "rows": 1,
+        "width": 36,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 7.42,
+            "original_cost": 7.42,
+            "size": 1134,
+            "rows": 81,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "(order_date >= (CURRENT_DATE - '60 days'::interval))",
+                "cost": 5.5,
+                "original_cost": 5.5,
+                "size": 648,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.3,
+                "size": 420,
+                "rows": 30,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.3,
+                    "size": 420,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+        "cost": 5.5,
+        "original_cost": 5.5,
+        "size": 1332,
+        "width": 12
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "(age >= 30)",
+        "cost": 1.62,
+        "original_cost": 1.62,
+        "size": 352,
+        "width": 11
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.62,
+        "size": 352,
+        "rows": 32,
+        "width": 11,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "(age >= 30)",
+            "cost": 1.62,
+            "original_cost": 1.62,
+            "size": 352,
+            "width": 11
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.user_id = u.user_id)",
+        "cost": 7.84,
+        "original_cost": 7.84,
+        "size": 1065,
+        "rows": 71,
+        "width": 15,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+            "cost": 5.5,
+            "original_cost": 5.5,
+            "size": 1332,
+            "width": 12
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.62,
+            "size": 352,
+            "rows": 32,
+            "width": 11,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "(age >= 30)",
+                "cost": 1.62,
+                "original_cost": 1.62,
+                "size": 352,
+                "width": 11
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "(price >= '500'::numeric)",
+        "cost": 1.38,
+        "original_cost": 1.38,
+        "size": 378,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.38,
+        "size": 378,
+        "rows": 27,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "(price >= '500'::numeric)",
+            "cost": 1.38,
+            "original_cost": 1.38,
+            "size": 378,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 9.76,
+        "original_cost": 9.76,
+        "size": 1344,
+        "rows": 64,
+        "width": 21,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "user_id",
+                "operator": "=",
+                "right_table": "u",
+                "right_column": "user_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.user_id = u.user_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.user_id = u.user_id)",
+            "cost": 7.84,
+            "original_cost": 7.84,
+            "size": 1065,
+            "rows": 71,
+            "width": 15,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+                "cost": 5.5,
+                "original_cost": 5.5,
+                "size": 1332,
+                "width": 12
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.62,
+                "size": 352,
+                "rows": 32,
+                "width": 11,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "users",
+                    "alias": "u",
+                    "filter": "(age >= 30)",
+                    "cost": 1.62,
+                    "original_cost": 1.62,
+                    "size": 352,
+                    "width": 11
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.38,
+            "size": 378,
+            "rows": 27,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "(price >= '500'::numeric)",
+                "cost": 1.38,
+                "original_cost": 1.38,
+                "size": 378,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 10.25,
+        "size": 68,
+        "rows": 1,
+        "width": 68,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 9.76,
+            "original_cost": 9.76,
+            "size": 1344,
+            "rows": 64,
+            "width": 21,
+            "children": [
+              {
+                "type": "non_leaf",
+                "operator": "Hash Join",
+                "join_type": "Inner",
+                "join_conditions": [
+                  {
+                    "_type": "JoinCondition",
+                    "left_table": "o",
+                    "left_column": "user_id",
+                    "operator": "=",
+                    "right_table": "u",
+                    "right_column": "user_id",
+                    "condition_type": "Hash Cond",
+                    "original_text": "(o.user_id = u.user_id)"
+                  }
+                ],
+                "additional_filters": [],
+                "filter": "(o.user_id = u.user_id)",
+                "cost": 7.84,
+                "original_cost": 7.84,
+                "size": 1065,
+                "rows": 71,
+                "width": 15,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "orders",
+                    "alias": "o",
+                    "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+                    "cost": 5.5,
+                    "original_cost": 5.5,
+                    "size": 1332,
+                    "width": 12
+                  },
+                  {
+                    "type": "non_leaf",
+                    "operator": "Hash",
+                    "join_type": "Inner",
+                    "join_conditions": [],
+                    "additional_filters": [],
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.62,
+                    "size": 352,
+                    "rows": 32,
+                    "width": 11,
+                    "children": [
+                      {
+                        "type": "leaf",
+                        "operator": "Seq Scan",
+                        "table": "users",
+                        "alias": "u",
+                        "filter": "(age >= 30)",
+                        "cost": 1.62,
+                        "original_cost": 1.62,
+                        "size": 352,
+                        "width": 11
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.38,
+                "size": 378,
+                "rows": 27,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "(price >= '500'::numeric)",
+                    "cost": 1.38,
+                    "original_cost": 1.38,
+                    "size": 378,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Index Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))",
+        "cost": 18.14,
+        "original_cost": 18.14,
+        "size": 564,
+        "width": 4
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.27,
+        "size": 4,
+        "rows": 1,
+        "width": 4,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Index Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))",
+            "cost": 18.14,
+            "original_cost": 18.14,
+            "size": 564,
+            "width": 4
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Index Scan",
+        "table": "orders",
+        "alias": "o_1",
+        "filter": "(total_amount >= '100'::numeric)",
+        "cost": 18.6,
+        "original_cost": 18.6,
+        "size": 564,
+        "width": 4
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Limit",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.28,
+        "size": 4,
+        "rows": 1,
+        "width": 4,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Index Scan",
+            "table": "orders",
+            "alias": "o_1",
+            "filter": "(total_amount >= '100'::numeric)",
+            "cost": 18.6,
+            "original_cost": 18.6,
+            "size": 564,
+            "width": 4
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Result",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 0.56,
+        "size": 8,
+        "rows": 1,
+        "width": 8,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Limit",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 0.27,
+            "size": 4,
+            "rows": 1,
+            "width": 4,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Index Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))",
+                "cost": 18.14,
+                "original_cost": 18.14,
+                "size": 564,
+                "width": 4
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Limit",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 0.28,
+            "size": 4,
+            "rows": 1,
+            "width": 4,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Index Scan",
+                "table": "orders",
+                "alias": "o_1",
+                "filter": "(total_amount >= '100'::numeric)",
+                "cost": 18.6,
+                "original_cost": 18.6,
+                "size": 564,
+                "width": 4
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "(total_amount >= '1000'::numeric)",
+        "cost": 4.5,
+        "original_cost": 4.5,
+        "size": 1384,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "(price >= '300'::numeric)",
+        "cost": 1.38,
+        "original_cost": 1.38,
+        "size": 406,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.38,
+        "size": 406,
+        "rows": 29,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "(price >= '300'::numeric)",
+            "cost": 1.38,
+            "original_cost": 1.38,
+            "size": 406,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 6.76,
+        "original_cost": 6.76,
+        "size": 2338,
+        "rows": 167,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "(total_amount >= '1000'::numeric)",
+            "cost": 4.5,
+            "original_cost": 4.5,
+            "size": 1384,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.38,
+            "size": 406,
+            "rows": 29,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "(price >= '300'::numeric)",
+                "cost": 1.38,
+                "original_cost": 1.38,
+                "size": 406,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 7.6,
+        "size": 36,
+        "rows": 1,
+        "width": 36,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 6.76,
+            "original_cost": 6.76,
+            "size": 2338,
+            "rows": 167,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "(total_amount >= '1000'::numeric)",
+                "cost": 4.5,
+                "original_cost": 4.5,
+                "size": 1384,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.38,
+                "size": 406,
+                "rows": 29,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "(price >= '300'::numeric)",
+                    "cost": 1.38,
+                    "original_cost": 1.38,
+                    "size": 406,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+        "cost": 5.5,
+        "original_cost": 5.5,
+        "size": 888,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "(age >= 25)",
+        "cost": 1.62,
+        "original_cost": 1.62,
+        "size": 714,
+        "width": 17
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.62,
+        "size": 714,
+        "rows": 42,
+        "width": 17,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "(age >= 25)",
+            "cost": 1.62,
+            "original_cost": 1.62,
+            "size": 714,
+            "width": 17
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.user_id = u.user_id)",
+        "cost": 7.96,
+        "original_cost": 7.96,
+        "size": 1581,
+        "rows": 93,
+        "width": 17,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+            "cost": 5.5,
+            "original_cost": 5.5,
+            "size": 888,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.62,
+            "size": 714,
+            "rows": 42,
+            "width": 17,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "(age >= 25)",
+                "cost": 1.62,
+                "original_cost": 1.62,
+                "size": 714,
+                "width": 17
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.3,
+        "size": 420,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.3,
+        "size": 420,
+        "rows": 30,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.3,
+            "size": 420,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 9.92,
+        "original_cost": 9.92,
+        "size": 2139,
+        "rows": 93,
+        "width": 23,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "user_id",
+                "operator": "=",
+                "right_table": "u",
+                "right_column": "user_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.user_id = u.user_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.user_id = u.user_id)",
+            "cost": 7.96,
+            "original_cost": 7.96,
+            "size": 1581,
+            "rows": 93,
+            "width": 17,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+                "cost": 5.5,
+                "original_cost": 5.5,
+                "size": 888,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.62,
+                "size": 714,
+                "rows": 42,
+                "width": 17,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "users",
+                    "alias": "u",
+                    "filter": "(age >= 25)",
+                    "cost": 1.62,
+                    "original_cost": 1.62,
+                    "size": 714,
+                    "width": 17
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.3,
+            "size": 420,
+            "rows": 30,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.3,
+                "size": 420,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 10.62,
+        "size": 96,
+        "rows": 1,
+        "width": 96,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 9.92,
+            "original_cost": 9.92,
+            "size": 2139,
+            "rows": 93,
+            "width": 23,
+            "children": [
+              {
+                "type": "non_leaf",
+                "operator": "Hash Join",
+                "join_type": "Inner",
+                "join_conditions": [
+                  {
+                    "_type": "JoinCondition",
+                    "left_table": "o",
+                    "left_column": "user_id",
+                    "operator": "=",
+                    "right_table": "u",
+                    "right_column": "user_id",
+                    "condition_type": "Hash Cond",
+                    "original_text": "(o.user_id = u.user_id)"
+                  }
+                ],
+                "additional_filters": [],
+                "filter": "(o.user_id = u.user_id)",
+                "cost": 7.96,
+                "original_cost": 7.96,
+                "size": 1581,
+                "rows": 93,
+                "width": 17,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "orders",
+                    "alias": "o",
+                    "filter": "(order_date >= (CURRENT_DATE - '90 days'::interval))",
+                    "cost": 5.5,
+                    "original_cost": 5.5,
+                    "size": 888,
+                    "width": 8
+                  },
+                  {
+                    "type": "non_leaf",
+                    "operator": "Hash",
+                    "join_type": "Inner",
+                    "join_conditions": [],
+                    "additional_filters": [],
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.62,
+                    "size": 714,
+                    "rows": 42,
+                    "width": 17,
+                    "children": [
+                      {
+                        "type": "leaf",
+                        "operator": "Seq Scan",
+                        "table": "users",
+                        "alias": "u",
+                        "filter": "(age >= 25)",
+                        "cost": 1.62,
+                        "original_cost": 1.62,
+                        "size": 714,
+                        "width": 17
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.3,
+                "size": 420,
+                "rows": 30,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.3,
+                    "size": 420,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 4.0,
+        "size": 1600,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "(age >= 30)",
+        "cost": 1.62,
+        "original_cost": 1.62,
+        "size": 544,
+        "width": 17
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.62,
+        "size": 544,
+        "rows": 32,
+        "width": 17,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "(age >= 30)",
+            "cost": 1.62,
+            "original_cost": 1.62,
+            "size": 544,
+            "width": 17
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.user_id = u.user_id)",
+        "cost": 6.59,
+        "original_cost": 6.59,
+        "size": 2176,
+        "rows": 128,
+        "width": 17,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 4.0,
+            "size": 1600,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.62,
+            "size": 544,
+            "rows": 32,
+            "width": 17,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "(age >= 30)",
+                "cost": 1.62,
+                "original_cost": 1.62,
+                "size": 544,
+                "width": 17
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "(price >= '500'::numeric)",
+        "cost": 1.38,
+        "original_cost": 1.38,
+        "size": 378,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.38,
+        "size": 378,
+        "rows": 27,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "(price >= '500'::numeric)",
+            "cost": 1.38,
+            "original_cost": 1.38,
+            "size": 378,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 8.69,
+        "original_cost": 8.69,
+        "size": 2645,
+        "rows": 115,
+        "width": 23,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "user_id",
+                "operator": "=",
+                "right_table": "u",
+                "right_column": "user_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.user_id = u.user_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.user_id = u.user_id)",
+            "cost": 6.59,
+            "original_cost": 6.59,
+            "size": 2176,
+            "rows": 128,
+            "width": 17,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 4.0,
+                "size": 1600,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.62,
+                "size": 544,
+                "rows": 32,
+                "width": 17,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "users",
+                    "alias": "u",
+                    "filter": "(age >= 30)",
+                    "cost": 1.62,
+                    "original_cost": 1.62,
+                    "size": 544,
+                    "width": 17
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.38,
+            "size": 378,
+            "rows": 27,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "(price >= '500'::numeric)",
+                "cost": 1.38,
+                "original_cost": 1.38,
+                "size": 378,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 9.56,
+        "size": 96,
+        "rows": 1,
+        "width": 96,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 8.69,
+            "original_cost": 8.69,
+            "size": 2645,
+            "rows": 115,
+            "width": 23,
+            "children": [
+              {
+                "type": "non_leaf",
+                "operator": "Hash Join",
+                "join_type": "Inner",
+                "join_conditions": [
+                  {
+                    "_type": "JoinCondition",
+                    "left_table": "o",
+                    "left_column": "user_id",
+                    "operator": "=",
+                    "right_table": "u",
+                    "right_column": "user_id",
+                    "condition_type": "Hash Cond",
+                    "original_text": "(o.user_id = u.user_id)"
+                  }
+                ],
+                "additional_filters": [],
+                "filter": "(o.user_id = u.user_id)",
+                "cost": 6.59,
+                "original_cost": 6.59,
+                "size": 2176,
+                "rows": 128,
+                "width": 17,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "orders",
+                    "alias": "o",
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 4.0,
+                    "size": 1600,
+                    "width": 8
+                  },
+                  {
+                    "type": "non_leaf",
+                    "operator": "Hash",
+                    "join_type": "Inner",
+                    "join_conditions": [],
+                    "additional_filters": [],
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.62,
+                    "size": 544,
+                    "rows": 32,
+                    "width": 17,
+                    "children": [
+                      {
+                        "type": "leaf",
+                        "operator": "Seq Scan",
+                        "table": "users",
+                        "alias": "u",
+                        "filter": "(age >= 30)",
+                        "cost": 1.62,
+                        "original_cost": 1.62,
+                        "size": 544,
+                        "width": 17
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.38,
+                "size": 378,
+                "rows": 27,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "(price >= '500'::numeric)",
+                    "cost": 1.38,
+                    "original_cost": 1.38,
+                    "size": 378,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "(order_date >= '2024-01-01'::date)",
+        "cost": 4.5,
+        "original_cost": 4.5,
+        "size": 1600,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "((category)::text = 'Electronics'::text)",
+        "cost": 1.38,
+        "original_cost": 1.38,
+        "size": 140,
+        "width": 14
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.38,
+        "size": 140,
+        "rows": 10,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "((category)::text = 'Electronics'::text)",
+            "cost": 1.38,
+            "original_cost": 1.38,
+            "size": 140,
+            "width": 14
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 6.6,
+        "original_cost": 6.6,
+        "size": 938,
+        "rows": 67,
+        "width": 14,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "(order_date >= '2024-01-01'::date)",
+            "cost": 4.5,
+            "original_cost": 4.5,
+            "size": 1600,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.38,
+            "size": 140,
+            "rows": 10,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "((category)::text = 'Electronics'::text)",
+                "cost": 1.38,
+                "original_cost": 1.38,
+                "size": 140,
+                "width": 14
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.5,
+        "size": 850,
+        "width": 17
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.5,
+        "size": 850,
+        "rows": 50,
+        "width": 17,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.5,
+            "size": 850,
+            "width": 17
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "u",
+            "right_column": "user_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.user_id = u.user_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.user_id = u.user_id)",
+        "cost": 8.91,
+        "original_cost": 8.91,
+        "size": 1541,
+        "rows": 67,
+        "width": 23,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 6.6,
+            "original_cost": 6.6,
+            "size": 938,
+            "rows": 67,
+            "width": 14,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "(order_date >= '2024-01-01'::date)",
+                "cost": 4.5,
+                "original_cost": 4.5,
+                "size": 1600,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.38,
+                "size": 140,
+                "rows": 10,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "((category)::text = 'Electronics'::text)",
+                    "cost": 1.38,
+                    "original_cost": 1.38,
+                    "size": 140,
+                    "width": 14
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.5,
+            "size": 850,
+            "rows": 50,
+            "width": 17,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.5,
+                "size": 850,
+                "width": 17
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 9.43,
+        "size": 96,
+        "rows": 1,
+        "width": 96,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "user_id",
+                "operator": "=",
+                "right_table": "u",
+                "right_column": "user_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.user_id = u.user_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.user_id = u.user_id)",
+            "cost": 8.91,
+            "original_cost": 8.91,
+            "size": 1541,
+            "rows": 67,
+            "width": 23,
+            "children": [
+              {
+                "type": "non_leaf",
+                "operator": "Hash Join",
+                "join_type": "Inner",
+                "join_conditions": [
+                  {
+                    "_type": "JoinCondition",
+                    "left_table": "o",
+                    "left_column": "product_id",
+                    "operator": "=",
+                    "right_table": "p",
+                    "right_column": "product_id",
+                    "condition_type": "Hash Cond",
+                    "original_text": "(o.product_id = p.product_id)"
+                  }
+                ],
+                "additional_filters": [],
+                "filter": "(o.product_id = p.product_id)",
+                "cost": 6.6,
+                "original_cost": 6.6,
+                "size": 938,
+                "rows": 67,
+                "width": 14,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "orders",
+                    "alias": "o",
+                    "filter": "(order_date >= '2024-01-01'::date)",
+                    "cost": 4.5,
+                    "original_cost": 4.5,
+                    "size": 1600,
+                    "width": 8
+                  },
+                  {
+                    "type": "non_leaf",
+                    "operator": "Hash",
+                    "join_type": "Inner",
+                    "join_conditions": [],
+                    "additional_filters": [],
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.38,
+                    "size": 140,
+                    "rows": 10,
+                    "width": 14,
+                    "children": [
+                      {
+                        "type": "leaf",
+                        "operator": "Seq Scan",
+                        "table": "products",
+                        "alias": "p",
+                        "filter": "((category)::text = 'Electronics'::text)",
+                        "cost": 1.38,
+                        "original_cost": 1.38,
+                        "size": 140,
+                        "width": 14
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.5,
+                "size": 850,
+                "rows": 50,
+                "width": 17,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "users",
+                    "alias": "u",
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.5,
+                    "size": 850,
+                    "width": 17
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "orders",
+        "alias": "o",
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 4.0,
+        "size": 1600,
+        "width": 8
+      },
+      {
+        "type": "leaf",
+        "operator": "Seq Scan",
+        "table": "products",
+        "alias": "p",
+        "filter": "(price < '300'::numeric)",
+        "cost": 1.38,
+        "original_cost": 1.38,
+        "size": 23,
+        "width": 23
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 1.38,
+        "size": 23,
+        "rows": 1,
+        "width": 23,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "products",
+            "alias": "p",
+            "filter": "(price < '300'::numeric)",
+            "cost": 1.38,
+            "original_cost": 1.38,
+            "size": 23,
+            "width": 23
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Hash Join",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "o",
+            "left_column": "product_id",
+            "operator": "=",
+            "right_table": "p",
+            "right_column": "product_id",
+            "condition_type": "Hash Cond",
+            "original_text": "(o.product_id = p.product_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "(o.product_id = p.product_id)",
+        "cost": 5.99,
+        "original_cost": 5.99,
+        "size": 161,
+        "rows": 7,
+        "width": 23,
+        "children": [
+          {
+            "type": "leaf",
+            "operator": "Seq Scan",
+            "table": "orders",
+            "alias": "o",
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 4.0,
+            "size": 1600,
+            "width": 8
+          },
+          {
+            "type": "non_leaf",
+            "operator": "Hash",
+            "join_type": "Inner",
+            "join_conditions": [],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 1.38,
+            "size": 23,
+            "rows": 1,
+            "width": 23,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "products",
+                "alias": "p",
+                "filter": "(price < '300'::numeric)",
+                "cost": 1.38,
+                "original_cost": 1.38,
+                "size": 23,
+                "width": 23
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "leaf",
+        "operator": "Index Scan",
+        "table": "users",
+        "alias": "u",
+        "filter": "(age < 25)",
+        "cost": 0.22,
+        "original_cost": 0.22,
+        "size": 11,
+        "width": 11
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Nested Loop",
+        "join_type": "Inner",
+        "join_conditions": [
+          {
+            "_type": "JoinCondition",
+            "left_table": "u",
+            "left_column": "user_id",
+            "operator": "=",
+            "right_table": "o",
+            "right_column": "user_id",
+            "condition_type": "Index Cond",
+            "original_text": "(user_id = o.user_id)"
+          }
+        ],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 7.55,
+        "size": 26,
+        "rows": 1,
+        "width": 26,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Hash Join",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "o",
+                "left_column": "product_id",
+                "operator": "=",
+                "right_table": "p",
+                "right_column": "product_id",
+                "condition_type": "Hash Cond",
+                "original_text": "(o.product_id = p.product_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "(o.product_id = p.product_id)",
+            "cost": 5.99,
+            "original_cost": 5.99,
+            "size": 161,
+            "rows": 7,
+            "width": 23,
+            "children": [
+              {
+                "type": "leaf",
+                "operator": "Seq Scan",
+                "table": "orders",
+                "alias": "o",
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 4.0,
+                "size": 1600,
+                "width": 8
+              },
+              {
+                "type": "non_leaf",
+                "operator": "Hash",
+                "join_type": "Inner",
+                "join_conditions": [],
+                "additional_filters": [],
+                "filter": "",
+                "cost": 0.0,
+                "original_cost": 1.38,
+                "size": 23,
+                "rows": 1,
+                "width": 23,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "products",
+                    "alias": "p",
+                    "filter": "(price < '300'::numeric)",
+                    "cost": 1.38,
+                    "original_cost": 1.38,
+                    "size": 23,
+                    "width": 23
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "leaf",
+            "operator": "Index Scan",
+            "table": "users",
+            "alias": "u",
+            "filter": "(age < 25)",
+            "cost": 0.22,
+            "original_cost": 0.22,
+            "size": 11,
+            "width": 11
+          }
+        ]
+      },
+      {
+        "type": "non_leaf",
+        "operator": "Aggregate",
+        "join_type": "Inner",
+        "join_conditions": [],
+        "additional_filters": [],
+        "filter": "",
+        "cost": 0.0,
+        "original_cost": 7.57,
+        "size": 96,
+        "rows": 1,
+        "width": 96,
+        "children": [
+          {
+            "type": "non_leaf",
+            "operator": "Nested Loop",
+            "join_type": "Inner",
+            "join_conditions": [
+              {
+                "_type": "JoinCondition",
+                "left_table": "u",
+                "left_column": "user_id",
+                "operator": "=",
+                "right_table": "o",
+                "right_column": "user_id",
+                "condition_type": "Index Cond",
+                "original_text": "(user_id = o.user_id)"
+              }
+            ],
+            "additional_filters": [],
+            "filter": "",
+            "cost": 0.0,
+            "original_cost": 7.55,
+            "size": 26,
+            "rows": 1,
+            "width": 26,
+            "children": [
+              {
+                "type": "non_leaf",
+                "operator": "Hash Join",
+                "join_type": "Inner",
+                "join_conditions": [
+                  {
+                    "_type": "JoinCondition",
+                    "left_table": "o",
+                    "left_column": "product_id",
+                    "operator": "=",
+                    "right_table": "p",
+                    "right_column": "product_id",
+                    "condition_type": "Hash Cond",
+                    "original_text": "(o.product_id = p.product_id)"
+                  }
+                ],
+                "additional_filters": [],
+                "filter": "(o.product_id = p.product_id)",
+                "cost": 5.99,
+                "original_cost": 5.99,
+                "size": 161,
+                "rows": 7,
+                "width": 23,
+                "children": [
+                  {
+                    "type": "leaf",
+                    "operator": "Seq Scan",
+                    "table": "orders",
+                    "alias": "o",
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 4.0,
+                    "size": 1600,
+                    "width": 8
+                  },
+                  {
+                    "type": "non_leaf",
+                    "operator": "Hash",
+                    "join_type": "Inner",
+                    "join_conditions": [],
+                    "additional_filters": [],
+                    "filter": "",
+                    "cost": 0.0,
+                    "original_cost": 1.38,
+                    "size": 23,
+                    "rows": 1,
+                    "width": 23,
+                    "children": [
+                      {
+                        "type": "leaf",
+                        "operator": "Seq Scan",
+                        "table": "products",
+                        "alias": "p",
+                        "filter": "(price < '300'::numeric)",
+                        "cost": 1.38,
+                        "original_cost": 1.38,
+                        "size": 23,
+                        "width": 23
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "leaf",
+                "operator": "Index Scan",
+                "table": "users",
+                "alias": "u",
+                "filter": "(age < 25)",
+                "cost": 0.22,
+                "original_cost": 0.22,
+                "size": 11,
+                "width": 11
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  "subqlist": {
+    "non_leaf_1": [
+      "leaf_1"
+    ],
+    "non_leaf_2": [
+      "leaf_2"
+    ],
+    "non_leaf_3": [
+      "non_leaf_1",
+      "non_leaf_2"
+    ],
+    "non_leaf_4": [
+      "leaf_4"
+    ],
+    "non_leaf_5": [
+      "leaf_3",
+      "non_leaf_4"
+    ],
+    "non_leaf_6": [
+      "non_leaf_5"
+    ],
+    "non_leaf_7": [
+      "leaf_6"
+    ],
+    "non_leaf_8": [
+      "leaf_5",
+      "non_leaf_7"
+    ],
+    "non_leaf_9": [
+      "leaf_7"
+    ],
+    "non_leaf_10": [
+      "non_leaf_8",
+      "non_leaf_9"
+    ],
+    "non_leaf_11": [
+      "non_leaf_10"
+    ],
+    "non_leaf_12": [
+      "leaf_8"
+    ],
+    "non_leaf_13": [
+      "leaf_9"
+    ],
+    "non_leaf_14": [
+      "non_leaf_12",
+      "non_leaf_13"
+    ],
+    "non_leaf_15": [
+      "leaf_11"
+    ],
+    "non_leaf_16": [
+      "leaf_10",
+      "non_leaf_15"
+    ],
+    "non_leaf_17": [
+      "non_leaf_16"
+    ],
+    "non_leaf_18": [
+      "leaf_12"
+    ],
+    "non_leaf_19": [
+      "leaf_5",
+      "non_leaf_18"
+    ],
+    "non_leaf_20": [
+      "non_leaf_19",
+      "non_leaf_4"
+    ],
+    "non_leaf_21": [
+      "non_leaf_20"
+    ],
+    "non_leaf_22": [
+      "leaf_13",
+      "non_leaf_7"
+    ],
+    "non_leaf_23": [
+      "non_leaf_22",
+      "non_leaf_9"
+    ],
+    "non_leaf_24": [
+      "non_leaf_23"
+    ],
+    "non_leaf_25": [
+      "leaf_15"
+    ],
+    "non_leaf_26": [
+      "leaf_14",
+      "non_leaf_25"
+    ],
+    "non_leaf_27": [
+      "leaf_16"
+    ],
+    "non_leaf_28": [
+      "non_leaf_26",
+      "non_leaf_27"
+    ],
+    "non_leaf_29": [
+      "non_leaf_28"
+    ],
+    "non_leaf_30": [
+      "leaf_17"
+    ],
+    "non_leaf_31": [
+      "leaf_13",
+      "non_leaf_30"
+    ],
+    "non_leaf_32": [
+      "leaf_18",
+      "non_leaf_31"
+    ],
+    "non_leaf_33": [
+      "non_leaf_32"
+    ]
+  }
+}

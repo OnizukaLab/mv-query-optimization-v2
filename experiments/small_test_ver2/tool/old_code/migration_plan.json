@@ -1,0 +1,37 @@
+{
+  "morning -> evening": {
+    "common_mvs": [
+      "leaf_18",
+      "leaf_8",
+      "leaf_9",
+      "non_leaf_10",
+      "non_leaf_20",
+      "non_leaf_31"
+    ],
+    "generate_leaf_nodes": [
+      "leaf_7"
+    ],
+    "generate_non_leaf_nodes_0": [
+      "non_leaf_16",
+      "non_leaf_28",
+      "non_leaf_5"
+    ],
+    "generate_non_leaf_nodes_with_mv": {
+      "non_leaf_16": [
+        "leaf_11"
+      ],
+      "non_leaf_28": [
+        "leaf_15"
+      ],
+      "non_leaf_5": [
+        "leaf_3"
+      ]
+    },
+    "migration_plans_sql": {
+      "leaf_7": "CREATE MATERIALIZED VIEW leaf_7 AS\nSELECT p.product_id, p.name, p.category, p.price, p.stock\nFROM products AS p\nWHERE (price >= '500'::numeric);",
+      "non_leaf_16": "CREATE MATERIALIZED VIEW non_leaf_16 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    leaf_11.product_id AS p_product_id,\n    leaf_11.name,\n    leaf_11.category,\n    leaf_11.price,\n    leaf_11.stock\nFROM leaf_11, orders AS o\nWHERE o.product_id = leaf_11.product_id AND (o.total_amount >= '1000'::numeric);",
+      "non_leaf_28": "CREATE MATERIALIZED VIEW non_leaf_28 AS\nSELECT o.order_id,\n    o.user_id,\n    o.product_id,\n    o.quantity,\n    o.order_date,\n    o.total_amount,\n    leaf_15.product_id AS p_product_id,\n    leaf_15.name,\n    leaf_15.category,\n    leaf_15.price,\n    leaf_15.stock,\n    u.user_id AS u_user_id,\n    u.name AS u_name,\n    u.age,\n    u.city,\n    u.registered_date\nFROM leaf_15, orders AS o, users AS u\nWHERE o.product_id = leaf_15.product_id AND o.user_id = u.user_id AND (o.order_date >= '2024-01-01'::date);",
+      "non_leaf_5": "CREATE MATERIALIZED VIEW non_leaf_5 AS\nSELECT leaf_3.order_id,\n    leaf_3.user_id,\n    leaf_3.product_id,\n    leaf_3.quantity,\n    leaf_3.order_date,\n    leaf_3.total_amount,\n    p.product_id AS p_product_id,\n    p.name,\n    p.category,\n    p.price,\n    p.stock\nFROM leaf_3, products AS p\nWHERE leaf_3.product_id = p.product_id;"
+    }
+  }
+}

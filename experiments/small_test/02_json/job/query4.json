@@ -1,0 +1,52 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 14.84,
+      "Total Cost": 15.18,
+      "Plan Rows": 134,
+      "Plan Width": 136,
+      "Disabled": false,
+      "Sort Key": [
+        "(EXTRACT(month FROM order_date)) DESC"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Hashed",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 7.76,
+          "Total Cost": 10.11,
+          "Plan Rows": 134,
+          "Plan Width": 136,
+          "Disabled": false,
+          "Group Key": [
+            "EXTRACT(month FROM order_date)"
+          ],
+          "Planned Partitions": 0,
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "orders",
+              "Alias": "o",
+              "Startup Cost": 0.0,
+              "Total Cost": 6.35,
+              "Plan Rows": 141,
+              "Plan Width": 41,
+              "Disabled": false,
+              "Filter": "((total_amount >= '100'::numeric) AND (order_date >= (CURRENT_DATE - '120 days'::interval)))"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 3.4,
+      "Total Cost": 3.42,
+      "Plan Rows": 5,
+      "Plan Width": 54,
+      "Disabled": false,
+      "Sort Key": [
+        "(count(*)) DESC"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 2.76,
+          "Total Cost": 3.34,
+          "Plan Rows": 5,
+          "Plan Width": 54,
+          "Disabled": false,
+          "Group Key": [
+            "city"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 2.76,
+              "Total Cost": 2.86,
+              "Plan Rows": 42,
+              "Plan Width": 14,
+              "Disabled": false,
+              "Sort Key": [
+                "city",
+                "user_id"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "users",
+                  "Alias": "u",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 1.62,
+                  "Plan Rows": 42,
+                  "Plan Width": 14,
+                  "Disabled": false,
+                  "Filter": "(age >= 25)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

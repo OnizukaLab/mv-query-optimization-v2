@@ -1,0 +1,18 @@
+{
+  "b_max_mb": 50,
+  "sampling_used": false,
+  "bigsubs": {
+    "total_utility": 2200681704.5726795,
+    "num_selected_views": 80,
+    "total_storage_mb": 19.02416706085205,
+    "execution_time_sec": 0.23301196098327637,
+    "iterations": 12
+  },
+  "topkf": {
+    "total_utility": 2270995348.634235,
+    "num_selected_views": 139,
+    "total_storage_mb": 49.359599113464355,
+    "execution_time_sec": 0.2627849578857422,
+    "iterations": 3
+  }
+}

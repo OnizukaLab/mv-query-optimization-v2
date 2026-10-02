@@ -1,0 +1,77 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Result",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 0.9,
+      "Total Cost": 0.91,
+      "Plan Rows": 1,
+      "Plan Width": 36,
+      "Disabled": false,
+      "Plans": [
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 1",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.14,
+          "Total Cost": 0.45,
+          "Plan Rows": 1,
+          "Plan Width": 32,
+          "Disabled": false,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "idx_users_city",
+              "Relation Name": "users",
+              "Alias": "u",
+              "Startup Cost": 0.14,
+              "Total Cost": 13.14,
+              "Plan Rows": 42,
+              "Plan Width": 32,
+              "Disabled": false,
+              "Index Cond": "((city)::text IS NOT NULL)",
+              "Filter": "(age >= 25)"
+            }
+          ]
+        },
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "InitPlan",
+          "Subplan Name": "InitPlan 2",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.14,
+          "Total Cost": 0.45,
+          "Plan Rows": 1,
+          "Plan Width": 4,
+          "Disabled": false,
+          "Plans": [
+            {
+              "Node Type": "Index Only Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "idx_users_age",
+              "Relation Name": "users",
+              "Alias": "u_1",
+              "Startup Cost": 0.14,
+              "Total Cost": 12.98,
+              "Plan Rows": 42,
+              "Plan Width": 4,
+              "Disabled": false,
+              "Index Cond": "((age IS NOT NULL) AND (age >= 25))"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

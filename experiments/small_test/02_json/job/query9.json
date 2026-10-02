@@ -1,0 +1,142 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 7.6,
+      "Total Cost": 7.61,
+      "Plan Rows": 1,
+      "Plan Width": 121,
+      "Disabled": false,
+      "Sort Key": [
+        "(count(o.order_id)) DESC"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Sorted",
+          "Partial Mode": "Simple",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 7.56,
+          "Total Cost": 7.59,
+          "Plan Rows": 1,
+          "Plan Width": 121,
+          "Disabled": false,
+          "Group Key": [
+            "p.category"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 7.56,
+              "Total Cost": 7.56,
+              "Plan Rows": 1,
+              "Plan Width": 22,
+              "Disabled": false,
+              "Sort Key": [
+                "p.category",
+                "u.user_id"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Nested Loop",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 1.53,
+                  "Total Cost": 7.55,
+                  "Plan Rows": 1,
+                  "Plan Width": 22,
+                  "Disabled": false,
+                  "Inner Unique": true,
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Join Type": "Inner",
+                      "Startup Cost": 1.39,
+                      "Total Cost": 5.99,
+                      "Plan Rows": 7,
+                      "Plan Width": 22,
+                      "Disabled": false,
+                      "Inner Unique": true,
+                      "Hash Cond": "(o.product_id = p.product_id)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "orders",
+                          "Alias": "o",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 4.0,
+                          "Plan Rows": 200,
+                          "Plan Width": 12,
+                          "Disabled": false
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Startup Cost": 1.38,
+                          "Total Cost": 1.38,
+                          "Plan Rows": 1,
+                          "Plan Width": 18,
+                          "Disabled": false,
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Relation Name": "products",
+                              "Alias": "p",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 1.38,
+                              "Plan Rows": 1,
+                              "Plan Width": 18,
+                              "Disabled": false,
+                              "Filter": "(price < '300'::numeric)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Node Type": "Index Scan",
+                      "Parent Relationship": "Inner",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Scan Direction": "Forward",
+                      "Index Name": "users_pkey",
+                      "Relation Name": "users",
+                      "Alias": "u",
+                      "Startup Cost": 0.14,
+                      "Total Cost": 0.22,
+                      "Plan Rows": 1,
+                      "Plan Width": 4,
+                      "Disabled": false,
+                      "Index Cond": "(user_id = o.user_id)",
+                      "Filter": "(age < 25)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Partial Mode": "Simple",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 9.42,
+      "Total Cost": 9.43,
+      "Plan Rows": 1,
+      "Plan Width": 96,
+      "Disabled": false,
+      "Plans": [
+        {
+          "Node Type": "Hash Join",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Join Type": "Inner",
+          "Startup Cost": 3.62,
+          "Total Cost": 8.91,
+          "Plan Rows": 67,
+          "Plan Width": 23,
+          "Disabled": false,
+          "Inner Unique": true,
+          "Hash Cond": "(o.user_id = u.user_id)",
+          "Plans": [
+            {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 1.5,
+              "Total Cost": 6.6,
+              "Plan Rows": 67,
+              "Plan Width": 14,
+              "Disabled": false,
+              "Inner Unique": true,
+              "Hash Cond": "(o.product_id = p.product_id)",
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "orders",
+                  "Alias": "o",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 4.5,
+                  "Plan Rows": 200,
+                  "Plan Width": 8,
+                  "Disabled": false,
+                  "Filter": "(order_date >= '2024-01-01'::date)"
+                },
+                {
+                  "Node Type": "Hash",
+                  "Parent Relationship": "Inner",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 1.38,
+                  "Total Cost": 1.38,
+                  "Plan Rows": 10,
+                  "Plan Width": 14,
+                  "Disabled": false,
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "products",
+                      "Alias": "p",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 1.38,
+                      "Plan Rows": 10,
+                      "Plan Width": 14,
+                      "Disabled": false,
+                      "Filter": "((category)::text = 'Electronics'::text)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 1.5,
+              "Total Cost": 1.5,
+              "Plan Rows": 50,
+              "Plan Width": 17,
+              "Disabled": false,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "users",
+                  "Alias": "u",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 1.5,
+                  "Plan Rows": 50,
+                  "Plan Width": 17,
+                  "Disabled": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

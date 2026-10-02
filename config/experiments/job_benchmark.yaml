@@ -1,0 +1,15 @@
+# Extends default.yaml
+# Specific configuration for JOB benchmark
+
+query:
+  num_queries: 113
+  use_ceb: false
+
+benchmark:
+  type: job
+  queries_dir: dataset/RED_JSON/job
+  sql_dir: dataset/RED_SQL/job
+
+logging:
+  level: DEBUG
+  file: output/logs/job_experiment.log

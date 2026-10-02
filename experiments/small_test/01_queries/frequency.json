@@ -1,0 +1,12 @@
+{
+  "description": "通常モード用クエリ頻度設定（9クエリ版）",
+  "query1.json": 100,
+  "query2.json": 150,
+  "query3.json": 80,
+  "query4.json": 120,
+  "query5.json": 90,
+  "query6.json": 110,
+  "query7.json": 200,
+  "query8.json": 180,
+  "query9.json": 140
+}

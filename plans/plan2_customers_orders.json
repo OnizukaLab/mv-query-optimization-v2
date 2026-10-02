@@ -1,0 +1,26 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Hash Join",
+      "Join Type": "Inner",
+      "Actual Rows": 1000,
+      "Plan Rows": 1000,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "customers",
+          "Alias": "c",
+          "Actual Rows": 200,
+          "Plan Rows": 200
+        },
+        {
+          "Node Type": "Seq Scan",
+          "Relation Name": "orders",
+          "Alias": "o",
+          "Actual Rows": 1000,
+          "Plan Rows": 1000
+        }
+      ]
+    }
+  }
+]

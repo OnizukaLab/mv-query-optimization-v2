@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVサイズ推定の課題と対策</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. SETUP */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            min-height: 100vh;
+            padding: 20px 0;
+            place-items: center;
+            margin: 0;
+        }
+
+        .slide-container {
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(0, 50, 100, 0.15);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-family: "Noto Sans JP", sans-serif;
+            gap: 40px;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 50px;
+            position: relative;
+            width: 1280px;
+            background-color: #ffffff;
+            border-radius: 12px;
+        }
+
+        /* 2. TYPOGRAPHY */
+        .slide-container h1 {
+            color: #0f172a;
+            font-family: "Noto Serif JP", serif;
+            font-weight: 700;
+            font-size: 64px;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+        }
+
+        .slide-container h2 {
+            color: #1e3a8a;
+            font-family: "Noto Serif JP", serif;
+            font-weight: 700;
+            font-size: 48px;
+            margin: 0 0 30px 0;
+        }
+
+        .slide-container h3 {
+            color: #334155;
+            font-family: "Noto Serif JP", serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container .subtitle {
+            color: #475569;
+            font-family: "Noto Sans JP", sans-serif;
+            font-size: 24px;
+            line-height: 1.6;
+        }
+
+        .slide-container .subtitle {
+            color: #64748b;
+            font-size: 32px;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* 3. LAYOUT DEFINITIONS */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .title-layout {
+            text-align: center;
+            max-width: 1000px;
+        }
+
+        /* Two Column Layouts */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .two-column.tiled {
+            align-items: stretch;
+        }
+
+        .two-column.tiled>div {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 0 40px;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bar .label {
+            width: 250px;
+            text-align: right;
+            font-weight: 700;
+            color: #334155;
+            font-size: 20px;
+        }
+
+        .bar .bar-inner {
+            flex-grow: 1;
+            background: #e2e8f0;
+            height: 50px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            border-radius: 6px;
+        }
+
+        .threshold-line {
+            position: absolute;
+            left: 62.5%;
+            /* 50MB out of 80MB scale approx */
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #ef4444;
+            z-index: 10;
+            border-right: 3px dashed #ef4444;
+        }
+
+        .chart-legend {
+            position: absolute;
+            top: -40px;
+            right: 37.5%;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Summary Box */
+        .summary-box {
+            background-color: #eff6ff;
+            border-left: 8px solid #3b82f6;
+            padding: 30px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+
+        .summary-box h3 {
+            color: #1d4ed8;
+            margin-top: 0;
+        }
+
+        /* Icons */
+        .icon-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .icon-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-list i {
+            color: #1e3a8a;
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1: タイトル -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <h1>MVサイズ推定の<br>課題と対策</h1>
+            <p class="subtitle">PostgreSQLにおける推定精度の向上実験</p>
+            <div
+                style="margin-top: 40px; width: 120px; height: 6px; background: #1e3a8a; margin-left: auto; margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: 現状の課題 -->
+    <div class="slide-container">
+        <h2 class="slide-title">現状の課題：推定のズレ</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> 問題点</h3>
+                    <p>PostgreSQLの標準的なサイズ推定では、MVのサイズが<strong>極端に小さく</strong>算出されてしまう。</p>
+                    <br>
+                    <h3><i class="fa-solid fa-magnifying-glass-chart"></i> 原因</h3>
+                    <p>カラム間の相関（例：映画と制作会社など）が考慮されず、独立事象として計算されるため、AND条件が重なると見積もりが指数関数的に減少する。</p>
+                </div>
+                <div class="summary-box">
+                    <h3>システムへの影響</h3>
+                    <p>容量制約を<strong>50MB</strong>に設定していても、実際には<strong>1GB</strong>を超えるMVが生成されるリスクがあり、最適化計算の前提が崩れる。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: 解決策の比較 -->
+    <div class="slide-container">
+        <h2 class="slide-title">解決策の検討</h2>
+        <div class="content-area">
+            <div class="two-column tiled">
+                <div>
+                    <h3>検討した手法</h3>
+                    <ul class="icon-list">
+                        <li>
+                            <i class="fa-solid fa-robot"></i>
+                            <span><strong>機械学習による推定</strong><br>実装の手間がかかりすぎるため見送り。</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span><strong>拡張統計の利用</strong><br>試行したが効果が得られず（複雑さが原因か）。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div style="background-color: #ecfdf5; border-color: #6ee7b7;">
+                    <h3 style="color: #047857;"><i class="fa-solid fa-check-circle"></i> 採用した手法</h3>
+                    <p style="font-weight: bold; color: #065f46; font-size: 28px;">サンプリング実行</p>
+                    <p style="color: #064e3b;">実際にクエリの一部を実行してサイズを計測する手法（<code>TABLESAMPLE</code>等）が最も効果的と判断。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 実験結果グラフ -->
+    <div class="slide-container">
+        <h2 class="slide-title">サンプリング実験の結果</h2>
+        <div class="content-area">
+            <p style="margin-bottom: 30px; text-align: center;">目標制約：50MB に対する推定精度と計算時間の比較</p>
+
+            <div class="chart-container" style="position: relative;">
+                <div class="chart-legend">制約: 50MB</div>
+
+                <div class="bar">
+                    <div class="label">標準推定<br><span style="font-size: 14px; font-weight: normal;">(PostgreSQL
+                            Default)</span></div>
+                    <div class="bar-inner">
+                        <div class="threshold-line"></div>
+                        <div class="bar-fill" style="width: 5%; background-color: #94a3b8;">約4MB (過小評価)</div>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="label">1% サンプリング<br><span style="font-size: 14px; font-weight: normal;">(計算時間:
+                            400秒)</span></div>
+                    <div class="bar-inner">
+                        <div class="threshold-line"></div>
+                        <div class="bar-fill" style="width: 96%; background-color: #ef4444;">約77MB</div>
+                    </div>
+                </div>
+
+                <div class="bar">
+                    <div class="label">0.1% サンプリング<br><span style="font-size: 14px; font-weight: normal;">(計算時間:
+                            20秒)</span></div>
+                    <div class="bar-inner">
+                        <div class="threshold-line"></div>
+                        <div class="bar-fill" style="width: 100%; background-color: #b91c1c;">約80MB (採用)</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-size: 18px; color: #64748b;">
+                0.1%サンプリングであれば計算時間は20秒に抑えられ、実用的な範囲でリスクを検知可能。
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 5: 今後の課題と考察 -->
+    <div class="slide-container">
+        <h2 class="slide-title">残された課題と考察</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3><i class="fa-solid fa-database"></i> 技術的課題</h3>
+                    <p>サンプリング時の一時テーブル作成自体がディスク容量を消費してしまう問題がある。</p>
+                    <p>また、カンマ区切りのJOINなど、一部の複雑なクエリでは <code>TABLESAMPLE</code> 構文が利用できない制約がある。</p>
+                </div>
+                <div>
+                    <h3><i class="fa-solid fa-scale-balanced"></i> 制約値の考え方</h3>
+                    <p>現在設定している「50MB」という制約は、全体のデータ量の約10%を目安として定めたもの。</p>
+                    <div class="summary-box" style="margin-top: 20px;">
+                        <p><strong>結論：</strong>絶対的なMB数の厳密さよりも、「データ全体の何割を占めるか」という比率の観点で管理・運用を行う方針が現実的である。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

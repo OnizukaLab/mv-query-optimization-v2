@@ -1,0 +1,32 @@
+[
+  {
+    "time_id": "morning",
+    "label": "朝（9:00-12:00）",
+    "duration_hours": 3,
+    "total_utility": 2207.8,
+    "num_mvs": 4,
+    "storage_mb": 0.004498481750488281,
+    "execution_time": 0.14431214332580566,
+    "selected_mvs": [
+      "leaf_1",
+      "leaf_9",
+      "non_leaf_12",
+      "non_leaf_23"
+    ]
+  },
+  {
+    "time_id": "evening",
+    "label": "夕方（17:00-20:00）",
+    "duration_hours": 3,
+    "total_utility": 3859.0,
+    "num_mvs": 4,
+    "storage_mb": 0.004696846008300781,
+    "execution_time": 0.033707618713378906,
+    "selected_mvs": [
+      "leaf_4",
+      "leaf_9",
+      "non_leaf_5",
+      "non_leaf_12"
+    ]
+  }
+]

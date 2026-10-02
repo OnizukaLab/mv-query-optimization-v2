@@ -1,0 +1,74 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Partial Mode": "Simple",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 7.83,
+      "Total Cost": 7.84,
+      "Plan Rows": 1,
+      "Plan Width": 36,
+      "Disabled": false,
+      "Plans": [
+        {
+          "Node Type": "Hash Join",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Join Type": "Inner",
+          "Startup Cost": 1.68,
+          "Total Cost": 7.42,
+          "Plan Rows": 81,
+          "Plan Width": 14,
+          "Disabled": false,
+          "Inner Unique": true,
+          "Hash Cond": "(o.product_id = p.product_id)",
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "orders",
+              "Alias": "o",
+              "Startup Cost": 0.0,
+              "Total Cost": 5.5,
+              "Plan Rows": 81,
+              "Plan Width": 8,
+              "Disabled": false,
+              "Filter": "(order_date >= (CURRENT_DATE - '60 days'::interval))"
+            },
+            {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 1.3,
+              "Total Cost": 1.3,
+              "Plan Rows": 30,
+              "Plan Width": 14,
+              "Disabled": false,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "products",
+                  "Alias": "p",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 1.3,
+                  "Plan Rows": 30,
+                  "Plan Width": 14,
+                  "Disabled": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

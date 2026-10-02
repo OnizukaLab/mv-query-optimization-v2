@@ -1,0 +1,9382 @@
+{
+  "leaf_1": {
+    "[]": {
+      "cost": 2.24,
+      "utility": 1.23,
+      "rows": 1,
+      "width": 37,
+      "size": 37,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_2": {
+    "[]": {
+      "cost": 909.94,
+      "utility": 462.97,
+      "rows": 29997,
+      "width": 40,
+      "size": 1199880,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_3": {
+    "[]": {
+      "cost": 81813.68,
+      "utility": 73931.15,
+      "rows": 340953,
+      "width": 107,
+      "size": 36638033,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_4": {
+    "[]": {
+      "cost": 1204148.9,
+      "utility": 615306.4,
+      "rows": 36247350,
+      "width": 51,
+      "size": 1854414520,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_5": {
+    "[]": {
+      "cost": 155927.02,
+      "utility": 143740.72,
+      "rows": 543630,
+      "width": 101,
+      "size": 55288533,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_6": {
+    "[]": {
+      "cost": 67481.12999999999,
+      "utility": 67474.48,
+      "rows": 65,
+      "width": 746,
+      "size": 48520,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_7": {
+    "[]": {
+      "cost": 37403.490000000005,
+      "utility": 22682.79,
+      "rows": 675270,
+      "width": 96,
+      "size": 65270035,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_8": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 43,
+      "size": 43,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_9": {
+    "[]": {
+      "cost": 61856.27,
+      "utility": 60103.31,
+      "rows": 75896,
+      "width": 107,
+      "size": 8139680,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_10": {
+    "[]": {
+      "cost": 94427.44,
+      "utility": 92363.44,
+      "rows": 92000,
+      "width": 101,
+      "size": 9364636,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_11": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 43,
+      "size": 43,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_12": {
+    "[]": {
+      "cost": 86829.34,
+      "utility": 72588.89,
+      "rows": 84045,
+      "width": 1306,
+      "size": 109772020,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_13": {
+    "[]": {
+      "cost": 39892.84,
+      "utility": 24936.14,
+      "rows": 686570,
+      "width": 96,
+      "size": 66276865,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_14": {
+    "[]": {
+      "cost": 154505.92,
+      "utility": 143138.72,
+      "rows": 507520,
+      "width": 101,
+      "size": 51542740,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_15": {
+    "[]": {
+      "cost": 909.94,
+      "utility": 462.97,
+      "rows": 29997,
+      "width": 40,
+      "size": 1199880,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_16": {
+    "[]": {
+      "cost": 2.31,
+      "utility": 1.27,
+      "rows": 4,
+      "width": 39,
+      "size": 158,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_17": {
+    "[]": {
+      "cost": 109809.84999999999,
+      "utility": 73931.15,
+      "rows": 1556870,
+      "width": 106,
+      "size": 166374326,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_18": {
+    "[]": {
+      "cost": 37809.16,
+      "utility": 36936.66,
+      "rows": 49050,
+      "width": 63,
+      "size": 3126415,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_19": {
+    "[]": {
+      "cost": 6117.98,
+      "utility": 5977.46,
+      "rows": 6752,
+      "width": 87,
+      "size": 591244,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_20": {
+    "[]": {
+      "cost": 119588.56,
+      "utility": 61290.1,
+      "rows": 2529146,
+      "width": 106,
+      "size": 270391040,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_21": {
+    "[]": {
+      "cost": 453176.48,
+      "utility": 451389.98,
+      "rows": 94450,
+      "width": 72,
+      "size": 6892520,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_22": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 36,
+      "size": 36,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_23": {
+    "[]": {
+      "cost": 39926.03,
+      "utility": 20429.43,
+      "rows": 901760,
+      "width": 95,
+      "size": 85842690,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_24": {
+    "[]": {
+      "cost": 91580.70000000001,
+      "utility": 91120.74,
+      "rows": 20696,
+      "width": 99,
+      "size": 2069290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_25": {
+    "[]": {
+      "cost": 41761.24,
+      "utility": 41606.24,
+      "rows": 8800,
+      "width": 61,
+      "size": 544125,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_26": {
+    "[]": {
+      "cost": 6117.98,
+      "utility": 5977.46,
+      "rows": 6752,
+      "width": 87,
+      "size": 591244,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_27": {
+    "[]": {
+      "cost": 58081.85,
+      "utility": 58080.82,
+      "rows": 3,
+      "width": 154,
+      "size": 463,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_28": {
+    "[]": {
+      "cost": 39926.03,
+      "utility": 20429.43,
+      "rows": 901760,
+      "width": 95,
+      "size": 85842690,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_29": {
+    "[]": {
+      "cost": 91580.70000000001,
+      "utility": 91120.74,
+      "rows": 20696,
+      "width": 99,
+      "size": 2069290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_30": {
+    "[]": {
+      "cost": 39926.03,
+      "utility": 20429.43,
+      "rows": 901760,
+      "width": 95,
+      "size": 85842690,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_31": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_32": {
+    "[]": {
+      "cost": 119588.56,
+      "utility": 61290.1,
+      "rows": 2529146,
+      "width": 106,
+      "size": 270391040,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_33": {
+    "[]": {
+      "cost": 87790.64000000001,
+      "utility": 44915.29,
+      "rows": 2612135,
+      "width": 52,
+      "size": 137240810,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_34": {
+    "[]": {
+      "cost": 7780.89,
+      "utility": 5977.46,
+      "rows": 84843,
+      "width": 92,
+      "size": 7818768,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_35": {
+    "[]": {
+      "cost": 190335.83000000002,
+      "utility": 97330.47,
+      "rows": 4165336,
+      "width": 100,
+      "size": 420669410,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_36": {
+    "[]": {
+      "cost": 39926.03,
+      "utility": 20429.43,
+      "rows": 901760,
+      "width": 95,
+      "size": 85842690,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_37": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 45,
+      "size": 45,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_38": {
+    "[]": {
+      "cost": 586519.6,
+      "utility": 571829.1,
+      "rows": 865450,
+      "width": 57,
+      "size": 49440600,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_39": {
+    "[]": {
+      "cost": 132554.44,
+      "utility": 67851.71,
+      "rows": 3141173,
+      "width": 86,
+      "size": 272712170,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_40": {
+    "[]": {
+      "cost": 82864.87000000001,
+      "utility": 82712.24,
+      "rows": 6763,
+      "width": 102,
+      "size": 693780,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_41": {
+    "[]": {
+      "cost": 68489.68,
+      "utility": 57960.93,
+      "rows": 589575,
+      "width": 64,
+      "size": 37947530,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_42": {
+    "[]": {
+      "cost": 7780.89,
+      "utility": 5977.46,
+      "rows": 84843,
+      "width": 92,
+      "size": 7818768,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_43": {
+    "[]": {
+      "cost": 99531.91,
+      "utility": 73931.15,
+      "rows": 1108376,
+      "width": 107,
+      "size": 118915776,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_44": {
+    "[]": {
+      "cost": 82834.44,
+      "utility": 82712.24,
+      "rows": 5420,
+      "width": 102,
+      "size": 556786,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_45": {
+    "[]": {
+      "cost": 529786.38,
+      "utility": 517985.08,
+      "rows": 711930,
+      "width": 53,
+      "size": 38353640,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_46": {
+    "[]": {
+      "cost": 52508.95,
+      "utility": 48987.7,
+      "rows": 198025,
+      "width": 63,
+      "size": 12618945,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_47": {
+    "[]": {
+      "cost": 85798.54999999999,
+      "utility": 73931.15,
+      "rows": 514040,
+      "width": 107,
+      "size": 55102500,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_48": {
+    "[]": {
+      "cost": 87725.56999999999,
+      "utility": 86605.04,
+      "rows": 49953,
+      "width": 101,
+      "size": 5084570,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_49": {
+    "[]": {
+      "cost": 87790.64000000001,
+      "utility": 44915.29,
+      "rows": 2612135,
+      "width": 52,
+      "size": 137240810,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_50": {
+    "[]": {
+      "cost": 129252.04999999999,
+      "utility": 107749.09,
+      "rows": 960396,
+      "width": 101,
+      "size": 97476160,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_51": {
+    "[]": {
+      "cost": 5928.929999999999,
+      "utility": 5900.32,
+      "rows": 1361,
+      "width": 87,
+      "size": 118925,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_52": {
+    "[]": {
+      "cost": 91028.18,
+      "utility": 67610.62,
+      "rows": 1013356,
+      "width": 107,
+      "size": 108814513,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_53": {
+    "[]": {
+      "cost": 483216.9,
+      "utility": 482640.5,
+      "rows": 31240,
+      "width": 69,
+      "size": 2157840,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_54": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_55": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.04,
+      "rows": 4,
+      "width": 49,
+      "size": 196,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_56": {
+    "[]": {
+      "cost": 76669.65,
+      "utility": 67610.62,
+      "rows": 391203,
+      "width": 107,
+      "size": 42163656,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_57": {
+    "[]": {
+      "cost": 605999.98,
+      "utility": 582398.48,
+      "rows": 1434250,
+      "width": 52,
+      "size": 75844120,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_58": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.04,
+      "rows": 4,
+      "width": 49,
+      "size": 196,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_59": {
+    "[]": {
+      "cost": 605999.98,
+      "utility": 582398.48,
+      "rows": 1434250,
+      "width": 52,
+      "size": 75844120,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_60": {
+    "[]": {
+      "cost": 107958.54999999999,
+      "utility": 67610.62,
+      "rows": 1749593,
+      "width": 106,
+      "size": 187197366,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_61": {
+    "[]": {
+      "cost": 2.24,
+      "utility": 1.12,
+      "rows": 12,
+      "width": 39,
+      "size": 469,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_62": {
+    "[]": {
+      "cost": 2.25,
+      "utility": 1.23,
+      "rows": 2,
+      "width": 38,
+      "size": 76,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_63": {
+    "[]": {
+      "cost": 2686.13,
+      "utility": 2685.12,
+      "rows": 1,
+      "width": 39,
+      "size": 39,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_64": {
+    "[]": {
+      "cost": 134774.7,
+      "utility": 69719.3,
+      "rows": 4519440,
+      "width": 36,
+      "size": 162699840,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_65": {
+    "[]": {
+      "cost": 95000.01,
+      "utility": 73931.15,
+      "rows": 911986,
+      "width": 107,
+      "size": 97882473,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_66": {
+    "[]": {
+      "cost": 63910.39,
+      "utility": 44915.29,
+      "rows": 1276310,
+      "width": 40,
+      "size": 51052400,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_67": {
+    "[]": {
+      "cost": 8167.469999999999,
+      "utility": 7152.45,
+      "rows": 48302,
+      "width": 90,
+      "size": 4353652,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_68": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 49,
+      "size": 49,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_69": {
+    "[]": {
+      "cost": 2.24,
+      "utility": 1.23,
+      "rows": 1,
+      "width": 36,
+      "size": 36,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_70": {
+    "[]": {
+      "cost": 52811.14,
+      "utility": 52809.71,
+      "rows": 43,
+      "width": 118,
+      "size": 5086,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_71": {
+    "[]": {
+      "cost": 134774.7,
+      "utility": 69719.3,
+      "rows": 4519440,
+      "width": 36,
+      "size": 162699840,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_72": {
+    "[]": {
+      "cost": 2853.8700000000003,
+      "utility": 2852.84,
+      "rows": 3,
+      "width": 43,
+      "size": 129,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_73": {
+    "[]": {
+      "cost": 68795.54000000001,
+      "utility": 44915.29,
+      "rows": 1335825,
+      "width": 64,
+      "size": 86188410,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_74": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.05,
+      "rows": 3,
+      "width": 49,
+      "size": 147,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_75": {
+    "[]": {
+      "cost": 6466.18,
+      "utility": 6463.29,
+      "rows": 89,
+      "width": 99,
+      "size": 8899,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_76": {
+    "[]": {
+      "cost": 2.36,
+      "utility": 1.18,
+      "rows": 18,
+      "width": 40,
+      "size": 720,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_77": {
+    "[]": {
+      "cost": 120434.45,
+      "utility": 67610.62,
+      "rows": 2288583,
+      "width": 107,
+      "size": 245245520,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_78": {
+    "[]": {
+      "cost": 10417.77,
+      "utility": 5977.46,
+      "rows": 210031,
+      "width": 91,
+      "size": 19162670,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_79": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_80": {
+    "[]": {
+      "cost": 21680.38,
+      "utility": 20895.68,
+      "rows": 53070,
+      "width": 39,
+      "size": 2077820,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_81": {
+    "[]": {
+      "cost": 84212.07999999999,
+      "utility": 73931.15,
+      "rows": 446393,
+      "width": 106,
+      "size": 47652033,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_82": {
+    "[]": {
+      "cost": 271872.14,
+      "utility": 267694.34,
+      "rows": 275880,
+      "width": 42,
+      "size": 11618080,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_83": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_84": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 43,
+      "size": 43,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_85": {
+    "[]": {
+      "cost": 42593.55,
+      "utility": 21768.35,
+      "rows": 1376520,
+      "width": 42,
+      "size": 57829290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_86": {
+    "[]": {
+      "cost": 55527.759999999995,
+      "utility": 55468.56,
+      "rows": 2420,
+      "width": 116,
+      "size": 282640,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_87": {
+    "[]": {
+      "cost": 605934.4099999999,
+      "utility": 310123.41,
+      "rows": 14855600,
+      "width": 81,
+      "size": 1206308560,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_88": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_89": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.06,
+      "rows": 2,
+      "width": 45,
+      "size": 90,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_90": {
+    "[]": {
+      "cost": 28083.489999999998,
+      "utility": 25218.44,
+      "rows": 193205,
+      "width": 39,
+      "size": 7640705,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_91": {
+    "[]": {
+      "cost": 97942.07999999999,
+      "utility": 73931.15,
+      "rows": 1042793,
+      "width": 106,
+      "size": 111271340,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_92": {
+    "[]": {
+      "cost": 294540.23000000004,
+      "utility": 289545.03,
+      "rows": 329420,
+      "width": 42,
+      "size": 13934470,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_93": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_94": {
+    "[]": {
+      "cost": 42593.55,
+      "utility": 21768.35,
+      "rows": 1376520,
+      "width": 42,
+      "size": 57829290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_95": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_96": {
+    "[]": {
+      "cost": 6185.21,
+      "utility": 5977.46,
+      "rows": 9775,
+      "width": 92,
+      "size": 900915,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_97": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_98": {
+    "[]": {
+      "cost": 55547.12,
+      "utility": 55489.86,
+      "rows": 2226,
+      "width": 125,
+      "size": 280100,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_99": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_100": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 49,
+      "size": 49,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_101": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_102": {
+    "[]": {
+      "cost": 55497.89,
+      "utility": 55489.86,
+      "rows": 303,
+      "width": 112,
+      "size": 33960,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_103": {
+    "[]": {
+      "cost": 3021.5800000000004,
+      "utility": 3020.55,
+      "rows": 3,
+      "width": 40,
+      "size": 120,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_104": {
+    "[]": {
+      "cost": 45413.59,
+      "utility": 25218.44,
+      "rows": 1333815,
+      "width": 42,
+      "size": 56166525,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_105": {
+    "[]": {
+      "cost": 333890.56,
+      "utility": 323281.96,
+      "rows": 707960,
+      "width": 40,
+      "size": 28901670,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_106": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 38,
+      "size": 38,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_107": {
+    "[]": {
+      "cost": 2686.13,
+      "utility": 2685.12,
+      "rows": 1,
+      "width": 40,
+      "size": 40,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_108": {
+    "[]": {
+      "cost": 58098.85,
+      "utility": 58087.32,
+      "rows": 453,
+      "width": 118,
+      "size": 53593,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_109": {
+    "[]": {
+      "cost": 30732.69,
+      "utility": 25218.44,
+      "rows": 371625,
+      "width": 39,
+      "size": 14728750,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_110": {
+    "[]": {
+      "cost": 2.1100000000000003,
+      "utility": 1.09,
+      "rows": 2,
+      "width": 35,
+      "size": 70,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_111": {
+    "[]": {
+      "cost": 334035.46,
+      "utility": 323281.96,
+      "rows": 717450,
+      "width": 40,
+      "size": 29313320,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_112": {
+    "[]": {
+      "cost": 38810.61,
+      "utility": 37683.36,
+      "rows": 61425,
+      "width": 68,
+      "size": 4202180,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_113": {
+    "[]": {
+      "cost": 19252.440000000002,
+      "utility": 9846.72,
+      "rows": 361472,
+      "width": 131,
+      "size": 47436350,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_114": {
+    "[]": {
+      "cost": 99472.07999999999,
+      "utility": 67610.62,
+      "rows": 1381246,
+      "width": 107,
+      "size": 147849930,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_115": {
+    "[]": {
+      "cost": 255512.93,
+      "utility": 255482.43,
+      "rows": 1650,
+      "width": 66,
+      "size": 109570,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_116": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_117": {
+    "[]": {
+      "cost": 4512.4,
+      "utility": 2349.7,
+      "rows": 134170,
+      "width": 50,
+      "size": 6719819,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_118": {
+    "[]": {
+      "cost": 6114.610000000001,
+      "utility": 6113.6,
+      "rows": 1,
+      "width": 78,
+      "size": 78,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_119": {
+    "[]": {
+      "cost": 38810.61,
+      "utility": 37683.36,
+      "rows": 61425,
+      "width": 68,
+      "size": 4202180,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_120": {
+    "[]": {
+      "cost": 90473.20999999999,
+      "utility": 73931.15,
+      "rows": 717206,
+      "width": 107,
+      "size": 76755363,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_121": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_122": {
+    "[]": {
+      "cost": 271006.51999999996,
+      "utility": 270975.92,
+      "rows": 1660,
+      "width": 66,
+      "size": 110240,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_123": {
+    "[]": {
+      "cost": 107958.54999999999,
+      "utility": 67610.62,
+      "rows": 1749593,
+      "width": 106,
+      "size": 187197366,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_124": {
+    "[]": {
+      "cost": 241978.14,
+      "utility": 241781.64,
+      "rows": 10650,
+      "width": 69,
+      "size": 735330,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_125": {
+    "[]": {
+      "cost": 19252.440000000002,
+      "utility": 9846.72,
+      "rows": 361472,
+      "width": 131,
+      "size": 47436350,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_126": {
+    "[]": {
+      "cost": 2686.13,
+      "utility": 2685.12,
+      "rows": 1,
+      "width": 58,
+      "size": 58,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_127": {
+    "[]": {
+      "cost": 61061.11,
+      "utility": 59484.11,
+      "rows": 67900,
+      "width": 108,
+      "size": 7349940,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_128": {
+    "[]": {
+      "cost": 190335.83000000002,
+      "utility": 97330.47,
+      "rows": 4165336,
+      "width": 100,
+      "size": 420669410,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_129": {
+    "[]": {
+      "cost": 90026.72,
+      "utility": 67610.62,
+      "rows": 945610,
+      "width": 112,
+      "size": 106167103,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_130": {
+    "[]": {
+      "cost": 90321.20999999999,
+      "utility": 73931.15,
+      "rows": 691006,
+      "width": 112,
+      "size": 77657440,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_131": {
+    "[]": {
+      "cost": 119588.56,
+      "utility": 61290.1,
+      "rows": 2529146,
+      "width": 106,
+      "size": 270391040,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_132": {
+    "[]": {
+      "cost": 115432.95,
+      "utility": 107749.09,
+      "rows": 343586,
+      "width": 101,
+      "size": 34796573,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_133": {
+    "[]": {
+      "cost": 83378.55,
+      "utility": 82570.95,
+      "rows": 36260,
+      "width": 100,
+      "size": 3638833,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_134": {
+    "[]": {
+      "cost": 10341.94,
+      "utility": 5389.97,
+      "rows": 234997,
+      "width": 90,
+      "size": 21308917,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_135": {
+    "[]": {
+      "cost": 78460.31,
+      "utility": 78403.15,
+      "rows": 2616,
+      "width": 95,
+      "size": 250210,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_136": {
+    "[]": {
+      "cost": 78513.31,
+      "utility": 78403.15,
+      "rows": 4916,
+      "width": 101,
+      "size": 498543,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_137": {
+    "[]": {
+      "cost": 190335.83000000002,
+      "utility": 97330.47,
+      "rows": 4165336,
+      "width": 100,
+      "size": 420669410,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_138": {
+    "[]": {
+      "cost": 119756.81999999999,
+      "utility": 107749.09,
+      "rows": 536473,
+      "width": 101,
+      "size": 54417976,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_139": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_140": {
+    "[]": {
+      "cost": 718810.78,
+      "utility": 678489.98,
+      "rows": 2376180,
+      "width": 57,
+      "size": 135647160,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_141": {
+    "[]": {
+      "cost": 84678.54,
+      "utility": 84476.14,
+      "rows": 9040,
+      "width": 100,
+      "size": 911360,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_142": {
+    "[]": {
+      "cost": 92087.70999999999,
+      "utility": 73931.15,
+      "rows": 785056,
+      "width": 107,
+      "size": 84422673,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_143": {
+    "[]": {
+      "cost": 249333.44,
+      "utility": 248221.24,
+      "rows": 72220,
+      "width": 44,
+      "size": 3187660,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_144": {
+    "[]": {
+      "cost": 643188.7100000001,
+      "utility": 622621.41,
+      "rows": 1243230,
+      "width": 53,
+      "size": 66637440,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_145": {
+    "[]": {
+      "cost": 129252.04999999999,
+      "utility": 107749.09,
+      "rows": 960396,
+      "width": 101,
+      "size": 97476160,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_146": {
+    "[]": {
+      "cost": 295976.22,
+      "utility": 293133.12,
+      "rows": 186310,
+      "width": 43,
+      "size": 8024190,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_147": {
+    "[]": {
+      "cost": 146715.28999999998,
+      "utility": 107749.09,
+      "rows": 1739720,
+      "width": 101,
+      "size": 176689013,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_148": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_149": {
+    "[]": {
+      "cost": 132554.44,
+      "utility": 67851.71,
+      "rows": 3141173,
+      "width": 86,
+      "size": 272712170,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_150": {
+    "[]": {
+      "cost": 87187.25,
+      "utility": 73931.15,
+      "rows": 575210,
+      "width": 106,
+      "size": 61468616,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_151": {
+    "[]": {
+      "cost": 309049.73,
+      "utility": 301158.43,
+      "rows": 451430,
+      "width": 61,
+      "size": 27659840,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_152": {
+    "[]": {
+      "cost": 39926.03,
+      "utility": 20429.43,
+      "rows": 901760,
+      "width": 95,
+      "size": 85842690,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_153": {
+    "[]": {
+      "cost": 55446.26,
+      "utility": 55445.16,
+      "rows": 10,
+      "width": 118,
+      "size": 1183,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_154": {
+    "[]": {
+      "cost": 256830.63,
+      "utility": 255597.03,
+      "rows": 70260,
+      "width": 61,
+      "size": 4345730,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_155": {
+    "[]": {
+      "cost": 82834.44,
+      "utility": 82712.24,
+      "rows": 5420,
+      "width": 102,
+      "size": 556786,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_156": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 41,
+      "size": 83,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_157": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 33,
+      "size": 33,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_158": {
+    "[]": {
+      "cost": 3692.48,
+      "utility": 3691.4,
+      "rows": 8,
+      "width": 43,
+      "size": 349,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_159": {
+    "[]": {
+      "cost": 4097.72,
+      "utility": 2086.86,
+      "rows": 135086,
+      "width": 40,
+      "size": 5403440,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_160": {
+    "[]": {
+      "cost": 60410.67,
+      "utility": 60409.34,
+      "rows": 33,
+      "width": 88,
+      "size": 2913,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_161": {
+    "[]": {
+      "cost": 78404.18,
+      "utility": 78403.15,
+      "rows": 3,
+      "width": 118,
+      "size": 356,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_162": {
+    "[]": {
+      "cost": 3021.67,
+      "utility": 3020.57,
+      "rows": 10,
+      "width": 41,
+      "size": 413,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_163": {
+    "[]": {
+      "cost": 87319.13,
+      "utility": 83553.57,
+      "rows": 179956,
+      "width": 89,
+      "size": 16099963,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_164": {
+    "[]": {
+      "cost": 303155.91000000003,
+      "utility": 300823.71,
+      "rows": 151920,
+      "width": 43,
+      "size": 6658980,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_165": {
+    "[]": {
+      "cost": 254630.04,
+      "utility": 252846.84,
+      "rows": 116220,
+      "width": 43,
+      "size": 5086940,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_166": {
+    "[]": {
+      "cost": 358474.35,
+      "utility": 344030.05,
+      "rows": 937230,
+      "width": 44,
+      "size": 41545580,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_167": {
+    "[]": {
+      "cost": 117801.45,
+      "utility": 73931.15,
+      "rows": 1902030,
+      "width": 107,
+      "size": 203568746,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_168": {
+    "[]": {
+      "cost": 82930.78,
+      "utility": 67610.62,
+      "rows": 662016,
+      "width": 107,
+      "size": 71266986,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_169": {
+    "[]": {
+      "cost": 42968.09,
+      "utility": 25218.44,
+      "rows": 1169165,
+      "width": 42,
+      "size": 49622585,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_170": {
+    "[]": {
+      "cost": 55299.86,
+      "utility": 49823.86,
+      "rows": 303000,
+      "width": 66,
+      "size": 20034045,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_171": {
+    "[]": {
+      "cost": 8636.76,
+      "utility": 5977.46,
+      "rows": 126230,
+      "width": 90,
+      "size": 11437664,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_172": {
+    "[]": {
+      "cost": 331763.23,
+      "utility": 321703.63,
+      "rows": 672260,
+      "width": 40,
+      "size": 27329630,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_173": {
+    "[]": {
+      "cost": 79955.62,
+      "utility": 67610.62,
+      "rows": 533200,
+      "width": 107,
+      "size": 57450403,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_174": {
+    "[]": {
+      "cost": 99472.07999999999,
+      "utility": 67610.62,
+      "rows": 1381246,
+      "width": 107,
+      "size": 147849930,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_175": {
+    "[]": {
+      "cost": 4097.72,
+      "utility": 2086.86,
+      "rows": 135086,
+      "width": 40,
+      "size": 5403440,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_176": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 46,
+      "size": 46,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_177": {
+    "[]": {
+      "cost": 271006.51999999996,
+      "utility": 270975.92,
+      "rows": 1660,
+      "width": 66,
+      "size": 110240,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_178": {
+    "[]": {
+      "cost": 3021.59,
+      "utility": 3020.55,
+      "rows": 4,
+      "width": 40,
+      "size": 161,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_179": {
+    "[]": {
+      "cost": 2.14,
+      "utility": 1.1,
+      "rows": 4,
+      "width": 37,
+      "size": 150,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_180": {
+    "[]": {
+      "cost": 2853.8700000000003,
+      "utility": 2852.84,
+      "rows": 3,
+      "width": 45,
+      "size": 137,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_181": {
+    "[]": {
+      "cost": 298847.73,
+      "utility": 293645.23,
+      "rows": 301950,
+      "width": 59,
+      "size": 17877770,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_182": {
+    "[]": {
+      "cost": 6114.610000000001,
+      "utility": 6113.6,
+      "rows": 1,
+      "width": 93,
+      "size": 93,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_183": {
+    "[]": {
+      "cost": 52813.94,
+      "utility": 52812.91,
+      "rows": 3,
+      "width": 134,
+      "size": 403,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_184": {
+    "[]": {
+      "cost": 3021.5800000000004,
+      "utility": 3020.55,
+      "rows": 3,
+      "width": 45,
+      "size": 137,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_185": {
+    "[]": {
+      "cost": 3189.3100000000004,
+      "utility": 3188.26,
+      "rows": 5,
+      "width": 39,
+      "size": 199,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_186": {
+    "[]": {
+      "cost": 42593.55,
+      "utility": 21768.35,
+      "rows": 1376520,
+      "width": 42,
+      "size": 57829290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_187": {
+    "[]": {
+      "cost": 244067.04,
+      "utility": 243591.84,
+      "rows": 31120,
+      "width": 43,
+      "size": 1338160,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_188": {
+    "[]": {
+      "cost": 52814.57000000001,
+      "utility": 52812.91,
+      "rows": 66,
+      "width": 112,
+      "size": 7446,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_189": {
+    "[]": {
+      "cost": 3524.76,
+      "utility": 3523.69,
+      "rows": 7,
+      "width": 40,
+      "size": 284,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_190": {
+    "[]": {
+      "cost": 28083.489999999998,
+      "utility": 25218.44,
+      "rows": 193205,
+      "width": 39,
+      "size": 7640705,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_191": {
+    "[]": {
+      "cost": 3021.67,
+      "utility": 3020.57,
+      "rows": 10,
+      "width": 41,
+      "size": 413,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_192": {
+    "[]": {
+      "cost": 3021.59,
+      "utility": 3020.55,
+      "rows": 4,
+      "width": 44,
+      "size": 177,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_193": {
+    "[]": {
+      "cost": 21680.38,
+      "utility": 20895.68,
+      "rows": 53070,
+      "width": 39,
+      "size": 2077820,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_194": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 33,
+      "size": 66,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_195": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 37,
+      "size": 37,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_196": {
+    "[]": {
+      "cost": 270433.73000000004,
+      "utility": 268390.03,
+      "rows": 133170,
+      "width": 43,
+      "size": 5827770,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_197": {
+    "[]": {
+      "cost": 2686.13,
+      "utility": 2685.12,
+      "rows": 1,
+      "width": 39,
+      "size": 39,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_198": {
+    "[]": {
+      "cost": 55607.32,
+      "utility": 54524.26,
+      "rows": 47106,
+      "width": 106,
+      "size": 5011726,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_199": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 41,
+      "size": 83,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_200": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 33,
+      "size": 33,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_201": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.05,
+      "rows": 3,
+      "width": 34,
+      "size": 103,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_202": {
+    "[]": {
+      "cost": 29768.64,
+      "utility": 25218.44,
+      "rows": 306820,
+      "width": 39,
+      "size": 12134905,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_203": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 46,
+      "size": 46,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_204": {
+    "[]": {
+      "cost": 250197.64,
+      "utility": 249085.44,
+      "rows": 72220,
+      "width": 44,
+      "size": 3187660,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_205": {
+    "[]": {
+      "cost": 58127.92,
+      "utility": 58115.02,
+      "rows": 490,
+      "width": 124,
+      "size": 61026,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_206": {
+    "[]": {
+      "cost": 5771.320000000001,
+      "utility": 5770.22,
+      "rows": 10,
+      "width": 91,
+      "size": 919,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_207": {
+    "[]": {
+      "cost": 33569.21,
+      "utility": 33422.51,
+      "rows": 7670,
+      "width": 74,
+      "size": 570385,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_208": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 38,
+      "size": 38,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_209": {
+    "[]": {
+      "cost": 42593.55,
+      "utility": 21768.35,
+      "rows": 1376520,
+      "width": 42,
+      "size": 57829290,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_210": {
+    "[]": {
+      "cost": 909.94,
+      "utility": 462.97,
+      "rows": 29997,
+      "width": 40,
+      "size": 1199880,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_211": {
+    "[]": {
+      "cost": 2.27,
+      "utility": 1.25,
+      "rows": 2,
+      "width": 38,
+      "size": 76,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_212": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_213": {
+    "[]": {
+      "cost": 84212.07999999999,
+      "utility": 73931.15,
+      "rows": 446393,
+      "width": 106,
+      "size": 47652033,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_214": {
+    "[]": {
+      "cost": 87790.64000000001,
+      "utility": 44915.29,
+      "rows": 2612135,
+      "width": 52,
+      "size": 137240810,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_215": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 38,
+      "size": 38,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_216": {
+    "[]": {
+      "cost": 7780.89,
+      "utility": 5977.46,
+      "rows": 84843,
+      "width": 92,
+      "size": 7818768,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_217": {
+    "[]": {
+      "cost": 87790.64000000001,
+      "utility": 44915.29,
+      "rows": 2612135,
+      "width": 52,
+      "size": 137240810,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_218": {
+    "[]": {
+      "cost": 10341.94,
+      "utility": 5389.97,
+      "rows": 234997,
+      "width": 90,
+      "size": 21308917,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_219": {
+    "[]": {
+      "cost": 35632.74,
+      "utility": 25218.44,
+      "rows": 675630,
+      "width": 44,
+      "size": 29959650,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_220": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "leaf_221": {
+    "[]": {
+      "cost": 119588.56,
+      "utility": 61290.1,
+      "rows": 2529146,
+      "width": 106,
+      "size": 270391040,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_1": {
+    "[]": {
+      "cost": 1270.1399999999999,
+      "utility": 764.17,
+      "rows": 29997,
+      "width": 56,
+      "size": 1679832,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_2": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_3": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_4": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_5": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_6": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_7": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_8": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_9": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_10": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_11": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_12": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_13": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_14": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_15": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_16": {
+    "[]": {
+      "cost": 87857.31999999999,
+      "utility": 73410.87,
+      "rows": 84045,
+      "width": 1326,
+      "size": 111452920,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_17": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_18": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_19": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_20": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_21": {
+    "[]": {
+      "cost": 2.31,
+      "utility": 1.27,
+      "rows": 4,
+      "width": 39,
+      "size": 158,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_22": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_23": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_24": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_25": {
+    "[]": {
+      "cost": 6117.98,
+      "utility": 5977.46,
+      "rows": 6752,
+      "width": 87,
+      "size": 591244,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_26": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_27": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_28": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_29": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 36,
+      "size": 36,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_30": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_31": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_32": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_33": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_34": {
+    "[]": {
+      "cost": 43028.34,
+      "utility": 42800.14,
+      "rows": 8720,
+      "width": 132,
+      "size": 1153315,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_35": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_36": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_37": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_38": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_39": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_40": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_41": {
+    "[]": {
+      "cost": 176428.89,
+      "utility": 124778.19,
+      "rows": 2730370,
+      "width": 73,
+      "size": 199449560,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_42": {
+    "[]": {
+      "cost": 7780.89,
+      "utility": 5977.46,
+      "rows": 84843,
+      "width": 92,
+      "size": 7818768,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_43": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_44": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_45": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_46": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_47": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_48": {
+    "[]": {
+      "cost": 190335.83000000002,
+      "utility": 97330.47,
+      "rows": 4165336,
+      "width": 100,
+      "size": 420669410,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_49": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_50": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_51": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_52": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_53": {
+    "[]": {
+      "cost": 130055.89,
+      "utility": 124778.19,
+      "rows": 276770,
+      "width": 74,
+      "size": 20556080,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_54": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_55": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_56": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_57": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_58": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_59": {
+    "[]": {
+      "cost": 114377.64,
+      "utility": 109128.74,
+      "rows": 276190,
+      "width": 73,
+      "size": 20370720,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_60": {
+    "[]": {
+      "cost": 132554.44,
+      "utility": 67851.71,
+      "rows": 3141173,
+      "width": 86,
+      "size": 272712170,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_61": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_62": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_63": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_64": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_65": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_66": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_67": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_68": {
+    "[]": {
+      "cost": 83236.54,
+      "utility": 83198.64,
+      "rows": 1190,
+      "width": 172,
+      "size": 205130,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_69": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_70": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_71": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_72": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_73": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_74": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_75": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_76": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_77": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_78": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_79": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_80": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_81": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_82": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_83": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_84": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_85": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_86": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_87": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_88": {
+    "[]": {
+      "cost": 5928.929999999999,
+      "utility": 5900.32,
+      "rows": 1361,
+      "width": 87,
+      "size": 118925,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_89": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_90": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_91": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_92": {
+    "[]": {
+      "cost": 2.16,
+      "utility": 1.15,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_93": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_94": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_95": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.04,
+      "rows": 4,
+      "width": 49,
+      "size": 196,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_96": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_97": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_98": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_99": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_100": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_101": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_102": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.04,
+      "rows": 4,
+      "width": 49,
+      "size": 196,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_103": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_104": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_105": {
+    "[]": {
+      "cost": 107958.54999999999,
+      "utility": 67610.62,
+      "rows": 1749593,
+      "width": 106,
+      "size": 187197366,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_106": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_107": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_108": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_109": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_110": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_111": {
+    "[]": {
+      "cost": 2.24,
+      "utility": 1.12,
+      "rows": 12,
+      "width": 39,
+      "size": 469,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_112": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_113": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_114": {
+    "[]": {
+      "cost": 191526.13,
+      "utility": 117643.73,
+      "rows": 4519440,
+      "width": 52,
+      "size": 235010880,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_115": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_116": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_117": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_118": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_119": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_120": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_121": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_122": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_123": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_124": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_125": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_126": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_127": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_128": {
+    "[]": {
+      "cost": 2853.8700000000003,
+      "utility": 2852.84,
+      "rows": 3,
+      "width": 43,
+      "size": 129,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_129": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_130": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_131": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_132": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.05,
+      "rows": 3,
+      "width": 49,
+      "size": 147,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_133": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_134": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_135": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_136": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_137": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_138": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_139": {
+    "[]": {
+      "cost": 2.36,
+      "utility": 1.18,
+      "rows": 18,
+      "width": 40,
+      "size": 720,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_140": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_141": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_142": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_143": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_144": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_145": {
+    "[]": {
+      "cost": 22234.79,
+      "utility": 21372.09,
+      "rows": 53070,
+      "width": 51,
+      "size": 2714660,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_146": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_147": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 49,
+      "size": 49,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_148": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_149": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_150": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_151": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_152": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_153": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_154": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_155": {
+    "[]": {
+      "cost": 59756.31,
+      "utility": 35571.11,
+      "rows": 1376520,
+      "width": 62,
+      "size": 85359690,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_156": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_157": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_158": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_159": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_160": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_161": {
+    "[]": {
+      "cost": 2.08,
+      "utility": 1.06,
+      "rows": 2,
+      "width": 45,
+      "size": 90,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_162": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_163": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_164": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_165": {
+    "[]": {
+      "cost": 30306.25,
+      "utility": 27158.2,
+      "rows": 193205,
+      "width": 51,
+      "size": 9959165,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_166": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_167": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_168": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_169": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_170": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_171": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_172": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_173": {
+    "[]": {
+      "cost": 58412.31,
+      "utility": 35571.11,
+      "rows": 1376520,
+      "width": 54,
+      "size": 74347530,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_174": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_175": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_176": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_177": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_178": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_179": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_180": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_181": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_182": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_183": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_184": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_185": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 34,
+      "size": 34,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_186": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_187": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_188": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_189": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_190": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_191": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_192": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_193": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_194": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_195": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_196": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_197": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_198": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_199": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_200": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_201": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_202": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_203": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_204": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_205": {
+    "[]": {
+      "cost": 522790.56,
+      "utility": 298936.36,
+      "rows": 13558320,
+      "width": 53,
+      "size": 723110400,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_206": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_207": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_208": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_209": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_210": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_211": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_212": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_213": {
+    "[]": {
+      "cost": 259385.08,
+      "utility": 185502.68,
+      "rows": 4519440,
+      "width": 52,
+      "size": 235010880,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_214": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_215": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_216": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_217": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_218": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_219": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_220": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_221": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_222": {
+    "[]": {
+      "cost": 2.1100000000000003,
+      "utility": 1.09,
+      "rows": 2,
+      "width": 35,
+      "size": 70,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_223": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_224": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_225": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_226": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_227": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_228": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_229": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_230": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_231": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_232": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_233": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 42,
+      "size": 42,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_234": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_235": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_236": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_237": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_238": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_239": {
+    "[]": {
+      "cost": 6472.700000000001,
+      "utility": 6465.1,
+      "rows": 260,
+      "width": 137,
+      "size": 35795,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_240": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_241": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_242": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_243": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_244": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_245": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_246": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_247": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_248": {
+    "[]": {
+      "cost": 271019.38999999996,
+      "utility": 270984.79,
+      "rows": 1660,
+      "width": 86,
+      "size": 143440,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_249": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_250": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_251": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_252": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_253": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_254": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_255": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_256": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_257": {
+    "[]": {
+      "cost": 242186.83,
+      "utility": 241964.33,
+      "rows": 10650,
+      "width": 89,
+      "size": 948330,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_258": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_259": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_260": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_261": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_262": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_263": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_264": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_265": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_266": {
+    "[]": {
+      "cost": 202560.13,
+      "utility": 117643.73,
+      "rows": 4519440,
+      "width": 72,
+      "size": 325399680,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_267": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_268": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_269": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_270": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_271": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_272": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_273": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_274": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_275": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_276": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_277": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_278": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_279": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_280": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_281": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_282": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_283": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_284": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_285": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_286": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_287": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_288": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_289": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_290": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_291": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_292": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_293": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_294": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_295": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_296": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_297": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_298": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_299": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_300": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_301": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_302": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_303": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_304": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_305": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_306": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_307": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_308": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_309": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_310": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_311": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_312": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_313": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_314": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_315": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_316": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_317": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_318": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_319": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_320": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_321": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_322": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_323": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_324": {
+    "[]": {
+      "cost": 58412.31,
+      "utility": 35571.11,
+      "rows": 1376520,
+      "width": 54,
+      "size": 74347530,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_325": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_326": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_327": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_328": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_329": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_330": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_331": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_332": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_333": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_334": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_335": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_336": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_337": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_338": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_339": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_340": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_341": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_342": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_343": {
+    "[]": {
+      "cost": 132554.44,
+      "utility": 67851.71,
+      "rows": 3141173,
+      "width": 86,
+      "size": 272712170,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_344": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_345": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_346": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_347": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_348": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_349": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_350": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_351": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_352": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_353": {
+    "[]": {
+      "cost": 55657.4,
+      "utility": 55656.3,
+      "rows": 10,
+      "width": 143,
+      "size": 1435,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_354": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_355": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_356": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_357": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_358": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_359": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_360": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_361": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_362": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_363": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_364": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_365": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_366": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_367": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_368": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_369": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_370": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_371": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_372": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_373": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_374": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_375": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_376": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_377": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_378": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_379": {
+    "[]": {
+      "cost": 1141136.92,
+      "utility": 525803.72,
+      "rows": 36155520,
+      "width": 57,
+      "size": 2078942400,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_380": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_381": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_382": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_383": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_384": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_385": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_386": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_387": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_388": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_389": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_390": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_391": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_392": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_393": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_394": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_395": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_396": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_397": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_398": {
+    "[]": {
+      "cost": 1392501.15,
+      "utility": 638231.15,
+      "rows": 45194400,
+      "width": 54,
+      "size": 2476653120,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_399": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_400": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_401": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_402": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_403": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_404": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_405": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_406": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_407": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_408": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_409": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_410": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_411": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_412": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_413": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_414": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_415": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_416": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_417": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_418": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_419": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_420": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_421": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_422": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_423": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_424": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_425": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_426": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_427": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_428": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_429": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_430": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_431": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_432": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_433": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_434": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_435": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_436": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_437": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_438": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_439": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_440": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_441": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_442": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_443": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_444": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_445": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_446": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_447": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_448": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_449": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_450": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_451": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_452": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_453": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_454": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_455": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_456": {
+    "[]": {
+      "cost": 115333.06,
+      "utility": 81448.6,
+      "rows": 1381246,
+      "width": 119,
+      "size": 164424890,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_457": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 46,
+      "size": 46,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_458": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_459": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_460": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_461": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_462": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_463": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_464": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_465": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_466": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_467": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_468": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_469": {
+    "[]": {
+      "cost": 601085.96,
+      "utility": 298936.36,
+      "rows": 18077760,
+      "width": 55,
+      "size": 994276800,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_470": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_471": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_472": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_473": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_474": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_475": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_476": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_477": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_478": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_479": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_480": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_481": {
+    "[]": {
+      "cost": 2.14,
+      "utility": 1.1,
+      "rows": 4,
+      "width": 37,
+      "size": 150,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_482": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_483": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_484": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_485": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_486": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_487": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_488": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_489": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_490": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_491": {
+    "[]": {
+      "cost": 474900.72,
+      "utility": 242219.52,
+      "rows": 13558320,
+      "width": 58,
+      "size": 795421440,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_492": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_493": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_494": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_495": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_496": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_497": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_498": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_499": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_500": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_501": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_502": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_503": {
+    "[]": {
+      "cost": 6468.7,
+      "utility": 6465.75,
+      "rows": 95,
+      "width": 121,
+      "size": 11550,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_504": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_505": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_506": {
+    "[]": {
+      "cost": 3021.5800000000004,
+      "utility": 3020.55,
+      "rows": 3,
+      "width": 45,
+      "size": 137,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_507": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_508": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_509": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_510": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_511": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_512": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_513": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_514": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_515": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_516": {
+    "[]": {
+      "cost": 727272.2,
+      "utility": 355653.2,
+      "rows": 22597200,
+      "width": 52,
+      "size": 1193132160,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_517": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_518": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_519": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_520": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_521": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_522": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_523": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_524": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_525": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_526": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_527": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_528": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_529": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_530": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_531": {
+    "[]": {
+      "cost": 992883.6799999999,
+      "utility": 469086.88,
+      "rows": 31636080,
+      "width": 53,
+      "size": 1699309440,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_532": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_533": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_534": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_535": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_536": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_537": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_538": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_539": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_540": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 33,
+      "size": 33,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_541": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_542": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 41,
+      "size": 83,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_543": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_544": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_545": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_546": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_547": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_548": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_549": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_550": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_551": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_552": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_553": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_554": {
+    "[]": {
+      "cost": 607705.96,
+      "utility": 298936.36,
+      "rows": 18077760,
+      "width": 58,
+      "size": 1048510080,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_555": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_556": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_557": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_558": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_559": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_560": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_561": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_562": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_563": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_564": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_565": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_566": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_567": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_568": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_569": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_570": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_571": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_572": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_573": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_574": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_575": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_576": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_577": {
+    "[]": {
+      "cost": 1760.1100000000001,
+      "utility": 764.17,
+      "rows": 59994,
+      "width": 54,
+      "size": 3239676,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_578": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_579": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_580": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 33,
+      "size": 66,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_581": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_582": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 37,
+      "size": 37,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_583": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_584": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_585": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_586": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_587": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_588": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_589": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_590": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_591": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_592": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_593": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_594": {
+    "[]": {
+      "cost": 2.06,
+      "utility": 1.05,
+      "rows": 1,
+      "width": 49,
+      "size": 49,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_595": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_596": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_597": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_598": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_599": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_600": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_601": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_602": {
+    "[]": {
+      "cost": 2.0700000000000003,
+      "utility": 1.05,
+      "rows": 2,
+      "width": 41,
+      "size": 83,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_603": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_604": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_605": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_606": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_607": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_608": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_609": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_610": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_611": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_612": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_613": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_614": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_615": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_616": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_617": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_618": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_619": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_620": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_621": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_622": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_623": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_624": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_625": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_626": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_627": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_628": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_629": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_630": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_631": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_632": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_633": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_634": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_635": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_636": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_637": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_638": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_639": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_640": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_641": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_642": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_643": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_644": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_645": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_646": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_647": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_648": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_649": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_650": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_651": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_652": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_653": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_654": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_655": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_656": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_657": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_658": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_659": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_660": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_661": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_662": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_663": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_664": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_665": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_666": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_667": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_668": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_669": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_670": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_671": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_672": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_673": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_674": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_675": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_676": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_677": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_678": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_679": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_680": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_681": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_682": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_683": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_684": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_685": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_686": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_687": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_688": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_689": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_690": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_691": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_692": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_693": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_694": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_695": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_696": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_697": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_698": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_699": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_700": {
+    "[]": {
+      "cost": 2.27,
+      "utility": 1.25,
+      "rows": 2,
+      "width": 38,
+      "size": 76,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_701": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_702": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_703": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_704": {
+    "[]": {
+      "cost": 3.42,
+      "utility": 2.41,
+      "rows": 1,
+      "width": 35,
+      "size": 35,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_705": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_706": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_707": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_708": {
+    "[]": {
+      "cost": 2.1,
+      "utility": 1.09,
+      "rows": 1,
+      "width": 38,
+      "size": 38,
+      "size_source": "sampling"
+    }
+  },
+  "non_leaf_709": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_710": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_711": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_712": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_713": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_714": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_715": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_716": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  },
+  "non_leaf_717": {
+    "[]": {
+      "cost": 0.0,
+      "utility": 0.0,
+      "rows": 0,
+      "width": 0,
+      "size": 0,
+      "size_source": "explain"
+    }
+  }
+}

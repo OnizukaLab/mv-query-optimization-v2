@@ -1,0 +1,73 @@
+# グラフ設定ファイル
+# 各アルゴリズムの色、マーカー、ラインスタイルを一括で管理
+# 論文用の暗めで見やすい色合いを使用
+
+algorithms:
+  Naive ILP:
+    color: '#1a5490'      # ダークブルー（深い青）
+    marker: 'o'           # 円
+    linestyle: '-'        # 実線
+    linewidth: 2.5
+    markersize: 7
+    
+  BigSubs:
+    color: '#c44e00'      # ダークオレンジ（濃いオレンジ）
+    marker: 's'           # 四角
+    linestyle: '--'       # 破線
+    linewidth: 2.5
+    markersize: 7
+    
+  'Proposed (topk-E)':
+    color: '#1a7a3d'      # ダークグリーン（深緑）
+    marker: '^'           # 上三角
+    linestyle: '-.'       # 一点鎖線
+    linewidth: 2.5
+    markersize: 7
+    
+  'Proposed (topk-U)':
+    color: '#a01c28'      # ダークレッド（えんじ色）
+    marker: 'D'           # ダイヤ
+    linestyle: ':'        # 点線
+    linewidth: 2.5
+    markersize: 7
+    
+  'Proposed (topk-F)':
+    color: '#b8860b'      # ダークゴールデンロッド（暗い金色）
+    marker: 'v'           # 下三角
+    linestyle: '-'        # 実線
+    linewidth: 2.5
+    markersize: 7
+
+# グラフ表示設定
+graph:
+  figsize:
+    - 14
+    - 8
+  font:
+    - 'Arial Unicode MS'
+    - 'Hiragino Sans'
+    - 'Yu Gothic'
+    - 'Meirio'
+    - 'DejaVu Sans'
+  title:
+    fontsize: 28
+    fontweight: 'bold'
+    pad: 40
+  xlabel:
+    fontsize: 28
+    fontweight: 'bold'
+  ylabel:
+    fontsize: 28
+    fontweight: 'bold'
+  legend:
+    loc: 'upper right'
+    framealpha: 0.95
+    edgecolor: 'black'
+    fancybox: true
+    fontsize: 20
+  grid:
+    enable: true
+    alpha: 0.3
+    linestyle: '--'
+  dpi: 300
+  tick_labelsize: 20  # 軸の目盛りラベルのサイズ
