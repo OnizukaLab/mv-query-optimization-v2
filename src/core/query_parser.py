@@ -135,7 +135,8 @@ class QueryParser:
         
         Handles cases where inner side is:
         - Direct Index Scan: Use its Index Cond
-        - Memoize/Materialize: Search inside for Index Scan
+        - Wrapper chains (Bitmap Heap Scan/Memoize/Materialize/...): Descend through
+          single-child nodes to the scan holding the Index Cond
         
         Args:
             inner_plan: Inner side plan (typically Plans[1] of Nested Loop)
@@ -151,16 +152,18 @@ class QueryParser:
             conditions.append((inner_plan["Index Cond"], table_alias))
             return conditions
         
-        # Case 2: Inner side is Memoize/Materialize/similar intermediate node
-        node_type = inner_plan.get("Node Type", "")
-        if node_type in ["Memoize", "Materialize", "CTE Scan", "Subquery Scan"]:
-            # Look one level deeper
-            if "Plans" in inner_plan and len(inner_plan["Plans"]) > 0:
-                child = inner_plan["Plans"][0]
-                if "Index Cond" in child:
-                    table_alias = child.get("Alias", "")
-                    conditions.append((child["Index Cond"], table_alias))
-        
+        # Case 2: Inner side is a single-child wrapper (Bitmap Heap Scan -> Bitmap Index
+        # Scan, Memoize, Materialize, ...). Descend until a node carrying Index Cond.
+        current = inner_plan
+        alias = inner_plan.get("Alias", "")
+        while "Index Cond" not in current:
+            children = current.get("Plans", [])
+            if len(children) != 1:
+                return conditions
+            current = children[0]
+            alias = current.get("Alias", "") or alias
+
+        conditions.append((current["Index Cond"], alias))
         return conditions
 
     def _extract_index_cond_recursive(self, node, inherited_alias: str = ""):
