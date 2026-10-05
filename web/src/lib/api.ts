@@ -85,3 +85,56 @@ export async function getExperimentLogs(id: string): Promise<string[]> {
 }
 
 export const experimentEventsUrl = (id: string) => `${API_URL}/experiments/${id}/events`;
+
+export interface ResultSet {
+  id: string;
+  name: string;
+  algorithms: string[];
+  updated_at: number;
+}
+
+export interface GroupStats {
+  total_queries: number;
+  successful: number;
+  failed: number;
+  total_time: number;
+  avg_time: number;
+}
+
+export interface AlgorithmResult {
+  name: string;
+  summary: {
+    total_execution_time: number;
+    phases: Record<string, number>;
+    timestamp?: string;
+  } | null;
+  benchmark: {
+    workload_type?: string;
+    total_queries: number;
+    successful: number;
+    failed: number;
+    total_time: number;
+    avg_time_per_query: number;
+    warmup_enabled?: boolean;
+    group_results?: Record<string, GroupStats>;
+  } | null;
+  optimization: {
+    num_selected_views?: number;
+    total_storage_mb?: number;
+    total_utility?: number;
+    execution_time?: number;
+  } | null;
+  speedup_vs_baseline: number | null;
+}
+
+export interface Comparison {
+  id: string;
+  algorithms: AlgorithmResult[];
+  baseline: string | null;
+  warnings: string[];
+}
+
+export const listResultSets = () => request<ResultSet[]>("/results/sets");
+
+export const compareResultSet = (id: string) =>
+  request<Comparison>(`/results/sets/${encodeURIComponent(id)}/compare`);

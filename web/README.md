@@ -13,4 +13,4 @@ cd web && npm install && npm run dev   # http://localhost:3000
 
 `NEXT_PUBLIC_API_URL` overrides the API address (see `.env.example`).
 
-Migration status: Query Plan viewer done; Experiments / Results / Settings are placeholders.
+Migration status: Query Plan viewer, Experiments (live run + history) and Results overview done; per-query results, MV Explorer and Settings pending.
