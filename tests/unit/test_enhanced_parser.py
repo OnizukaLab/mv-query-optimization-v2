@@ -133,6 +133,32 @@ class TestEnhancedParser:
         condition_types = {c.condition_type for c in conditions}
         assert "Hash Cond" in condition_types
 
+    def test_extract_join_conditions_nested_loop_bitmap_inner(self, parser):
+        """Index Cond under Bitmap Heap Scan -> Bitmap Index Scan must not be dropped."""
+        node = {
+            "Node Type": "Nested Loop",
+            "Join Type": "Inner",
+            "Plans": [
+                {"Node Type": "Seq Scan", "Alias": "lt", "Filter": "(link ~~ '%follow%')"},
+                {
+                    "Node Type": "Bitmap Heap Scan",
+                    "Alias": "ml",
+                    "Plans": [
+                        {
+                            "Node Type": "Bitmap Index Scan",
+                            "Index Cond": "(link_type_id = lt.id)",
+                        }
+                    ],
+                },
+            ],
+        }
+
+        conditions = parser.extract_join_conditions(node)
+
+        assert any(
+            {c.left_column, c.right_column} == {"link_type_id", "id"} for c in conditions
+        )
+
     def test_convert_node_enhanced_non_leaf(self, parser):
         """Test convert_node with enhanced non-leaf node."""
         node = {
