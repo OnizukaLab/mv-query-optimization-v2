@@ -281,3 +281,6 @@ experiment_log.txt
 # Large / local-only data
 dataset/
 Redbench/
+
+# Next.js source (root lib/ rule above would otherwise hide web/src/lib)
+!web/src/lib/
