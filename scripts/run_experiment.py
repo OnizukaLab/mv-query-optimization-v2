@@ -890,7 +890,11 @@ def run_ilp_optimization(
             
             rewritten_dir = Path(output_dir) / "query_rewrite" / "re_sql" / ilp_type
             rewritten_dir.mkdir(parents=True, exist_ok=True)
-            
+            # 前回実行（別ワークロード等）の書き換え済みSQLが残ると、ベンチマークが
+            # 存在しないMVを参照する古いクエリまで実行して失敗するため、先に削除する
+            for stale_file in rewritten_dir.glob("*.sql"):
+                stale_file.unlink()
+
             rewritten_queries = rewriter.rewrite_queries(result.selected_views)
             
             rewrite_log = []
