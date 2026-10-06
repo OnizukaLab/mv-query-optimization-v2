@@ -150,3 +150,30 @@ export const listResultSets = () => request<ResultSet[]>("/results/sets");
 
 export const compareResultSet = (id: string) =>
   request<Comparison>(`/results/sets/${encodeURIComponent(id)}/compare`);
+
+export interface Snapshot {
+  plan: PlanNode;
+  shared_counts: Record<string, number>;
+}
+
+export const getSnapshot = (queryId: string) =>
+  request<Snapshot>(`/queries/${encodeURIComponent(queryId)}/snapshot`);
+
+export interface NodeDetails {
+  node_id: string;
+  kind: "leaf" | "non_leaf" | null;
+  operator: string | null;
+  table: string | null;
+  alias: string | null;
+  filter: string | null;
+  children: string[] | null;
+  cost: number | null;
+  size_bytes: number;
+  width: number | null;
+  maintenance_cost: number;
+  total_utility: number;
+  queries: { id: string; occurrences: number; utility: number }[];
+  mv_sql: string | null;
+}
+
+export const getNode = (nodeId: string) => request<NodeDetails>(`/nodes/${encodeURIComponent(nodeId)}`);

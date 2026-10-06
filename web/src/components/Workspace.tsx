@@ -5,7 +5,16 @@ import Link from "next/link";
 import Editor from "@monaco-editor/react";
 import NodePanel from "./NodePanel";
 import PlanGraph from "./PlanGraph";
-import { fetchPlan, getQuery, listQueries, type PlanResponse, type QueryInfo } from "@/lib/api";
+import {
+  fetchPlan,
+  getQuery,
+  getSnapshot,
+  listQueries,
+  type PlanResponse,
+  type QueryInfo,
+  type Snapshot,
+} from "@/lib/api";
+import { mapNodeIds } from "@/lib/nodeIds";
 import { diffPlans, nodeById } from "@/lib/planDiff";
 import { useDarkMode } from "@/lib/useDarkMode";
 
@@ -23,7 +32,7 @@ const LIVE_DELAY_MS = 600;
  * free-form playground. Edits re-explain automatically (never with ANALYZE) and the plan is
  * diffed against a baseline so the effect of a rewrite is visible.
  */
-export default function Workspace({ queryId }: { queryId?: string }) {
+export default function Workspace({ queryId, focusNodeId }: { queryId?: string; focusNodeId?: string }) {
   const dark = useDarkMode();
   const [sql, setSql] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
   const [original, setOriginal] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
@@ -40,6 +49,7 @@ export default function Workspace({ queryId }: { queryId?: string }) {
   const [analyze, setAnalyze] = useState(false);
   const [compare, setCompare] = useState<Compare>("baseline");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
 
   const currentRef = useRef<PlanResponse | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -56,6 +66,11 @@ export default function Workspace({ queryId }: { queryId?: string }) {
         setOriginal(q.sql);
       })
       .catch((e: Error) => setLoadError(e.message));
+  }, [queryId]);
+
+  useEffect(() => {
+    if (!queryId) return;
+    getSnapshot(queryId).then(setSnapshot).catch(() => undefined);
   }, [queryId]);
 
   const run = useCallback(async (text: string, withAnalyze: boolean) => {
@@ -91,12 +106,37 @@ export default function Workspace({ queryId }: { queryId?: string }) {
     () => (reference && current ? diffPlans(reference.plan, current.plan) : null),
     [reference, current],
   );
-  const selectedNode = current && selectedId !== null ? nodeById(current.plan, selectedId) : null;
+  const edited = original !== null && sql !== original;
+
+  // Node ids (MV candidates) are only meaningful for the unmodified query whose live plan
+  // still has the stored plan's shape.
+  const nodeIds = useMemo(
+    () => (!edited && current && snapshot ? mapNodeIds(current.plan, snapshot.plan) : null),
+    [edited, current, snapshot],
+  );
+  const sharedBy = useMemo(() => {
+    if (!nodeIds || !snapshot) return null;
+    return new Map([...nodeIds].map(([id, nid]) => [id, snapshot.shared_counts[nid] ?? 1]));
+  }, [nodeIds, snapshot]);
+  const focusedId = useMemo(
+    () => (nodeIds && focusNodeId ? ([...nodeIds].find(([, nid]) => nid === focusNodeId)?.[0] ?? null) : null),
+    [nodeIds, focusNodeId],
+  );
+  const activeId = selectedId ?? focusedId;
+  const selectedNode = current && activeId !== null ? nodeById(current.plan, activeId) : null;
+  const candidateNote = !queryId
+    ? "MV candidate info is available for JOB workload queries."
+    : edited
+      ? "The SQL was edited, so this plan no longer maps to the workload's MV candidates. Reset to see them."
+      : !snapshot || !current
+        ? null
+        : nodeIds
+          ? null
+          : "The live plan differs from the stored plan, so node ids cannot be matched.";
 
   const idx = queries.findIndex((q) => q.id === queryId);
   const prevQ = idx > 0 ? queries[idx - 1] : null;
   const nextQ = idx >= 0 && idx < queries.length - 1 ? queries[idx + 1] : null;
-  const edited = original !== null && sql !== original;
   const costDelta =
     baseline && current && baseline !== current
       ? (current.plan["Total Cost"] - baseline.plan["Total Cost"]) / baseline.plan["Total Cost"]
@@ -198,7 +238,13 @@ export default function Workspace({ queryId }: { queryId?: string }) {
           )}
           {current ? (
             <div className={loading ? "h-full opacity-60 transition-opacity" : "h-full"}>
-              <PlanGraph plan={current.plan} diff={diff} selectedId={selectedId} onSelect={(id) => setSelectedId(id)} />
+              <PlanGraph
+                plan={current.plan}
+                diff={diff}
+                selectedId={activeId}
+                sharedBy={sharedBy}
+                onSelect={(id) => setSelectedId(id)}
+              />
             </div>
           ) : (
             !error && <p className="p-6 text-sm text-zinc-500">{loading ? "Planning…" : "No plan yet."}</p>
@@ -208,8 +254,11 @@ export default function Workspace({ queryId }: { queryId?: string }) {
         <aside className="overflow-auto border-l border-zinc-200 dark:border-zinc-800">
           <NodePanel
             node={selectedNode}
-            nodeDiff={selectedId !== null ? diff?.nodes.get(selectedId) : undefined}
+            nodeDiff={activeId !== null ? diff?.nodes.get(activeId) : undefined}
             diff={diff}
+            candidateId={activeId !== null ? nodeIds?.get(activeId) : null}
+            candidateNote={activeId !== null ? candidateNote : null}
+            queryId={queryId}
           />
         </aside>
       </div>

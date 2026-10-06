@@ -1,4 +1,5 @@
 import type { PlanNode } from "@/lib/plan";
+import NodeDetails from "./NodeDetails";
 import { costChange, type NodeDiff, type PlanDiff } from "@/lib/planDiff";
 
 const FIELDS = [
@@ -28,10 +29,18 @@ export default function NodePanel({
   node,
   nodeDiff,
   diff,
+  candidateId,
+  candidateNote,
+  queryId,
 }: {
   node: PlanNode | null;
   nodeDiff?: NodeDiff;
   diff: PlanDiff | null;
+  /** workload node id (MV candidate) of the selected node, when known */
+  candidateId?: string | null;
+  /** why candidate info is unavailable, when it is */
+  candidateNote?: string | null;
+  queryId?: string;
 }) {
   if (!node) {
     return (
@@ -48,7 +57,7 @@ export default function NodePanel({
       {nodeDiff && (
         <p className="mt-1 text-zinc-500">
           {nodeDiff.status === "new" ? "New in this plan" : nodeDiff.status === "moved" ? "Moved vs baseline" : "Same position as baseline"}
-          {change !== null && ` · cost ${nodeDiff.prevCost!.toFixed(0)} → ${node["Total Cost"].toFixed(0)}`}
+          {change !== null && Math.abs(change) >= 0.01 && ` · cost ${nodeDiff.prevCost!.toFixed(0)} → ${node["Total Cost"].toFixed(0)}`}
         </p>
       )}
       <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
@@ -59,6 +68,11 @@ export default function NodePanel({
           </div>
         ))}
       </dl>
+      {candidateId ? (
+        <NodeDetails key={candidateId} nodeId={candidateId} currentQueryId={queryId} />
+      ) : (
+        candidateNote && <p className="mt-4 text-[11px] text-zinc-500">{candidateNote}</p>
+      )}
     </div>
   );
 }

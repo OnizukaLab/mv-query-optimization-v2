@@ -7,6 +7,7 @@ from api.services.experiment_service import PROJECT_ROOT, ExperimentManager
 from api.services.plan_service import PlanService
 from api.services.query_service import QueryService
 from api.services.results_service import ResultsService
+from api.services.workload_service import WorkloadIndex
 from config.settings import get_settings
 
 
@@ -31,3 +32,9 @@ def get_query_service() -> QueryService:
     """QueryService rooted at the JOB SQL directory."""
     sql_dir = Path(get_settings().benchmark.sql_dir) / "job"
     return QueryService(sql_dir if sql_dir.is_absolute() else PROJECT_ROOT / sql_dir)
+
+
+@lru_cache
+def get_workload_index() -> WorkloadIndex:
+    """Process-wide JOB workload index (built lazily on first request)."""
+    return WorkloadIndex(get_settings(), PROJECT_ROOT)

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { mapNodeIds } from "./nodeIds";
 import { costChange, diffPlans, shapeKey } from "./planDiff";
 import type { PlanNode } from "./plan";
 
@@ -46,5 +47,23 @@ describe("helpers", () => {
     const c = n("Hash Join", 1, {}, [scan("b"), scan("a")]);
     expect(shapeKey(a)).toBe(shapeKey(b));
     expect(shapeKey(a)).not.toBe(shapeKey(c));
+  });
+});
+
+describe("mapNodeIds", () => {
+  const live = n("Hash Join", 100, {}, [scan("a"), scan("b")]);
+  const snap = n("Hash Join", 1, { node_id: "non_leaf_1" }, [
+    scan("a", 1),
+    n("Seq Scan", 1, { "Relation Name": "b", Alias: "b", node_id: "leaf_2" }),
+  ]);
+  (snap.Plans![0] as PlanNode).node_id = "leaf_1";
+
+  it("transfers ids by pre-order position when shapes match", () => {
+    const m = mapNodeIds(live, snap)!;
+    expect([...m.entries()]).toEqual([["0", "non_leaf_1"], ["1", "leaf_1"], ["2", "leaf_2"]]);
+  });
+
+  it("returns null when the shapes differ", () => {
+    expect(mapNodeIds(n("Nested Loop", 1, {}, [scan("a"), scan("b")]), snap)).toBeNull();
   });
 });

@@ -15,13 +15,13 @@ export interface PlanDiff {
   removed: PlanNode[];
 }
 
-interface Flat {
+export interface Flat {
   id: string;
   path: string;
   node: PlanNode;
 }
 
-function flatten(root: PlanNode): Flat[] {
+export function flattenPlan(root: PlanNode): Flat[] {
   const out: Flat[] = [];
   const visit = (node: PlanNode, path: string) => {
     out.push({ id: String(out.length), path, node });
@@ -43,8 +43,8 @@ export function signature(n: PlanNode): string {
  * new; anything left in `prev` is removed.
  */
 export function diffPlans(prev: PlanNode, next: PlanNode): PlanDiff {
-  const a = flatten(prev);
-  const b = flatten(next);
+  const a = flattenPlan(prev);
+  const b = flattenPlan(next);
   const usedPrev = new Set<string>();
   const nodes = new Map<string, NodeDiff>();
 
@@ -84,12 +84,12 @@ export function costChange(prevCost: number | undefined, cost: number): number |
 
 /** Changes whenever the plan's shape (operations and tree structure) changes, not its numbers. */
 export function shapeKey(root: PlanNode): string {
-  return flatten(root)
+  return flattenPlan(root)
     .map((f) => `${f.path}:${signature(f.node)}`)
     .join(";");
 }
 
 /** The node a pre-order id (as assigned by layoutPlan) refers to. */
 export function nodeById(root: PlanNode, id: string): PlanNode | null {
-  return flatten(root).find((f) => f.id === id)?.node ?? null;
+  return flattenPlan(root).find((f) => f.id === id)?.node ?? null;
 }
