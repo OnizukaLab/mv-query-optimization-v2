@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Editor from "@monaco-editor/react";
+import MvCompare from "./MvCompare";
 import NodePanel from "./NodePanel";
 import PlanGraph from "./PlanGraph";
 import {
@@ -32,7 +33,15 @@ const LIVE_DELAY_MS = 600;
  * free-form playground. Edits re-explain automatically (never with ANALYZE) and the plan is
  * diffed against a baseline so the effect of a rewrite is visible.
  */
-export default function Workspace({ queryId, focusNodeId }: { queryId?: string; focusNodeId?: string }) {
+export default function Workspace({
+  queryId,
+  focusNodeId,
+  initialMode = "plan",
+}: {
+  queryId?: string;
+  focusNodeId?: string;
+  initialMode?: "plan" | "mv";
+}) {
   const dark = useDarkMode();
   const [sql, setSql] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
   const [original, setOriginal] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
@@ -50,9 +59,13 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
   const [compare, setCompare] = useState<Compare>("baseline");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [mode, setMode] = useState<"plan" | "mv">(initialMode);
+  const [originalPlan, setOriginalPlan] = useState<PlanResponse | null>(null);
+  const [customNodes, setCustomNodes] = useState<string[]>([]);
 
   const currentRef = useRef<PlanResponse | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const originalRef = useRef<string | null>(queryId ? null : PLAYGROUND_SQL);
 
   useEffect(() => {
     listQueries().then(setQueries).catch(() => undefined);
@@ -62,6 +75,7 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
     if (!queryId) return;
     getQuery(queryId)
       .then((q) => {
+        originalRef.current = q.sql;
         setSql(q.sql);
         setOriginal(q.sql);
       })
@@ -85,6 +99,7 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
       currentRef.current = result;
       setCurrent(result);
       setBaseline((b) => b ?? result); // first plan is the reference point
+      if (text === originalRef.current) setOriginalPlan(result);
       setError(null);
     } catch (e) {
       if (ctrl.signal.aborted) return;
@@ -100,6 +115,12 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
     const t = setTimeout(() => void run(sql, false), LIVE_DELAY_MS);
     return () => clearTimeout(t);
   }, [sql, live, run]);
+
+  const view = mode === "mv" && queryId && sql === original ? "mv" : "plan";
+  const toggleWhatIf = (nodeId: string) => {
+    setCustomNodes((cur) => (cur.includes(nodeId) ? cur.filter((n) => n !== nodeId) : [...cur, nodeId]));
+    setMode("mv");
+  };
 
   const reference = compare === "baseline" ? baseline : compare === "previous" ? previous : null;
   const diff = useMemo(
@@ -159,7 +180,23 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
         )}
         {edited && <span className="rounded bg-amber-500 px-1.5 text-xs text-white">edited</span>}
 
-        <label className="ml-4 flex items-center gap-1 text-xs">
+        <span className="ml-2 flex overflow-hidden rounded-md border border-zinc-300 text-xs dark:border-zinc-700">
+          {(["plan", "mv"] as const).map((m) => (
+            <button
+              key={m}
+              disabled={m === "mv" && (!queryId || edited)}
+              onClick={() => setMode(m)}
+              title={m === "mv" ? (queryId ? (edited ? "Reset the SQL to compare with MVs" : undefined) : "Available for JOB queries") : undefined}
+              className={`px-2 py-1 disabled:opacity-40 ${
+                view === m ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900" : ""
+              }`}
+            >
+              {m === "plan" ? "Plan" : "With MVs"}
+            </button>
+          ))}
+        </span>
+
+        <label className="ml-2 flex items-center gap-1 text-xs">
           <input type="checkbox" checked={live} onChange={(e) => setLive(e.target.checked)} />
           Live
         </label>
@@ -215,7 +252,7 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
         </div>
       </div>
 
-      <div className="grid min-h-0 flex-1 grid-cols-[minmax(280px,26%)_1fr_280px]">
+      <div className={`grid min-h-0 flex-1 ${view === "mv" ? "grid-cols-[minmax(240px,22%)_1fr]" : "grid-cols-[minmax(280px,26%)_1fr_280px]"}`}>
         <div className="border-r border-zinc-200 dark:border-zinc-800">
           {sql !== null ? (
             <Editor
@@ -230,6 +267,15 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
           )}
         </div>
 
+        {view === "mv" && queryId ? (
+          <MvCompare
+            queryId={queryId}
+            originalPlan={originalPlan}
+            customNodes={customNodes}
+            onCustomNodes={setCustomNodes}
+          />
+        ) : (
+          <>
         <div className="relative min-w-0">
           {error && (
             <pre className="absolute inset-x-0 top-0 z-10 max-h-40 overflow-auto whitespace-pre-wrap bg-red-50 p-3 text-xs text-red-700 dark:bg-red-950 dark:text-red-300">
@@ -259,8 +305,12 @@ export default function Workspace({ queryId, focusNodeId }: { queryId?: string; 
             candidateId={activeId !== null ? nodeIds?.get(activeId) : null}
             candidateNote={activeId !== null ? candidateNote : null}
             queryId={queryId}
+            whatIfNodes={customNodes}
+            onWhatIf={toggleWhatIf}
           />
         </aside>
+          </>
+        )}
       </div>
     </div>
   );

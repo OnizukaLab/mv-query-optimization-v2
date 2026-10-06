@@ -6,7 +6,17 @@ import { getNode, type NodeDetails as Details } from "@/lib/api";
 import { fmtBytes, fmtNumber } from "@/lib/format";
 
 /** MV-candidate view of a plan node. Mount with key={nodeId} so state resets per node. */
-export default function NodeDetails({ nodeId, currentQueryId }: { nodeId: string; currentQueryId?: string }) {
+export default function NodeDetails({
+  nodeId,
+  currentQueryId,
+  inWhatIf,
+  onWhatIf,
+}: {
+  nodeId: string;
+  currentQueryId?: string;
+  inWhatIf?: boolean;
+  onWhatIf?: (nodeId: string) => void;
+}) {
   const [d, setD] = useState<Details | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,6 +48,14 @@ export default function NodeDetails({ nodeId, currentQueryId }: { nodeId: string
         <Stat label="Maintenance cost" value={fmtNumber(d.maintenance_cost, 1)} />
         <Stat label="Model utility (Σ)" value={fmtNumber(d.total_utility, 0)} />
       </dl>
+      {onWhatIf && (
+        <button
+          onClick={() => onWhatIf(nodeId)}
+          className="mt-3 w-full rounded-md border border-zinc-400 px-2 py-1 text-xs font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        >
+          {inWhatIf ? "Remove from what-if set" : "Materialize this node (what-if)"}
+        </button>
+      )}
       <p className="mt-1 text-[11px] text-zinc-500">
         Model values from the ILP inputs (planner cost units); a real what-if comes from running the MV.
       </p>

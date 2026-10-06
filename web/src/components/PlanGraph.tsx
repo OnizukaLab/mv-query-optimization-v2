@@ -16,6 +16,7 @@ import { costChange, shapeKey, type PlanDiff } from "@/lib/planDiff";
 
 type CardData = PlanNodeData & {
   diffStatus?: "same" | "moved" | "new";
+  diffLabel?: string;
   prevCost?: number;
   selected: boolean;
   /** Number of workload queries containing this node (MV candidate), when known. */
@@ -25,10 +26,14 @@ type CardData = PlanNodeData & {
 const BADGE: Record<string, string> = {
   new: "bg-blue-500 text-white",
   moved: "bg-amber-500 text-white",
+  replaced: "bg-red-500 text-white",
 };
 
+/** How a diff status is worded on the cards, e.g. the original plan calls "new" nodes "replaced". */
+export type DiffWording = Partial<Record<"new" | "moved", "new" | "moved" | "replaced" | null>>;
+
 function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
-  const { plan, costShare, diffStatus, prevCost, selected, sharedBy } = data;
+  const { plan, costShare, diffStatus, diffLabel, prevCost, selected, sharedBy } = data;
   const target = plan["Relation Name"] ?? plan["Index Name"];
   const change = costChange(prevCost, plan["Total Cost"]);
   const ring = selected
@@ -52,8 +57,10 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
             ×{sharedBy}
           </span>
         )}
-        {diffStatus && BADGE[diffStatus] && (
-          <span className={`${sharedBy && sharedBy > 1 ? "" : "ml-auto "}rounded px-1 text-[10px] ${BADGE[diffStatus]}`}>{diffStatus}</span>
+        {diffLabel && BADGE[diffLabel] && (
+          <span className={`${sharedBy && sharedBy > 1 ? "" : "ml-auto "}rounded px-1 text-[10px] ${BADGE[diffLabel]}`}>
+            {diffLabel}
+          </span>
         )}
       </div>
       <div className="truncate text-zinc-500">{target ?? " "}</div>
@@ -83,16 +90,23 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
 
 const nodeTypes = { plan: PlanNodeCard };
 
+function labelFor(status: "same" | "moved" | "new" | undefined, wording?: DiffWording): string | undefined {
+  if (!status || status === "same") return undefined;
+  const w = wording?.[status];
+  return w === null ? undefined : (w ?? status);
+}
+
 export interface PlanGraphProps {
   plan: PlanNode;
   diff?: PlanDiff | null;
   selectedId?: string | null;
   /** pre-order node id -> number of queries sharing that node */
   sharedBy?: Map<string, number> | null;
+  wording?: DiffWording;
   onSelect?: (id: string | null, plan: PlanNode | null) => void;
 }
 
-export default function PlanGraph({ plan, diff, selectedId, sharedBy, onSelect }: PlanGraphProps) {
+export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, onSelect }: PlanGraphProps) {
   const layout = useMemo(() => layoutPlan(plan), [plan]);
   const nodes = useMemo(
     () =>
@@ -101,12 +115,13 @@ export default function PlanGraph({ plan, diff, selectedId, sharedBy, onSelect }
         data: {
           ...n.data,
           diffStatus: diff?.nodes.get(n.id)?.status,
+          diffLabel: labelFor(diff?.nodes.get(n.id)?.status, wording),
           prevCost: diff?.nodes.get(n.id)?.prevCost,
           selected: n.id === selectedId,
           sharedBy: sharedBy?.get(n.id),
         } satisfies CardData,
       })),
-    [layout, diff, selectedId, sharedBy],
+    [layout, diff, selectedId, sharedBy, wording],
   );
   // Re-fit the viewport only when the plan's shape changes, not on every cost tweak.
   const key = useMemo(() => shapeKey(plan), [plan]);

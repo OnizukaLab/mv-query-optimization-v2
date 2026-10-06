@@ -32,6 +32,8 @@ export default function NodePanel({
   candidateId,
   candidateNote,
   queryId,
+  whatIfNodes,
+  onWhatIf,
 }: {
   node: PlanNode | null;
   nodeDiff?: NodeDiff;
@@ -41,6 +43,8 @@ export default function NodePanel({
   /** why candidate info is unavailable, when it is */
   candidateNote?: string | null;
   queryId?: string;
+  whatIfNodes?: string[];
+  onWhatIf?: (nodeId: string) => void;
 }) {
   if (!node) {
     return (
@@ -69,7 +73,13 @@ export default function NodePanel({
         ))}
       </dl>
       {candidateId ? (
-        <NodeDetails key={candidateId} nodeId={candidateId} currentQueryId={queryId} />
+        <NodeDetails
+          key={candidateId}
+          nodeId={candidateId}
+          currentQueryId={queryId}
+          inWhatIf={whatIfNodes?.includes(candidateId)}
+          onWhatIf={onWhatIf}
+        />
       ) : (
         candidateNote && <p className="mt-4 text-[11px] text-zinc-500">{candidateNote}</p>
       )}

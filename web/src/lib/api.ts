@@ -15,6 +15,17 @@ export interface Health {
   detail: string | null;
 }
 
+/** HTTP error carrying the status and FastAPI's `detail` (string or structured). */
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly detail: unknown,
+  ) {
+    super(message);
+  }
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     ...init,
@@ -22,7 +33,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   });
   if (!res.ok) {
     const body = await res.json().catch(() => null);
-    throw new Error(body?.detail ?? `Request failed (${res.status})`);
+    const detail = body?.detail;
+    const message =
+      typeof detail === "string" ? detail : (detail?.message ?? `Request failed (${res.status})`);
+    throw new ApiError(message, res.status, detail);
   }
   return res.json() as Promise<T>;
 }
@@ -177,3 +191,44 @@ export interface NodeDetails {
 }
 
 export const getNode = (nodeId: string) => request<NodeDetails>(`/nodes/${encodeURIComponent(nodeId)}`);
+
+export interface MvSet {
+  set_id: string;
+  algorithm: string;
+  node_ids: string[];
+  updated_at: number;
+  measured: { with_mvs_s: number | null; baseline_s: number | null };
+}
+
+export const listMvSets = (queryId: string) =>
+  request<MvSet[]>(`/queries/${encodeURIComponent(queryId)}/mv-sets`);
+
+export interface MvPlan {
+  query_id: string;
+  node_ids: string[];
+  rewritten_sql: string;
+  plan: PlanNode;
+  analyzed: boolean;
+  planning_time_ms: number | null;
+  execution_time_ms: number | null;
+  computed_at: number;
+  cached: boolean;
+  mvs: {
+    node_id: string;
+    create_seconds: number;
+    est_size_bytes: number;
+    referenced_in_sql: boolean;
+    used_in_plan: boolean;
+  }[];
+}
+
+export const fetchMvPlan = (
+  queryId: string,
+  body: { node_ids: string[]; analyze?: boolean; confirm_large?: boolean; force?: boolean },
+  signal?: AbortSignal,
+) =>
+  request<MvPlan>(`/queries/${encodeURIComponent(queryId)}/mv-plan`, {
+    method: "POST",
+    body: JSON.stringify(body),
+    signal,
+  });
