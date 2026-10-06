@@ -16,8 +16,10 @@ from pathlib import Path
 from typing import Any
 
 from config.settings import Settings
+from src.core.models import MaterializedView
 from src.core.parse_exporter import ParseExporter
 from src.core.query_parser import QueryParser
+from src.rewrite.query_rewriter import QueryRewriter
 from src.rewrite.enhanced_mv_generator import EnhancedMVGenerator
 
 logger = logging.getLogger(__name__)
@@ -139,3 +141,73 @@ class WorkloadIndex:
         except Exception as e:  # generator is best-effort for display
             logger.warning(f"MV SQL generation failed for {node_id}: {e}")
             return None
+
+    # ---- what-if building blocks -------------------------------------------------------
+
+    def query_index(self, query_id: str) -> int:
+        """Position of a query in the parsed workload (the index used by usage_positions)."""
+        self._ensure()
+        try:
+            return self._query_pos[query_id]
+        except KeyError:
+            raise NodeNotFoundError(query_id) from None
+
+    def node_positions(self, node_id: str) -> list[tuple[int, int]]:
+        """(query index, position) pairs where the node occurs; [] if unknown."""
+        qp = self._ensure()
+        info = qp.qm.get_node_info(node_id) if node_id in self._node_pos else None
+        return [(int(q), int(p)) for q, p in (info or {}).get("positions", [])]
+
+    def node_size_bytes(self, node_id: str) -> int:
+        """Estimated materialized size of a node."""
+        qp = self._ensure()
+        return int(qp.b_j[self._node_pos[node_id]])
+
+    def views_consistent(self, views: list[dict[str, Any]]) -> bool:
+        """True if stored selected views match this parse (same node ids and usage positions).
+
+        Result files written by a different workload or parser version number nodes differently.
+        """
+        self._ensure()
+        for v in views:
+            if v.get("node_id") not in self._node_pos:
+                return False
+            known = set(self.node_positions(v["node_id"]))
+            if not {(int(q), int(p)) for q, p in v.get("usage_positions", [])} <= known:
+                return False
+        return True
+
+    def build_rewrite(self, query_id: str, node_ids: list[str]) -> tuple[str, list[dict[str, Any]]]:
+        """Rewrite one query to use the given MV nodes.
+
+        Returns:
+            (rewritten SQL, MV definitions with ``node_id``, ``create_sql``, ``index_sql``).
+
+        Raises:
+            NodeNotFoundError: Unknown query or node.
+        """
+        qp = self._ensure()
+        q_idx = self.query_index(query_id)
+        chosen = set(node_ids)
+        generator = EnhancedMVGenerator(qp.qm, selected_mvs=chosen)
+        views: list[MaterializedView] = []
+        definitions: list[dict[str, Any]] = []
+        for node_id in node_ids:
+            if node_id not in self._node_pos:
+                raise NodeNotFoundError(node_id)
+            create_sql, index_sql = generator.generate_mv_and_index_sql(node_id)
+            positions = [[q, p] for q, p in self.node_positions(node_id) if q == q_idx]
+            views.append(
+                MaterializedView(
+                    view_id=f"mv_{node_id}",
+                    node_id=node_id,
+                    create_sql=create_sql,
+                    size=self.node_size_bytes(node_id),
+                    maintenance_cost=0.0,
+                    usage_positions=positions,
+                    index_sql=index_sql,
+                )
+            )
+            definitions.append({"node_id": node_id, "create_sql": create_sql, "index_sql": index_sql})
+        rewritten = QueryRewriter(self._settings).rewrite_queries(views)[query_id]
+        return rewritten.strip(), definitions

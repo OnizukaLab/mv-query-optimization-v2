@@ -7,7 +7,7 @@ Run locally (loopback only; arbitrary SQL is accepted):
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routers import experiments, health, nodes, plans, queries, results
+from api.routers import experiments, health, nodes, plans, queries, results, whatif
 
 app = FastAPI(title="MV Optimization API", version="0.1.0")
 
@@ -24,3 +24,4 @@ app.include_router(experiments.router)
 app.include_router(results.router)
 app.include_router(queries.router)
 app.include_router(nodes.router)
+app.include_router(whatif.router)

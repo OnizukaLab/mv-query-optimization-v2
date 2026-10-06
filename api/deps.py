@@ -7,6 +7,7 @@ from api.services.experiment_service import PROJECT_ROOT, ExperimentManager
 from api.services.plan_service import PlanService
 from api.services.query_service import QueryService
 from api.services.results_service import ResultsService
+from api.services.whatif_service import WhatIfService
 from api.services.workload_service import WorkloadIndex
 from config.settings import get_settings
 
@@ -38,3 +39,12 @@ def get_query_service() -> QueryService:
 def get_workload_index() -> WorkloadIndex:
     """Process-wide JOB workload index (built lazily on first request)."""
     return WorkloadIndex(get_settings(), PROJECT_ROOT)
+
+
+@lru_cache
+def get_whatif_service() -> WhatIfService:
+    """Process-wide what-if service."""
+    settings = get_settings()
+    out = Path(settings.paths.output_dir)
+    out = out if out.is_absolute() else PROJECT_ROOT / out
+    return WhatIfService(get_workload_index(), settings.database, out, out / "web_cache" / "mv_plans")
