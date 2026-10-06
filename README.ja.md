@@ -138,14 +138,20 @@ python scripts/run_redbench_workload.py --mode redbench-job --algorithm none --n
 
 ### 結果の確認
 
-結果は `Output/`（Git 管理外）に保存されます。
+`run_experiment.py` を実行するたびに、`Output/`（Git 管理外）配下に実験専用のディレクトリが作られ、実験同士が上書き・混在しません。
 
 ```
 Output/
-├── experiments/   # アルゴリズム別の結果
-├── logs/          # 実行ログ
-└── artifacts/     # 中間ファイル（qp_class.pkl など）
+├── runs/<run_id>/            # 1回の実験（例: 20261006-154300_job）
+│   ├── manifest.json         # ワークロード・ストレージ上限・insert数・gitコミット・状態
+│   └── <algorithm>/          # optimization/, sql/, benchmark/, query_rewrite/, summary.json
+└── artifacts/<workload_id>_i<N>/   # パース結果（qp_class.pkl, parsed/, bj_calibrated.json）
 ```
+
+- `--run-id` で run 名を指定できます（既定は `<日時>_<ワークロード>`）。既存の id を `--phases` / `--start-from` と併用すると、その run を続行します。1つの run は1つのワークロードに固定されます。
+- *workload id* はフォルダ名ではなく、実際に読み込まれたクエリファイルの内容・順序・使用頻度のハッシュです。同じ id なら同じワークロードです。パース結果は workload id と `--insert-queries` ごとにキャッシュされ、同じワークロードの run で共有されます。
+- 各アルゴリズムの開始前に、DB 上の MV は全て削除されます。
+- この構成になる前の結果（`Output/<algorithm>/`）は、ダッシュボードで legacy として引き続き表示されます。
 
 比較: `python scripts/compare_algorithms.py`。出力形式は [docs/output_files.md](docs/output_files.md) を参照。
 
