@@ -165,6 +165,19 @@ export const listResultSets = () => request<ResultSet[]>("/results/sets");
 export const compareResultSet = (id: string) =>
   request<Comparison>(`/results/sets/${encodeURIComponent(id)}/compare`);
 
+export interface SelectedNodes {
+  /** False when the stored result was made with a different node numbering than the current workload. */
+  consistent: boolean;
+  count: number;
+  node_ids: string[];
+  /** Nodes each query actually uses (query id -> node ids); a selected node is not used by every query containing it. */
+  used: Record<string, string[]>;
+}
+
+/** MV-candidate node ids each algorithm of a result set selected, keyed by algorithm name. */
+export const getSelectedNodes = (setId: string) =>
+  request<Record<string, SelectedNodes>>(`/results/sets/${encodeURIComponent(setId)}/selected`);
+
 export interface Snapshot {
   plan: PlanNode;
   shared_counts: Record<string, number>;

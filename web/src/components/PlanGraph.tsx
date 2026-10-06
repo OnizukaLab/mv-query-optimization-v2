@@ -5,6 +5,7 @@ import {
   Background,
   Controls,
   Handle,
+  Panel,
   Position,
   ReactFlow,
   type Node,
@@ -12,6 +13,15 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { layoutPlan, NODE_HEIGHT, NODE_WIDTH, type PlanNode, type PlanNodeData } from "@/lib/plan";
+import {
+  CATEGORIES,
+  categoryOf,
+  categoryStyle,
+  resetColors,
+  setCategoryColor,
+  setColorsEnabled,
+  useNodeColors,
+} from "@/lib/nodeColors";
 import { costChange, shapeKey, type PlanDiff } from "@/lib/planDiff";
 
 type CardData = PlanNodeData & {
@@ -34,6 +44,9 @@ export type DiffWording = Partial<Record<"new" | "moved", "new" | "moved" | "rep
 
 function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
   const { plan, costShare, diffStatus, diffLabel, prevCost, selected, sharedBy } = data;
+  const { enabled, colors } = useNodeColors();
+  const category = categoryOf(plan["Node Type"]);
+  const accent = enabled ? categoryStyle(category, colors[category]) : null;
   const target = plan["Relation Name"] ?? plan["Index Name"];
   const change = costChange(prevCost, plan["Total Cost"]);
   const ring = selected
@@ -44,7 +57,15 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
   return (
     <div
       className={`rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs shadow-sm dark:border-zinc-700 dark:bg-zinc-900 ${ring}`}
-      style={{ width: NODE_WIDTH, height: NODE_HEIGHT }}
+      style={{
+        width: NODE_WIDTH,
+        height: NODE_HEIGHT,
+        ...(accent && {
+          borderColor: accent.border,
+          borderLeftWidth: 5,
+          backgroundColor: accent.background,
+        }),
+      }}
     >
       <Handle type="target" position={Position.Top} />
       <div className="flex items-center gap-1">
@@ -90,6 +111,42 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
 
 const nodeTypes = { plan: PlanNodeCard };
 
+function ColorPanel({ types }: { types: Set<string> }) {
+  const { enabled, colors } = useNodeColors();
+  const present = CATEGORIES.filter((c) => types.has(c.key));
+  return (
+    <Panel position="top-right">
+      <div className="rounded-lg border border-zinc-300 bg-white/90 p-2 text-xs shadow-sm dark:border-zinc-700 dark:bg-zinc-900/90">
+        <label className="flex items-center gap-1 font-medium">
+          <input type="checkbox" checked={enabled} onChange={(e) => setColorsEnabled(e.target.checked)} />
+          Color by node type
+        </label>
+        {enabled && (
+          <ul className="mt-1 space-y-1">
+            {present.map((c) => (
+              <li key={c.key} className="flex items-center gap-2">
+                <input
+                  type="color"
+                  value={colors[c.key]}
+                  onChange={(e) => setCategoryColor(c.key, e.target.value)}
+                  className="h-4 w-6 cursor-pointer border-0 bg-transparent p-0"
+                  aria-label={`${c.label} color`}
+                />
+                {c.label}
+              </li>
+            ))}
+            <li>
+              <button type="button" onClick={resetColors} className="text-zinc-500 underline">
+                Reset colors
+              </button>
+            </li>
+          </ul>
+        )}
+      </div>
+    </Panel>
+  );
+}
+
 function labelFor(status: "same" | "moved" | "new" | undefined, wording?: DiffWording): string | undefined {
   if (!status || status === "same") return undefined;
   const w = wording?.[status];
@@ -125,6 +182,7 @@ export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, o
   );
   // Re-fit the viewport only when the plan's shape changes, not on every cost tweak.
   const key = useMemo(() => shapeKey(plan), [plan]);
+  const types = useMemo(() => new Set(layout.nodes.map((n) => categoryOf(n.data.plan["Node Type"]))), [layout]);
 
   return (
     <ReactFlow
@@ -141,6 +199,7 @@ export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, o
     >
       <Background />
       <Controls showInteractive={false} />
+      <ColorPanel types={types} />
     </ReactFlow>
   );
 }

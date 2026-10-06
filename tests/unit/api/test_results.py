@@ -77,3 +77,44 @@ def test_speedup_is_none_when_baseline_ran_a_different_workload(output):
     write_algo(output / "exp1", "none", 10.0, queries=5, workload="other")
     by = {a["name"]: a for a in ResultsService(output).compare("exp1")["algorithms"]}
     assert by["bigsubs"]["speedup_vs_baseline"] is None
+
+
+def test_selected_views_keeps_only_dicts_with_node_ids(tmp_path):
+    d = tmp_path / "normal"
+    (d / "optimization").mkdir(parents=True)
+    (d / "optimization" / "result.json").write_text(
+        json.dumps({"selected_views": [{"node_id": "a"}, {"node_id": 3}, 7, {"node_id": "b"}]})
+    )
+    assert ResultsService(tmp_path).selected_views("_root") == {
+        "normal": [{"node_id": "a"}, {"node_id": "b"}]
+    }
+
+
+def test_selected_views_unknown_set(output):
+    with pytest.raises(ResultNotFoundError):
+        ResultsService(output).selected_views("nope")
+
+
+class _FakeIndex:
+    def views_consistent(self, views):
+        return True
+
+    def query_ids(self):
+        return ["1a", "6d"]
+
+
+def test_selected_nodes_reports_per_query_usage_not_every_containing_plan(tmp_path):
+    from api.routers.results import selected_nodes
+
+    d = tmp_path / "normal"
+    (d / "optimization").mkdir(parents=True)
+    views = [
+        {"node_id": "outer", "usage_positions": [[1, 0]]},
+        # selected for query 0 only, though query 1 also contains it (nested in "outer")
+        {"node_id": "inner", "usage_positions": [[0, 0]]},
+    ]
+    (d / "optimization" / "result.json").write_text(json.dumps({"selected_views": views}))
+
+    out = selected_nodes("_root", ResultsService(tmp_path), _FakeIndex())["normal"]
+    assert out["node_ids"] == ["inner", "outer"]
+    assert out["used"] == {"6d": ["outer"], "1a": ["inner"]}

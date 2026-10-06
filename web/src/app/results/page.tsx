@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import BarChart from "@/components/charts/BarChart";
 import Legend from "@/components/charts/Legend";
 import LineChart from "@/components/charts/LineChart";
@@ -124,6 +125,13 @@ function ComparisonView({ data }: { data: Comparison }) {
           );
         })}
       </div>
+
+      <Link
+        href={`/overview?set=${encodeURIComponent(data.id)}&algo=${encodeURIComponent(selection.filter((n) => n !== "none").join(","))}`}
+        className="w-fit text-xs text-blue-600 underline"
+      >
+        Show the selected nodes on the plan overview →
+      </Link>
 
       {warnings.length > 0 && (
         <div className="rounded-md border border-amber-400 bg-amber-50 p-3 text-xs text-amber-900 dark:bg-amber-950 dark:text-amber-200">

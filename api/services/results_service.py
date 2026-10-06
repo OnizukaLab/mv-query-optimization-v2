@@ -99,6 +99,25 @@ class ResultsService:
             "warnings": self._warnings(algorithms),
         }
 
+    def selected_views(self, set_id: str) -> dict[str, list[dict[str, Any]]]:
+        """Views each algorithm selected (dicts with ``node_id``), keyed by algorithm name.
+
+        Algorithms without a readable optimization result are omitted.
+
+        Raises:
+            ResultNotFoundError: If the set does not exist.
+        """
+        set_dir = self._set_dir(set_id)
+        selected: dict[str, list[dict[str, Any]]] = {}
+        for algo_dir in self._algorithms(set_dir):
+            opt = _read_json(algo_dir / "optimization" / "result.json")
+            views = (opt or {}).get("selected_views")
+            if isinstance(views, list):
+                selected[algo_dir.name] = [
+                    v for v in views if isinstance(v, dict) and isinstance(v.get("node_id"), str)
+                ]
+        return selected
+
     @staticmethod
     def _speedup(algo: dict[str, Any], base: dict[str, Any] | None) -> float | None:
         """Baseline time / algorithm time, only when both ran the same workload."""

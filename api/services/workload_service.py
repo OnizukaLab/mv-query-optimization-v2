@@ -153,6 +153,10 @@ class WorkloadIndex:
         except KeyError:
             raise NodeNotFoundError(query_id) from None
 
+    def query_ids(self) -> list[str]:
+        """Query ids in workload order (position i is the query index used by usage_positions)."""
+        return list(self._ensure().query_files)
+
     def node_positions(self, node_id: str) -> list[tuple[int, int]]:
         """(query index, position) pairs where the node occurs; [] if unknown."""
         qp = self._ensure()
