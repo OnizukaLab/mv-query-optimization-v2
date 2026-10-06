@@ -37,10 +37,12 @@ export default function Workspace({
   queryId,
   focusNodeId,
   initialMode = "plan",
+  initialMvNodes = [],
 }: {
   queryId?: string;
   focusNodeId?: string;
   initialMode?: "plan" | "mv";
+  initialMvNodes?: string[];
 }) {
   const dark = useDarkMode();
   const [sql, setSql] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
@@ -61,7 +63,7 @@ export default function Workspace({
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   const [mode, setMode] = useState<"plan" | "mv">(initialMode);
   const [originalPlan, setOriginalPlan] = useState<PlanResponse | null>(null);
-  const [customNodes, setCustomNodes] = useState<string[]>([]);
+  const [customNodes, setCustomNodes] = useState<string[]>(initialMvNodes);
 
   const currentRef = useRef<PlanResponse | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -252,7 +254,7 @@ export default function Workspace({
         </div>
       </div>
 
-      <div className={`grid min-h-0 flex-1 ${view === "mv" ? "grid-cols-[minmax(240px,22%)_1fr]" : "grid-cols-[minmax(280px,26%)_1fr_280px]"}`}>
+      <div className={`grid min-h-0 flex-1 ${view === "mv" ? "grid-cols-[minmax(240px,22%)_1fr]" : "grid-cols-[minmax(260px,24%)_1fr_340px]"}`}>
         <div className="border-r border-zinc-200 dark:border-zinc-800">
           {sql !== null ? (
             <Editor

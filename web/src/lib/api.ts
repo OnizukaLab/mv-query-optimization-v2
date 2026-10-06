@@ -232,3 +232,42 @@ export const fetchMvPlan = (
     body: JSON.stringify(body),
     signal,
   });
+
+export interface MvEstimate {
+  node_id: string;
+  rows: number | null;
+  width: number | null;
+  est_bytes: number;
+  source: "planner" | "model";
+}
+
+export const getNodeEstimate = (nodeId: string) =>
+  request<MvEstimate>(`/nodes/${encodeURIComponent(nodeId)}/estimate`);
+
+export interface NodeWhatIf {
+  node_id: string;
+  analyzed: boolean;
+  computed_at: number;
+  cached: boolean;
+  truncated: boolean;
+  mv: { node_id: string; create_seconds: number; actual_size_bytes: number; est_size_bytes: number };
+  total_cost_before: number;
+  total_cost_after: number;
+  queries: {
+    query_id: string;
+    cost_before: number;
+    cost_after: number;
+    time_before_ms: number | null;
+    time_after_ms: number | null;
+    uses_mv: boolean;
+  }[];
+}
+
+export const runNodeWhatIf = (
+  nodeId: string,
+  body: { analyze?: boolean; confirm_large?: boolean; force?: boolean },
+) =>
+  request<NodeWhatIf>(`/nodes/${encodeURIComponent(nodeId)}/whatif`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });

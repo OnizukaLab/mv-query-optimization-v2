@@ -10,6 +10,7 @@ import copy
 import io
 import json
 import logging
+import re
 import tempfile
 import threading
 from pathlib import Path
@@ -211,3 +212,29 @@ class WorkloadIndex:
             definitions.append({"node_id": node_id, "create_sql": create_sql, "index_sql": index_sql})
         rewritten = QueryRewriter(self._settings).rewrite_queries(views)[query_id]
         return rewritten.strip(), definitions
+
+    def queries_with_node(self, node_id: str) -> list[str]:
+        """Ids of the queries whose plan contains the node.
+
+        Raises:
+            NodeNotFoundError: If the node is unknown.
+        """
+        qp = self._ensure()
+        j = self._node_pos.get(node_id)
+        if j is None:
+            raise NodeNotFoundError(node_id)
+        return [qp.query_files[i] for i in range(len(qp.query_files)) if qp.q_s_list[i][j]]
+
+    def original_sql(self, query_id: str) -> str:
+        """Original SQL text of a workload query."""
+        self.query_index(query_id)
+        return (Path(self._settings.benchmark.sql_dir) / "job" / f"{query_id}.sql").read_text().strip()
+
+    def mv_select_sql(self, node_id: str) -> str | None:
+        """The SELECT that defines the node as a standalone MV (nothing else selected)."""
+        qp = self._ensure()
+        if node_id not in self._node_pos:
+            raise NodeNotFoundError(node_id)
+        create = EnhancedMVGenerator(qp.qm, selected_mvs={node_id}).generate_mv_sql(node_id)
+        m = re.search(r"\bAS\s+(SELECT\b.*)$", create, re.IGNORECASE | re.DOTALL)
+        return m.group(1).strip().rstrip(";").strip() if m else None

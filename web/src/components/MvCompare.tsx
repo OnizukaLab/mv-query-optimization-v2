@@ -123,7 +123,7 @@ export default function MvCompare({
   const createTotal = shown?.mvs.reduce((a, v) => a + v.create_seconds, 0) ?? 0;
 
   return (
-    <div className="grid min-h-0 grid-cols-[1fr_280px]">
+    <div className="grid min-h-0 grid-cols-[1fr_320px]">
       <div className="flex min-h-0 min-w-0 flex-col">
         <div className="flex flex-wrap items-center gap-3 border-b border-zinc-200 px-3 py-2 text-xs dark:border-zinc-800">
           <label className="flex items-center gap-2">

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getNode, type NodeDetails as Details } from "@/lib/api";
+import NodeWhatIf from "./NodeWhatIf";
+import { getNode, getNodeEstimate, type MvEstimate, type NodeDetails as Details } from "@/lib/api";
 import { fmtBytes, fmtNumber } from "@/lib/format";
 
 /** MV-candidate view of a plan node. Mount with key={nodeId} so state resets per node. */
@@ -18,6 +19,7 @@ export default function NodeDetails({
   onWhatIf?: (nodeId: string) => void;
 }) {
   const [d, setD] = useState<Details | null>(null);
+  const [est, setEst] = useState<MvEstimate | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -25,6 +27,9 @@ export default function NodeDetails({
     getNode(nodeId)
       .then((r) => !cancelled && setD(r))
       .catch((e: Error) => !cancelled && setError(e.message));
+    getNodeEstimate(nodeId)
+      .then((r) => !cancelled && setEst(r))
+      .catch(() => undefined);
     return () => {
       cancelled = true;
     };
@@ -44,21 +49,23 @@ export default function NodeDetails({
 
       <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2">
         <Stat label="Subtree cost" value={fmtNumber(d.cost, 0)} />
-        <Stat label="Est. size" value={fmtBytes(d.size_bytes)} />
+        <Stat label={est?.source === "planner" ? "Est. size (planner)" : "Est. size (model)"} value={fmtBytes(est?.est_bytes ?? d.size_bytes)} />
         <Stat label="Maintenance cost" value={fmtNumber(d.maintenance_cost, 1)} />
         <Stat label="Model utility (Σ)" value={fmtNumber(d.total_utility, 0)} />
       </dl>
-      {onWhatIf && (
-        <button
-          onClick={() => onWhatIf(nodeId)}
-          className="mt-3 w-full rounded-md border border-zinc-400 px-2 py-1 text-xs font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900"
-        >
-          {inWhatIf ? "Remove from what-if set" : "Materialize this node (what-if)"}
-        </button>
-      )}
       <p className="mt-1 text-[11px] text-zinc-500">
         Model values from the ILP inputs (planner cost units); a real what-if comes from running the MV.
       </p>
+
+      <NodeWhatIf nodeId={nodeId} currentQueryId={currentQueryId} />
+      {onWhatIf && (
+        <button
+          onClick={() => onWhatIf(nodeId)}
+          className="mt-2 w-full rounded-md border border-zinc-400 px-2 py-1 text-xs hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        >
+          {inWhatIf ? "Remove from this query's comparison" : "Compare plans for this query with this MV"}
+        </button>
+      )}
 
       <h3 className="mt-4 text-sm font-semibold">Shared by {d.queries.length} queries</h3>
       <ul className="mt-2 flex flex-wrap gap-1.5">

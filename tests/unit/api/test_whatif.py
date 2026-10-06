@@ -31,8 +31,19 @@ class FakeWorkload:
     def node_size_bytes(self, node):
         return self.sizes[node]
 
+    def mv_select_sql(self, node):
+        return None  # no DB in unit tests -> estimate falls back to the model size
+
     def views_consistent(self, views):
         return all(v["node_id"] in self.sizes for v in views)
+
+    def queries_with_node(self, node):
+        if node not in self.sizes:
+            raise NodeNotFoundError(node)
+        return ["1a", "1b"]
+
+    def original_sql(self, qid):
+        return f"SELECT 1 -- {qid}"
 
     def build_rewrite(self, qid, nodes):
         return "SELECT 1 FROM n1", [{"node_id": n, "create_sql": "x", "index_sql": None} for n in nodes]
@@ -76,6 +87,15 @@ def test_rejects_invalid_selection(service, qid, nodes):
         service.plan_with_mvs(qid, nodes)
 
 
+def test_refuses_absurdly_large_mvs(service):
+    from api.services.whatif_service import MAX_MV_BYTES, TooLargeError
+
+    service._workload.sizes = {"huge": MAX_MV_BYTES + 1}
+    service._workload.node_positions = lambda n: [(0, 1)]
+    with pytest.raises(TooLargeError):
+        service.plan_with_mvs("1a", ["huge"], confirm_large=True)
+
+
 def test_rejects_when_busy(service):
     service._busy.acquire()
     with pytest.raises(WhatIfBusyError):
@@ -95,3 +115,26 @@ def test_selections_only_from_consistent_results(service, tmp_path):
     write("elsewhere", "bigsubs", [{"node_id": "n1", "usage_positions": [[5, 3]]}])
     sels = service.selections_for_query("1a")
     assert [(s["set_id"], s["node_ids"]) for s in sels] == [("good", ["n1"])]
+
+
+def test_node_whatif_totals_and_cache(service, monkeypatch):
+    calls = []
+
+    def fake_scratch(definitions, work, timeout_s):
+        calls.append(1)
+        stats = [{"node_id": "n1", "create_seconds": 0.5, "actual_size_bytes": 10}]
+        rows = [
+            {"query_id": q, "cost_before": 100.0, "cost_after": 40.0, "time_before_ms": None, "time_after_ms": None, "uses_mv": True}
+            for q in ("1a", "1b")
+        ]
+        return {"mv": stats[0], "queries": rows}
+
+    monkeypatch.setattr(service, "_scratch", fake_scratch)
+    first = service.node_whatif("n1")
+    assert (first["total_cost_before"], first["total_cost_after"], first["cached"]) == (200.0, 80.0, False)
+    assert first["mv"]["est_size_bytes"] == 100 and not first["truncated"]
+    assert service.node_whatif("n1")["cached"] is True and len(calls) == 1
+    with pytest.raises(InvalidSelectionError):
+        service.node_whatif("ghost")
+    with pytest.raises(LargeMVError):
+        service.node_whatif("n2")
