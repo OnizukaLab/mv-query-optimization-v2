@@ -4,6 +4,7 @@ This module provides the abstract base class that all ILP optimization
 algorithms inherit from, defining common interfaces and shared functionality.
 """
 
+import logging
 from abc import ABC, abstractmethod
 
 import gurobipy as gp
@@ -12,6 +13,8 @@ from config.settings import Settings
 
 from ..core.models import MaterializedView, OptimizationResult
 from ..core.query_manager import QueryManager
+
+logger = logging.getLogger(__name__)
 
 
 class BaseILPOptimizer(ABC):
@@ -476,13 +479,23 @@ class BaseILPOptimizer(ABC):
         """
         return sum(self.b_j[j] * z_j[j] for j in range(len(z_j)))
 
-    def get_materialized_views(self, z_j: list[int], generate_sql: bool = False) -> list[MaterializedView]:
+    def get_materialized_views(
+        self,
+        z_j: list[int],
+        generate_sql: bool = False,
+        y_ij: list[list[int]] | None = None,
+    ) -> list[MaterializedView]:
         """Create MaterializedView objects from solution.
 
         Args:
             z_j: Binary list indicating which MVs are materialized
             generate_sql: If True, generate CREATE SQL immediately (requires database).
                          If False (default), SQL will be generated later in sql_generation phase.
+            y_ij: Query-MV usage solution. When given, each MV's ``usage_positions`` only holds
+                the positions in queries where ``y_ij[query][node] == 1``, i.e. where the
+                solution actually uses the MV. Without it every occurrence of the node in the
+                workload is listed, which lets the rewriter apply overlapping MVs (a node and
+                one of its descendants) to the same query, even though the ILP forbids that.
 
         Returns:
             List of MaterializedView objects
@@ -517,16 +530,39 @@ class BaseILPOptimizer(ABC):
                         logger.warning(f"Failed to generate SQL for {node_id}: {e}")
                         create_sql = f"-- Failed to generate SQL for {node_id}: {e}"
                 
+                positions = self.qm.subquery_positions.get(node_id, [])
+                if y_ij is not None:
+                    positions = [
+                        pos for pos in positions if pos[0] < len(y_ij) and y_ij[pos[0]][j] == 1
+                    ]
                 mv = MaterializedView(
                     view_id=f"mv_{node_id}",
                     node_id=node_id,
                     create_sql=create_sql,
                     size=self.b_j[j],
                     maintenance_cost=self.m_cost[j],
-                    usage_positions=self.qm.subquery_positions.get(node_id, []),
+                    usage_positions=positions,
                 )
                 mvs.append(mv)
+        if y_ij is not None:
+            self._warn_nested_usage(mvs)
         return mvs
+
+    def _warn_nested_usage(self, mvs: list[MaterializedView]) -> None:
+        """Log queries that use an MV together with a node it contains (should never happen)."""
+        index = {n: j for j, n in enumerate(self.node_list)}
+        by_query: dict[int, set[int]] = {}
+        for mv in mvs:
+            for q, _ in mv.usage_positions:
+                by_query.setdefault(q, set()).add(index[mv.node_id])
+        for q, js in by_query.items():
+            nested = [(a, b) for a in js for b in js if a != b and self.X[a][b] == 1]
+            if nested:
+                a, b = nested[0]
+                logger.warning(
+                    f"Query {q} uses nested MVs {self.node_list[a]} and {self.node_list[b]} "
+                    f"({len(nested)} pair(s)); the rewrite may be wrong"
+                )
 
     @abstractmethod
     def initialize_candidates(self, **kwargs) -> tuple[list[int], list[int]]:
@@ -577,7 +613,7 @@ class BaseILPOptimizer(ABC):
         Returns:
             OptimizationResult object
         """
-        selected_mvs = self.get_materialized_views(z_j, generate_sql=generate_sql)
+        selected_mvs = self.get_materialized_views(z_j, generate_sql=generate_sql, y_ij=y_ij)
         total_storage = self.calculate_storage_used(z_j)
 
         return OptimizationResult(

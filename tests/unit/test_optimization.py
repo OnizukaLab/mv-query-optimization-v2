@@ -158,6 +158,38 @@ class TestBaseILPOptimizer:
         assert mvs[1].size == 200
 
 
+    def test_usage_positions_follow_y_ij(self, optimizer_params):
+        """Only queries whose solution uses an MV get it in usage_positions.
+
+        non_leaf_1 contains leaf_1, and query 0 contains both. The solution uses non_leaf_1 in
+        query 0 and leaf_1 only in query 1, so query 0 must not be rewritten with leaf_1 as well.
+        """
+        optimizer = NormalOptimizer(**optimizer_params)
+
+        y_ij = [[0, 0, 1], [1, 0, 0]]
+        mvs = {mv.node_id: mv for mv in optimizer.get_materialized_views([1, 0, 1], y_ij=y_ij)}
+
+        assert mvs["leaf_1"].usage_positions == [[1, 0]]
+        assert mvs["non_leaf_1"].usage_positions == [[0, 2]]
+
+    def test_usage_positions_default_lists_every_occurrence(self, optimizer_params):
+        """Without y_ij the legacy behavior (all occurrences of the node) is kept."""
+        optimizer = NormalOptimizer(**optimizer_params)
+
+        mvs = {mv.node_id: mv for mv in optimizer.get_materialized_views([1, 0, 1])}
+
+        assert mvs["leaf_1"].usage_positions == [[0, 0], [1, 0]]
+
+    def test_nested_usage_is_reported(self, optimizer_params, caplog):
+        """A solution using a node together with a node it contains in one query is flagged."""
+        optimizer = NormalOptimizer(**optimizer_params)
+
+        with caplog.at_level("WARNING", logger="src.optimization.base"):
+            optimizer.get_materialized_views([1, 0, 1], y_ij=[[1, 0, 1], [0, 0, 0]])
+
+        assert "nested MVs" in caplog.text
+
+
 class TestNormalOptimizer:
     """Test suite for NormalOptimizer."""
 
