@@ -92,9 +92,9 @@ mv-query-optimization/
 │   └── redbench/                 # RedBench framework
 │
 ├── Output/                       # Experiment results (gitignored)
-│   ├── experiments/              # Per-algorithm results
-│   ├── logs/                     # Execution logs
-│   └── artifacts/                # Intermediate files (qp_class.pkl, etc.)
+│   ├── runs/<run_id>/            # One experiment: manifest.json + <algorithm>/ results
+│   ├── artifacts/<workload_id>_i<N>/  # Parse cache shared by runs on one workload
+│   └── logs/                     # Execution logs
 │
 ├── docs/                         # Documentation
 ├── Dockerfile                    # PostgreSQL + IMDb setup

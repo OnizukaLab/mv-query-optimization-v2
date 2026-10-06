@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import ExperimentForm from "@/components/ExperimentForm";
 import RunPanel from "@/components/RunPanel";
@@ -95,6 +96,7 @@ export default function ExperimentsPage() {
                 <th className="px-3 py-2">Workload</th>
                 <th className="px-3 py-2">Storage</th>
                 <th className="px-3 py-2">Time</th>
+                <th className="px-3 py-2" />
               </tr>
             </thead>
             <tbody>
@@ -119,6 +121,17 @@ export default function ExperimentsPage() {
                   <td className="px-3 py-2">{j.request.workload_type}</td>
                   <td className="px-3 py-2">{j.request.storage_limit_mb} MB</td>
                   <td className="px-3 py-2 tabular-nums">{fmtDuration(j)}</td>
+                  <td className="px-3 py-2">
+                    {j.run_id && (
+                      <Link
+                        href={`/results?set=${encodeURIComponent(j.run_id)}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-blue-600 underline"
+                      >
+                        Results
+                      </Link>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

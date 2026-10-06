@@ -1,7 +1,7 @@
 """Background execution of ``scripts/run_experiment.py`` with log streaming.
 
-One experiment runs at a time (they share ``Output/`` and the database).
-Job metadata and logs are persisted under ``Output/web_jobs/<id>/``.
+One experiment runs at a time (they share the database). Each writes its results to its own
+``Output/runs/<run_id>/``; job metadata and logs are persisted under ``Output/web_jobs/<id>/``.
 """
 
 import json
@@ -19,6 +19,7 @@ from typing import Any
 
 from api.schemas import ExperimentRequest
 from api.services.progress import ProgressTracker
+from src.utils.run_layout import new_run_id
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,7 @@ class Job:
     id: str
     request: ExperimentRequest
     command: list[str]
+    run_id: str
     status: str = "running"  # running | completed | failed | stopped
     started_at: float = field(default_factory=time.time)
     finished_at: float | None = None
@@ -54,6 +56,7 @@ class Job:
         """JSON-serializable job description (without logs)."""
         return {
             "id": self.id,
+            "run_id": self.run_id,
             "status": self.status,
             "started_at": self.started_at,
             "finished_at": self.finished_at,
@@ -64,7 +67,7 @@ class Job:
         }
 
 
-def build_command(req: ExperimentRequest) -> list[str]:
+def build_command(req: ExperimentRequest, run_id: str) -> list[str]:
     """Build the run_experiment.py argv (no shell involved)."""
     cmd = [
         sys.executable,
@@ -79,6 +82,8 @@ def build_command(req: ExperimentRequest) -> list[str]:
         str(req.insert_queries),
         "--workload-type",
         req.workload_type,
+        "--run-id",
+        run_id,
     ]
     if req.verbose:
         cmd.append("--verbose")
@@ -102,7 +107,9 @@ class ExperimentManager:
         with self._lock:
             if any(j.status == "running" for j in self._jobs.values()):
                 raise ExperimentBusyError("An experiment is already running")
-            job = Job(id=uuid.uuid4().hex[:12], request=req, command=build_command(req))
+            job_id = uuid.uuid4().hex[:12]
+            run_id = f"{new_run_id(req.workload_type)}_{job_id[:6]}"
+            job = Job(id=job_id, request=req, command=build_command(req, run_id), run_id=run_id)
             job.tracker.total_algorithms = len(req.algorithms)
             self._jobs[job.id] = job
         threading.Thread(target=self._run, args=(job,), daemon=True).start()

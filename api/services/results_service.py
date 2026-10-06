@@ -1,9 +1,9 @@
 """Read-only access to experiment results under ``Output/``.
 
 A *result set* is a directory holding one sub-directory per algorithm
-(``<set>/<algo>/summary.json`` etc.). ``Output`` itself is one set (the latest
-run of each algorithm); each ``Output/<name>/`` that contains algorithm
-sub-directories is another.
+(``<set>/<algo>/summary.json`` etc.). New runs live in ``Output/runs/<run_id>/`` together with a
+``manifest.json`` describing their conditions. Results written before that layout are still
+listed: ``Output`` itself (the latest run of each algorithm) and ``Output/<name>/``.
 """
 
 import json
@@ -11,11 +11,18 @@ import logging
 from pathlib import Path
 from typing import Any
 
+from src.utils.run_layout import (
+    ROOT_SET_ID,
+    ResultSetRef,
+    RunManifest,
+    find_result_set,
+    is_algorithm_dir,
+    iter_result_sets,
+)
+
 logger = logging.getLogger(__name__)
 
-ROOT_SET_ID = "_root"
 BASELINE = "none"
-_RESULT_FILES = ("summary.json", "benchmark/benchmark_results.json", "optimization/result.json")
 
 
 class ResultNotFoundError(KeyError):
@@ -31,50 +38,58 @@ def _read_json(path: Path) -> dict[str, Any] | None:
         return None
 
 
-def _is_algorithm_dir(d: Path) -> bool:
-    return d.is_dir() and any((d / f).exists() for f in _RESULT_FILES)
-
-
 class ResultsService:
     """Lists result sets and builds algorithm comparisons."""
 
     def __init__(self, output_dir: Path):
         self._output = output_dir
 
-    def _set_dir(self, set_id: str) -> Path:
-        if set_id == ROOT_SET_ID:
-            return self._output
-        # Only direct children of Output/ are valid ids (blocks "..", slashes).
-        d = self._output / set_id
-        if "/" in set_id or set_id.startswith(".") or not d.is_dir():
+    def _set(self, set_id: str) -> ResultSetRef:
+        ref = find_result_set(self._output, set_id)
+        if ref is None:
             raise ResultNotFoundError(set_id)
-        return d
+        return ref
+
+    def _set_dir(self, set_id: str) -> Path:
+        return self._set(set_id).path
 
     @staticmethod
     def _algorithms(set_dir: Path) -> list[Path]:
-        return sorted(d for d in set_dir.iterdir() if _is_algorithm_dir(d))
+        return sorted(d for d in set_dir.iterdir() if is_algorithm_dir(d))
+
+    @staticmethod
+    def _manifest(ref: ResultSetRef) -> dict[str, Any] | None:
+        m = RunManifest.read(ref.path) if ref.kind == "run" else None
+        if m is None:
+            return None
+        wl = m.workload
+        return {
+            "status": m.status,
+            "created_at": m.created_at,
+            "finished_at": m.finished_at,
+            "git_commit": m.git_commit,
+            "workload": {k: wl.get(k) for k in ("id", "label", "num_queries", "query_selection_mode")},
+            "params": m.params,
+        }
 
     def list_sets(self) -> list[dict[str, Any]]:
         """All result sets with their algorithms, newest first."""
-        if not self._output.exists():
-            return []
-        candidates = [(ROOT_SET_ID, "Output (latest runs)", self._output)]
-        candidates += [
-            (d.name, d.name, d)
-            for d in sorted(self._output.iterdir())
-            if d.is_dir() and not d.name.startswith(".")
-        ]
         sets = []
-        for set_id, name, d in candidates:
-            algos = self._algorithms(d)
-            if not algos:
-                continue
+        for ref in iter_result_sets(self._output):
+            algos = self._algorithms(ref.path)
             mtime = max(
                 (f.stat().st_mtime for a in algos for f in a.glob("summary.json")),
                 default=max(a.stat().st_mtime for a in algos),
             )
             sets.append(
-                {"id": set_id, "name": name, "algorithms": [a.name for a in algos], "updated_at": mtime}
+                {
+                    "id": ref.set_id,
+                    "name": "Output (latest runs)" if ref.set_id == ROOT_SET_ID else ref.set_id,
+                    "kind": ref.kind,
+                    "algorithms": [a.name for a in algos],
+                    "updated_at": mtime,
+                    "manifest": self._manifest(ref),
+                }
             )
         return sorted(sets, key=lambda s: s["updated_at"], reverse=True)
 
@@ -84,8 +99,8 @@ class ResultsService:
         Raises:
             ResultNotFoundError: If the set does not exist.
         """
-        set_dir = self._set_dir(set_id)
-        algorithms = [self._load_algorithm(a) for a in self._algorithms(set_dir)]
+        ref = self._set(set_id)
+        algorithms = [self._load_algorithm(a) for a in self._algorithms(ref.path)]
         if not algorithms:
             raise ResultNotFoundError(set_id)
 
@@ -94,6 +109,8 @@ class ResultsService:
             a["speedup_vs_baseline"] = self._speedup(a, base)
         return {
             "id": set_id,
+            "kind": ref.kind,
+            "manifest": self._manifest(ref),
             "algorithms": algorithms,
             "baseline": BASELINE if base else None,
             "warnings": self._warnings(algorithms),

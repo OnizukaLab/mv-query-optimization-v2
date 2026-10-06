@@ -141,14 +141,20 @@ These assume the MVs of the target algorithm have already been created via `run_
 
 ### Results
 
-Results are written to `Output/` (git-ignored):
+Each `run_experiment.py` invocation writes to its own directory under `Output/` (git-ignored), so runs never overwrite or mix with each other:
 
 ```
 Output/
-├── experiments/   # per-algorithm results
-├── logs/          # execution logs
-└── artifacts/     # intermediate files (qp_class.pkl, ...)
+├── runs/<run_id>/            # one experiment, e.g. 20261006-154300_job
+│   ├── manifest.json         # workload, storage limit, insert count, git commit, status
+│   └── <algorithm>/          # optimization/, sql/, benchmark/, query_rewrite/, summary.json
+└── artifacts/<workload_id>_i<N>/   # parse results (qp_class.pkl, parsed/, bj_calibrated.json)
 ```
+
+- `--run-id` names the run (default `<timestamp>_<workload>`); pass an existing id with `--phases` / `--start-from` to continue that run. A run is bound to one workload.
+- The *workload id* is a hash of the query files actually loaded (content, order, usage frequency), not of a folder name, so equal ids mean the same workload. Parse results are cached per workload id and `--insert-queries`, and shared by runs on that workload.
+- All materialized views in the database are dropped before each algorithm starts.
+- Results written before this layout (`Output/<algorithm>/`) are still listed by the dashboard as legacy sets.
 
 Compare algorithms with `python scripts/compare_algorithms.py`. Output formats are described in [docs/output_files.md](docs/output_files.md).
 

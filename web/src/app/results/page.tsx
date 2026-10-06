@@ -16,6 +16,29 @@ import {
 import { algorithmColor, PHASES, phaseColor } from "@/lib/colors";
 import { fmtNumber, fmtSeconds } from "@/lib/format";
 
+/** Dropdown label: workload and start time for runs, the directory name for older results. */
+function setLabel(s: ResultSet): string {
+  const m = s.manifest;
+  if (!m) return s.name;
+  return `${m.workload.label} · ${m.workload.num_queries}q · ${new Date(m.created_at * 1000).toLocaleString()}`;
+}
+
+function ManifestSummary({ data }: { data: Comparison }) {
+  const m = data.manifest;
+  if (!m) {
+    return <p className="text-xs text-zinc-500">Written before per-run directories: conditions were not recorded.</p>;
+  }
+  const mb = m.params.storage_limit_bytes ? `${Math.round(m.params.storage_limit_bytes / 1048576)} MB` : null;
+  const parts = [
+    `workload ${m.workload.label} (${m.workload.num_queries} queries, id ${m.workload.id})`,
+    mb && `storage ${mb}`,
+    m.params.insert_queries !== undefined && `${m.params.insert_queries} inserts`,
+    m.git_commit && `commit ${m.git_commit}`,
+    m.status !== "completed" && m.status,
+  ].filter(Boolean);
+  return <p className="text-xs text-zinc-500">{parts.join(" · ")}</p>;
+}
+
 export default function ResultsPage() {
   const [sets, setSets] = useState<ResultSet[] | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -23,7 +46,13 @@ export default function ResultsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    listResultSets().then(setSets).catch((e: Error) => setError(e.message));
+    const fromUrl = new URLSearchParams(window.location.search).get("set");
+    listResultSets()
+      .then((list) => {
+        setSets(list);
+        if (fromUrl && list.some((r) => r.id === fromUrl)) setSelected(fromUrl);
+      })
+      .catch((e: Error) => setError(e.message));
   }, []);
 
   const current = selected ?? sets?.[0]?.id ?? null;
@@ -54,7 +83,7 @@ export default function ResultsPage() {
           >
             {sets.map((s) => (
               <option key={s.id} value={s.id} className="text-black">
-                {s.name} — {s.algorithms.join(", ")}
+                {setLabel(s)} — {s.algorithms.join(", ")}
               </option>
             ))}
           </select>
@@ -103,6 +132,7 @@ function ComparisonView({ data }: { data: Comparison }) {
 
   return (
     <>
+      <ManifestSummary data={data} />
       <div className="flex flex-wrap gap-2">
         {data.algorithms.map((a) => {
           const on = selection.includes(a.name);

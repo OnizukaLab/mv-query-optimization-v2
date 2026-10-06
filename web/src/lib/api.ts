@@ -84,6 +84,8 @@ export interface JobProgress {
 
 export interface JobSummary {
   id: string;
+  /** Result set (``Output/runs/<run_id>``) this experiment writes to; absent on jobs from before per-run directories. */
+  run_id?: string;
   status: JobStatus;
   started_at: number;
   finished_at: number | null;
@@ -112,11 +114,24 @@ export async function getExperimentLogs(id: string): Promise<string[]> {
 
 export const experimentEventsUrl = (id: string) => `${API_URL}/experiments/${id}/events`;
 
+/** Conditions a run was started with (absent for results written before per-run directories). */
+export interface RunManifest {
+  status: "running" | "completed" | "failed";
+  created_at: number;
+  finished_at: number | null;
+  git_commit: string | null;
+  /** `id` is a content hash of the query files: equal ids mean the same workload. */
+  workload: { id: string; label: string; num_queries: number; query_selection_mode: string | null };
+  params: { storage_limit_bytes?: number; insert_queries?: number; algorithms?: string[]; phases?: string[] };
+}
+
 export interface ResultSet {
   id: string;
   name: string;
+  kind: "run" | "legacy";
   algorithms: string[];
   updated_at: number;
+  manifest: RunManifest | null;
 }
 
 export interface GroupStats {
@@ -155,6 +170,8 @@ export interface AlgorithmResult {
 
 export interface Comparison {
   id: string;
+  kind: "run" | "legacy";
+  manifest: RunManifest | null;
   algorithms: AlgorithmResult[];
   baseline: string | null;
   warnings: string[];
