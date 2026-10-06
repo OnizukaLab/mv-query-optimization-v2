@@ -4,7 +4,9 @@
 src/ 配下のリファクタリング済みコードを使用した実験実行スクリプト
 """
 import argparse
+import json
 import os
+import pickle
 import sys
 import time
 from pathlib import Path
@@ -19,6 +21,8 @@ from src.core.query_parser import QueryParser
 from src.optimization.factory import OptimizerFactory
 from src.database.connection import DatabaseConnection
 from src.utils.logging_utils import setup_logging, get_logger
+from src.utils import run_layout
+from src.utils.run_layout import RunManifest, resolve_workload_files
 
 # Initialize logger (will be properly configured in main())
 logger = get_logger(__name__)
@@ -89,7 +93,15 @@ def parse_args():
         help="Optimization algorithms to run",
     )
 
-    parser.add_argument("--output", type=str, default="Output", help="Output directory")
+    parser.add_argument(
+        "--output", type=str, default="Output",
+        help="Output root. Results go to <output>/runs/<run-id>/, parse caches to <output>/artifacts/",
+    )
+    parser.add_argument(
+        "--run-id", type=str, default=None,
+        help="Run directory name under <output>/runs/ (default: <timestamp>_<workload>). "
+             "Pass an existing id with --phases/--start-from to continue that run.",
+    )
 
     # Legacy skip flags (deprecated, use --phases instead)
     parser.add_argument(
@@ -191,32 +203,14 @@ def setup_directories(output_dir: str) -> None:
     Args:
         output_dir: 出力ベースディレクトリ
     """
-    dirs = [
-        f"{output_dir}/experiment/run_mv",
-        f"{output_dir}/experiment/mv_create",
-        f"{output_dir}/redbench",
-        f"{output_dir}/query_rewrite",
-    ]
-
-    for d in dirs:
-        os.makedirs(d, exist_ok=True)
-        print(f"Created directory: {d}")
+    os.makedirs(f"{output_dir}/query_rewrite", exist_ok=True)
 
 
 def cleanup_mv_files() -> None:
-    """MV関連ファイルをクリーンアップ"""
-    logger.info("Cleaning up MV files...")
+    """データベース上の既存MVを全て削除"""
+    logger.info("Dropping existing materialized views...")
 
-    # MVファイル削除
-    mv_dir = "Output/query_rewrite/mv"
-    if os.path.exists(mv_dir):
-        file_count = 0
-        for file in Path(mv_dir).glob("*"):
-            file.unlink()
-            file_count += 1
-        logger.info(f"Deleted {file_count} MV files from {mv_dir}")
-
-    # データベースからMV削除
+    # データベースからMV削除（実験はrunごとに独立させるため、毎回全MVを落としてから始める）
     try:
         logger.info("Connecting to database to drop existing MVs...")
         from config.settings import Settings
@@ -254,21 +248,21 @@ def cleanup_mv_files() -> None:
         logger.warning(f"Error cleaning up MVs: {e}")
 
 
-def calibrate_bj_with_explain(qp, output_dir: str, settings, verbose: bool = False) -> None:
+def calibrate_bj_with_explain(qp, cache_dir: Path, settings, verbose: bool = False) -> None:
     """MV SQLに対してEXPLAINを実行し、b_j（MVサイズ推定）を補正する。
 
     現在のb_jはフルクエリコンテキスト下での Plan Rows × Plan Width を使っており、
     外側フィルタが乗った状態の推定値のため実際のMVサイズを大幅に過小評価する。
     各ノードのMV SQLを単独でEXPLAINすることで、外側フィルタなしの正確なサイズを推定する。
 
-    結果は {output_dir}/bj_calibrated.json にキャッシュし、2回目以降は再実行しない。
+    結果は {cache_dir}/bj_calibrated.json（ワークロード単位のartifacts）にキャッシュし、2回目以降は再実行しない。
     """
     import json, re
     from pathlib import Path
     from src.rewrite.enhanced_mv_generator import EnhancedMVGenerator
     from src.database.connection import DatabaseConnection
 
-    cache_path = Path(output_dir) / "bj_calibrated.json"
+    cache_path = Path(cache_dir) / "bj_calibrated.json"
 
     # キャッシュがあれば読み込んで適用
     if cache_path.exists():
@@ -368,20 +362,27 @@ def storage_limit_for_log(settings) -> float:
 def run_ilp_optimization(
     ilp_type: str,
     output_dir: str,
+    artifacts_dir: Path,
+    workload_id: str,
     settings,  # Settings object with execution phase config
     storage_limit: int = 50 * 1024 * 1024,
     verbose: bool = False,
     warmup: bool = True,
-) -> None:
+) -> bool:
     """ILP最適化を実行（src/ モジュールのみ使用）
 
     Args:
         ilp_type: ILPアルゴリズムタイプ
-        output_dir: 出力ディレクトリ
+        output_dir: このrunのディレクトリ（<Output>/runs/<run_id>）
+        artifacts_dir: ワークロード単位のパースキャッシュ置き場
+        workload_id: ワークロードの内容ハッシュ（キャッシュの有効性判定に使う）
         settings: Settings object with execution configuration
         storage_limit: ストレージ上限（バイト）
         verbose: 詳細出力
         warmup: ベンチマーク前にキャッシュウォームアップを行うか
+
+    Returns:
+        最後まで実行できたら True、途中で中断（エラー・MV未選択など）したら False
     """
     logger.info(f"\n{'='*60}")
     logger.info(f"Running ILP: {ilp_type}")
@@ -423,122 +424,85 @@ def run_ilp_optimization(
         # [1/6] クエリパース
         if settings.execution.should_run_phase('query_parsing'):
             logger.info("[1/6] Parsing queries...")
-            pickle_path = Path(output_dir) / "qp_class.pkl"
-            
-            # Check if we need to regenerate the cache
-            # Cache is invalidated if insert_queries or query_selection_mode setting has changed
-            cache_valid = False
-            cache_metadata_path = Path(output_dir) / "qp_class_metadata.json"
+            artifacts_dir.mkdir(parents=True, exist_ok=True)
+            pickle_path = artifacts_dir / "qp_class.pkl"
+            cache_metadata_path = artifacts_dir / "qp_class_metadata.json"
             current_insert_queries = settings.optimization.insert_queries
-            current_query_selection_mode = settings.benchmark.query_selection_mode
-            
-            if pickle_path.exists():
-                # Check if metadata exists and settings match
-                if cache_metadata_path.exists():
-                    try:
-                        import json
-                        with open(cache_metadata_path, 'r') as f:
-                            metadata = json.load(f)
-                        cached_insert_queries = metadata.get('insert_queries', 1000)
-                        cached_query_selection_mode = metadata.get('query_selection_mode', 'redbench')
-                        
-                        if (cached_insert_queries == current_insert_queries and 
-                            cached_query_selection_mode == current_query_selection_mode):
-                            cache_valid = True
-                            logger.info(f"Cache valid: insert_queries={current_insert_queries}, query_selection_mode={current_query_selection_mode}")
-                        else:
-                            if cached_insert_queries != current_insert_queries:
-                                logger.info(f"Cache invalidated: insert_queries changed from {cached_insert_queries} to {current_insert_queries}")
-                            if cached_query_selection_mode != current_query_selection_mode:
-                                logger.info(f"Cache invalidated: query_selection_mode changed from {cached_query_selection_mode} to {current_query_selection_mode}")
-                    except Exception as e:
-                        logger.warning(f"Failed to read cache metadata: {e}")
-                else:
-                    logger.info("No cache metadata found, regenerating...")
-            
+
+            # The directory is already keyed by workload id and insert_queries; the metadata is a
+            # second check against a cache written by an older layout or a partial run.
+            cache_valid = False
+            if pickle_path.exists() and cache_metadata_path.exists():
+                try:
+                    with open(cache_metadata_path, 'r') as f:
+                        metadata = json.load(f)
+                    cache_valid = (
+                        metadata.get('workload_id') == workload_id
+                        and metadata.get('insert_queries') == current_insert_queries
+                    )
+                    if not cache_valid:
+                        logger.info(f"Cache invalidated: metadata {metadata} does not match "
+                                    f"workload_id={workload_id}, insert_queries={current_insert_queries}")
+                except (OSError, json.JSONDecodeError) as e:
+                    logger.warning(f"Failed to read cache metadata: {e}")
+
             if cache_valid:
                 logger.info(f"Loading query parser from {pickle_path}")
-                import pickle
                 with open(pickle_path, 'rb') as f:
                     qp = pickle.load(f)
             else:
-                # Remove old cache if exists
                 if pickle_path.exists():
                     pickle_path.unlink()
                     logger.info(f"Removed old cache: {pickle_path}")
-                
+
                 logger.info("Creating QueryParser using src/ modules...")
                 qp = QueryParser(settings)
-                
-                query_path = settings.benchmark.queries_dir
-                q_num = 0
-                insert_query = settings.optimization.insert_queries
-                
-                qp.query_parse(q_num, query_path, insert_query)
-                
+                qp.query_parse(0, settings.benchmark.queries_dir, settings.optimization.insert_queries)
+
                 logger.info(f"Saving query parser to {pickle_path}")
-                import pickle
                 with open(pickle_path, 'wb') as f:
                     pickle.dump(qp, f)
-                
-                # Save cache metadata
-                import json
+
                 with open(cache_metadata_path, 'w') as f:
                     json.dump({
+                        'workload_id': workload_id,
                         'insert_queries': current_insert_queries,
-                        'query_selection_mode': current_query_selection_mode
+                        'query_selection_mode': settings.benchmark.query_selection_mode,
                     }, f)
-                logger.info(f"Saved cache metadata: insert_queries={current_insert_queries}, query_selection_mode={current_query_selection_mode}")
-                
+                logger.info(f"Saved cache metadata: workload_id={workload_id}, insert_queries={current_insert_queries}")
+
                 # Save parsing statistics
                 parse_stats = qp.get_parse_statistics()
                 if parse_stats:
-                    import json
-                    stats_path = Path(output_dir) / "parse_statistics.json"
+                    stats_path = artifacts_dir / "parse_statistics.json"
                     with open(stats_path, 'w') as f:
                         json.dump(parse_stats, f, indent=2)
                     logger.info(f"✓ Saved parsing statistics to {stats_path}")
                     logger.info(f"  - Positive utility entries: {parse_stats['positive_utility_percentage']:.2f}%")
                     logger.info(f"  - Nodes with positive utility: {parse_stats['nodes_with_positive_utility_percentage']:.2f}%")
                     logger.info(f"  - Nodes with positive net benefit: {parse_stats['nodes_with_positive_net_benefit_percentage']:.2f}%")
-            
+
             # Export annotated query files with node_id (always run in query_parsing phase)
             logger.info("Exporting annotated query files with node_id...")
             from src.core.parse_exporter import ParseExporter
-            from src.utils.legacy import get_red_queries, get_all_job_queries, get_all_ceb_queries
-            
-            # Get query files list (same logic as in query_parse)
-            workloads_dir = settings.benchmark.workloads_dir
-            get_ceb = settings.benchmark.type == "ceb"
-            query_selection_mode = settings.benchmark.query_selection_mode
-            query_path = settings.benchmark.queries_dir
-            
-            if query_selection_mode == "all_job":
-                files, _ = get_all_job_queries(query_path)
-            elif query_selection_mode == "all_ceb":
-                ceb_template = getattr(settings.benchmark, 'ceb_template', '1a')
-                ceb_limit = getattr(settings.benchmark, 'ceb_limit', None)
-                files, _ = get_all_ceb_queries(query_path, ceb_template, limit=ceb_limit)
-            else:
-                files, _ = get_red_queries(query_path, workloads_dir, get_ceb)
-            
-            parsed_output_dir = Path(output_dir) / "parsed"
+
+            files, _ = resolve_workload_files(settings)
+            parsed_output_dir = artifacts_dir / "parsed"
             exporter = ParseExporter(qp.qm)
             exporter.annotate_query_files(files, parsed_output_dir)
             logger.info(f"✓ Annotated {len(files)} query files saved to {parsed_output_dir}")
         else:
             logger.info("[1/6] Skipping query parsing (loading from cache)")
-            pickle_path = Path(output_dir) / "qp_class.pkl"
+            pickle_path = artifacts_dir / "qp_class.pkl"
             if not pickle_path.exists():
                 logger.error("Query parser cache not found! Run with query_parsing phase first.")
-                return
-            import pickle
+                return False
             with open(pickle_path, 'rb') as f:
                 qp = pickle.load(f)
-        
+
         # [1.5/6] b_j をMV SQL の EXPLAIN で補正（ストレージ推定精度向上）
         if settings.execution.should_run_phase('optimization') and ilp_type != 'none':
-            calibrate_bj_with_explain(qp, output_dir, settings, verbose)
+            calibrate_bj_with_explain(qp, artifacts_dir, settings, verbose)
 
         # [2/6] ILP最適化実行
         if settings.execution.should_run_phase('optimization'):
@@ -548,7 +512,7 @@ def run_ilp_optimization(
             
             if not OptimizerFactory.is_available(ilp_type):
                 logger.error(f"Algorithm {ilp_type} is not available")
-                return
+                return False
             
             # オプティマイザーのパラメータを準備
             optimizer_params = {
@@ -598,7 +562,7 @@ def run_ilp_optimization(
             
             if len(result.selected_views) == 0:
                 logger.warning("No MVs selected. Check query parsing and optimization parameters.")
-                return
+                return False
             
             # 最適化結果を保存（MV選択結果のみ、SQL生成なし）
             optimization_dir = algorithm_dir / "optimization"
@@ -631,7 +595,7 @@ def run_ilp_optimization(
             elif not result_json_path.exists():
                 logger.error(f"Optimization result not found: {result_json_path}")
                 logger.error("Please run Phase 2 (optimization) first, or check the algorithm name.")
-                return
+                return False
             else:
                 logger.info(f"Loading optimization result from {result_json_path}")
                 
@@ -868,7 +832,6 @@ def run_ilp_optimization(
             mv_creation_dir = algorithm_dir / "mv_creation"
             mv_creation_dir.mkdir(parents=True, exist_ok=True)
             
-            import json
             with open(mv_creation_dir / "creation_log.json", 'w', encoding='utf-8') as f:
                 json.dump({
                     "total_mvs": len(sorted_mvs),
@@ -919,7 +882,6 @@ def run_ilp_optimization(
             query_rewrite_dir = algorithm_dir / "query_rewrite"
             query_rewrite_dir.mkdir(parents=True, exist_ok=True)
             
-            import json
             with open(query_rewrite_dir / "rewrite_log.json", 'w', encoding='utf-8') as f:
                 json.dump({
                     "total_queries": len(rewritten_queries),
@@ -1019,7 +981,6 @@ def run_ilp_optimization(
                 benchmark_dir = algorithm_dir / "benchmark"
                 benchmark_dir.mkdir(parents=True, exist_ok=True)
                 
-                import json
                 with open(benchmark_dir / "benchmark_results.json", 'w', encoding='utf-8') as f:
                     json.dump(benchmark_results, f, indent=2, ensure_ascii=False)
                 
@@ -1043,12 +1004,11 @@ def run_ilp_optimization(
         if verbose:
             import traceback
             traceback.print_exc()
-        return
+        return False
 
     elapsed = time.time() - start_time
     
     # 統合サマリーを保存
-    import json
     summary = {
         "algorithm": ilp_type,
         "total_execution_time": round(elapsed, 2),
@@ -1062,6 +1022,7 @@ def run_ilp_optimization(
     logger.info(f"\n✓ Completed {ilp_type} in {elapsed:.2f} seconds")
     logger.info(f"Results saved to {algorithm_dir}")
     logger.info(f"Summary: {algorithm_dir / 'summary.json'}")
+    return True
 
 
 def main():
@@ -1170,7 +1131,7 @@ def main():
     logger.info("MV Query Optimization Experiment")
     logger.info("=" * 60)
     logger.info(f"Algorithms: {', '.join(args.algorithms)}")
-    logger.info(f"Output: {args.output}")
+    logger.info(f"Output root: {args.output}")
     logger.info(f"Storage Limit: {storage_limit / (1024*1024):.2f} MB")
     logger.info(f"Insert Queries: {settings.optimization.insert_queries}")
     logger.info(f"Workload: {workload_display}")
@@ -1188,8 +1149,61 @@ def main():
     logger.info(f"Execution Phases:\n  " + "\n  ".join(phases_status))
     logger.info("=" * 60)
 
-    # ディレクトリセットアップ
-    setup_directories(args.output)
+    # Identify the workload by the content of the query files it resolves to
+    query_files, query_freq = resolve_workload_files(settings)
+    workload_id = run_layout.compute_workload_id(
+        query_files, settings.benchmark.queries_dir, query_freq
+    )
+    label = run_layout.workload_label(args.workload_type, settings)
+    run_id = run_layout.validate_run_id(args.run_id) if args.run_id else run_layout.new_run_id(label)
+    run_dir = run_layout.run_dir(args.output, run_id)
+    artifacts_dir = run_layout.artifacts_dir(
+        args.output, workload_id, settings.optimization.insert_queries
+    )
+    logger.info(f"Run: {run_id} ({run_dir})")
+    logger.info(f"Workload id: {workload_id} ({len(query_files)} queries), artifacts: {artifacts_dir}")
+
+    # Continuing an existing run must use the same workload, or its algorithms would not be comparable
+    previous = RunManifest.read(run_dir)
+    if previous is not None and previous.workload.get("id") != workload_id:
+        logger.error(
+            f"Run {run_id} was made with workload {previous.workload.get('id')} "
+            f"({previous.workload.get('label')}), not {workload_id} ({label}). "
+            "Use a new --run-id."
+        )
+        sys.exit(2)
+
+    setup_directories(str(run_dir))
+    manifest = previous or RunManifest(
+        run_id=run_id,
+        created_at=time.time(),
+        status="running",
+        workload={
+            "id": workload_id,
+            "label": label,
+            "type": settings.benchmark.type,
+            "query_selection_mode": settings.benchmark.query_selection_mode,
+            "ceb_template": settings.benchmark.ceb_template,
+            "ceb_limit": settings.benchmark.ceb_limit,
+            "include_ceb": settings.query.use_ceb,
+            "num_queries": len(query_files),
+            "query_ids": [Path(f).stem for f in query_files],
+        },
+        params={
+            "algorithms": args.algorithms,
+            "storage_limit_bytes": storage_limit,
+            "insert_queries": settings.optimization.insert_queries,
+            "warmup": not args.no_warmup,
+        },
+        git_commit=run_layout.git_commit(project_root),
+    )
+    manifest.status = "running"
+    manifest.finished_at = None
+    manifest.params["phases"] = [
+        p for p in ['query_parsing', 'optimization', 'sql_generation', 'mv_creation', 'query_rewriting', 'benchmark']
+        if settings.execution.should_run_phase(p)
+    ]
+    manifest.write(run_dir)
 
     # 各アルゴリズムで実行
     total_start = time.time()
@@ -1197,27 +1211,40 @@ def main():
 
     for ilp_type in args.algorithms:
         try:
-            run_ilp_optimization(
+            ok = run_ilp_optimization(
                 ilp_type=ilp_type,
-                output_dir=args.output,
+                output_dir=str(run_dir),
+                artifacts_dir=artifacts_dir,
+                workload_id=workload_id,
                 settings=copy.deepcopy(settings),
                 storage_limit=storage_limit,
                 verbose=args.verbose,
                 warmup=not args.no_warmup,
             )
+            if ok and ilp_type not in manifest.algorithms_done:
+                manifest.algorithms_done.append(ilp_type)
+            elif not ok and ilp_type not in manifest.algorithms_failed:
+                manifest.algorithms_failed.append(ilp_type)
         except Exception as e:
             logger.error(f"\n✗ Error running {ilp_type}: {e}")
             if args.verbose:
                 import traceback
                 traceback.print_exc()
+            if ilp_type not in manifest.algorithms_failed:
+                manifest.algorithms_failed.append(ilp_type)
             continue
+        finally:
+            manifest.write(run_dir)
 
     total_elapsed = time.time() - total_start
+    manifest.status = "failed" if manifest.algorithms_failed else "completed"
+    manifest.finished_at = time.time()
+    manifest.write(run_dir)
 
     logger.info("\n" + "=" * 60)
     logger.info("Experiment completed successfully!")
     logger.info(f"Total time: {total_elapsed:.2f} seconds")
-    logger.info(f"Results saved to: {args.output}/")
+    logger.info(f"Results saved to: {run_dir}/")
     logger.info("=" * 60)
 
 
