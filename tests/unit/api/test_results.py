@@ -118,3 +118,30 @@ def test_selected_nodes_reports_per_query_usage_not_every_containing_plan(tmp_pa
     out = selected_nodes("_root", ResultsService(tmp_path), _FakeIndex())["normal"]
     assert out["node_ids"] == ["inner", "outer"]
     assert out["used"] == {"6d": ["outer"], "1a": ["inner"]}
+
+
+def test_runs_are_listed_with_manifest_and_resolved_by_id(tmp_path):
+    from src.utils.run_layout import RunManifest
+
+    run = tmp_path / "runs" / "20260101-000000_job"
+    write_algo(run, "none", 100.0)
+    write_algo(run, "normal", 50.0)
+    RunManifest(
+        run_id=run.name, created_at=1.0, status="completed",
+        workload={"id": "w1", "label": "job", "num_queries": 113}, params={"algorithms": ["normal"]},
+    ).write(run)
+    write_algo(tmp_path, "normal", 80.0)  # legacy root set still listed
+
+    svc = ResultsService(tmp_path)
+    sets = {s["id"]: s for s in svc.list_sets()}
+    assert sets[run.name]["kind"] == "run"
+    assert sets[run.name]["manifest"]["workload"] == {
+        "id": "w1", "label": "job", "num_queries": 113, "query_selection_mode": None,
+    }
+    assert sets["_root"]["kind"] == "legacy" and sets["_root"]["manifest"] is None
+
+    result = svc.compare(run.name)
+    assert result["kind"] == "run" and result["manifest"]["status"] == "completed"
+    assert {a["name"] for a in result["algorithms"]} == {"none", "normal"}
+    with pytest.raises(ResultNotFoundError):
+        svc.compare("runs")

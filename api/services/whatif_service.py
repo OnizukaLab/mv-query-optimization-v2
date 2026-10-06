@@ -23,6 +23,7 @@ from api.services.plan_service import PlanError
 from api.services.workload_service import NodeNotFoundError, WorkloadIndex
 from config.settings import DatabaseConfig
 from src.database.connection import DatabaseConnection
+from src.utils.run_layout import iter_result_sets
 
 logger = logging.getLogger(__name__)
 
@@ -356,7 +357,8 @@ class WhatIfService:
         found = []
         if not self._output.exists():
             return found
-        for set_dir in [self._output, *sorted(p for p in self._output.iterdir() if p.is_dir())]:
+        for ref in iter_result_sets(self._output):
+            set_dir = ref.path
             for algo_dir in sorted(p for p in set_dir.iterdir() if p.is_dir()):
                 result = algo_dir / "optimization" / "result.json"
                 if not result.exists():
@@ -371,7 +373,7 @@ class WhatIfService:
                     continue
                 found.append(
                     {
-                        "set_id": "_root" if set_dir == self._output else set_dir.name,
+                        "set_id": ref.set_id,
                         "algorithm": algo_dir.name,
                         "node_ids": used,
                         "updated_at": result.stat().st_mtime,

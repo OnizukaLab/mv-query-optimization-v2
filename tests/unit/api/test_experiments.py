@@ -22,9 +22,12 @@ def make_request(**kw):
 
 
 def test_build_command_converts_mb_to_bytes_and_has_no_shell_input():
-    cmd = build_command(make_request(storage_limit_mb=10, algorithms=["normal", "bigsubs"]))
+    cmd = build_command(
+        make_request(storage_limit_mb=10, algorithms=["normal", "bigsubs"]), run_id="r1"
+    )
     assert cmd[cmd.index("--storage-limit") + 1] == str(10 * 1024 * 1024)
     assert cmd[cmd.index("--algorithms") + 1 : cmd.index("--phases")] == ["normal", "bigsubs"]
+    assert cmd[cmd.index("--run-id") + 1] == "r1"
 
 
 @pytest.mark.parametrize("bad", [{"algorithms": ["rm -rf"]}, {"algorithms": []}, {"phases": ["x"]}])
@@ -52,7 +55,7 @@ def test_progress_tracker_advances_through_phases():
 
 @pytest.fixture
 def manager(tmp_path, monkeypatch):
-    def fake_command(req):
+    def fake_command(req, run_id):
         code = "print('[1/6] Parsing queries...');print('hello');print('\\u2713 Completed x in 1.00 seconds')"
         return [sys.executable, "-c", code]
 
@@ -75,13 +78,16 @@ def test_job_runs_persists_and_reloads(manager, tmp_path):
     assert fresh.get_summary(job.id)["status"] == "completed"
     assert "hello" in fresh.read_logs(job.id)
     assert [s["id"] for s in fresh.list_summaries()] == [job.id]
+    # the run id is what the script writes to and what the dashboard links results by
+    assert fresh.get_summary(job.id)["run_id"] == job.run_id
+    assert job.run_id.endswith(f"_{job.id[:6]}") and "redbench-job" in job.run_id
 
 
 def test_second_experiment_is_rejected_while_running(tmp_path, monkeypatch):
     monkeypatch.setattr(
         experiment_service,
         "build_command",
-        lambda req: [sys.executable, "-c", "import time; time.sleep(30)"],
+        lambda req, run_id: [sys.executable, "-c", "import time; time.sleep(30)"],
     )
     m = ExperimentManager(jobs_dir=tmp_path)
     job = m.start(make_request())
