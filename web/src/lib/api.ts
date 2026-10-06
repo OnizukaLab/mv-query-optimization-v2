@@ -29,11 +29,23 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const getHealth = () => request<Health>("/health");
 
-export const fetchPlan = (sql: string, analyze: boolean) =>
+export const fetchPlan = (sql: string, analyze: boolean, signal?: AbortSignal) =>
   request<PlanResponse>("/plans", {
     method: "POST",
-    body: JSON.stringify({ sql, analyze }),
+    body: JSON.stringify({ sql, analyze, timeout_s: analyze ? 120 : 15 }),
+    signal,
   });
+
+export interface QueryInfo {
+  id: string;
+  family: number;
+  tables: number;
+}
+
+export const listQueries = () => request<QueryInfo[]>("/queries");
+
+export const getQuery = (id: string) =>
+  request<{ id: string; sql: string }>(`/queries/${encodeURIComponent(id)}`);
 
 export type JobStatus = "running" | "completed" | "failed" | "stopped";
 

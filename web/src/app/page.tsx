@@ -20,8 +20,8 @@ export default function Home() {
         <StatusCard label="API" ok={health ? true : error ? false : null} detail={error} />
         <StatusCard label="PostgreSQL" ok={health ? db! : null} detail={health?.detail} />
       </div>
-      <Link href="/plan" className="mt-6 inline-block text-sm underline">
-        Open Query Plan viewer →
+      <Link href="/queries" className="mt-6 inline-block text-sm underline">
+        Browse JOB queries and plans →
       </Link>
     </div>
   );
