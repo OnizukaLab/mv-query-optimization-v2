@@ -1,6 +1,11 @@
 import type { PlanNode } from "./plan";
 
-export type DiffStatus = "same" | "moved" | "new";
+/**
+ * same: identical operation at the same position. moved: identical operation elsewhere.
+ * changed: same operation on the same table/index, but its join/filter condition differs (e.g. it
+ * now references an MV's columns). new: no counterpart in the other plan.
+ */
+export type DiffStatus = "same" | "moved" | "changed" | "new";
 
 export interface NodeDiff {
   status: DiffStatus;
@@ -37,10 +42,17 @@ export function signature(n: PlanNode): string {
   return [n["Node Type"], n["Relation Name"] ?? "", n.Alias ?? "", n["Index Name"] ?? "", cond].join("|");
 }
 
+/** `signature` without the condition: what a scan or join *is*, regardless of how it is phrased. */
+function looseSignature(n: PlanNode): string {
+  return [n["Node Type"], n["Relation Name"] ?? "", n.Alias ?? "", n["Index Name"] ?? ""].join("|");
+}
+
 /**
  * Align two plans. A node matches first by identical tree position + signature, then by signature
- * alone (the operation survived but moved, e.g. after a join reorder). Anything left in `next` is
- * new; anything left in `prev` is removed.
+ * alone (the operation survived but moved, e.g. after a join reorder). Leftovers are matched once
+ * more ignoring conditions: at the same position, or elsewhere for scans (those name their table or
+ * index) -- these are "changed". Anything still left in `next` is new; anything left in `prev` is
+ * removed.
  */
 export function diffPlans(prev: PlanNode, next: PlanNode): PlanDiff {
   const a = flattenPlan(prev);
@@ -74,6 +86,27 @@ export function diffPlans(prev: PlanNode, next: PlanNode): PlanDiff {
     }
   }
 
+  // Third pass: same operation, different condition. Joins carry no table name, so they only
+  // match at the same tree position; scans can match anywhere.
+  const left = a.filter((p) => !usedPrev.has(p.id));
+  for (const tier of ["position", "anywhere"] as const) {
+    for (const f of b) {
+      if (nodes.get(f.id)?.status !== "new") continue;
+      const loose = looseSignature(f.node);
+      const named = f.node["Relation Name"] || f.node["Index Name"];
+      const hit = left.find(
+        (p) =>
+          !usedPrev.has(p.id) &&
+          looseSignature(p.node) === loose &&
+          (tier === "position" ? p.path === f.path : !!named),
+      );
+      if (hit) {
+        usedPrev.add(hit.id);
+        nodes.set(f.id, { status: "changed", prevCost: hit.node["Total Cost"] });
+      }
+    }
+  }
+
   return { nodes, removed: a.filter((p) => !usedPrev.has(p.id)).map((p) => p.node) };
 }
 
@@ -92,4 +125,28 @@ export function shapeKey(root: PlanNode): string {
 /** The node a pre-order id (as assigned by layoutPlan) refers to. */
 export function nodeById(root: PlanNode, id: string): PlanNode | null {
   return flattenPlan(root).find((f) => f.id === id)?.node ?? null;
+}
+
+/**
+ * Highlight for an MV selection. In the original plan, `ownerOf` maps pre-order ids to candidate
+ * node ids: the selected nodes are `root`, everything beneath them `covered`. In the rewritten
+ * plan, pass `scanOf` instead: scans of a selected MV (Relation Name = node id) are `root`.
+ */
+export function mvMarks(
+  root: PlanNode,
+  selected: string[],
+  source: { ownerOf: Map<string, string> } | { scanOf: true },
+): Map<string, { kind: "root" | "covered"; label: string }> {
+  const marks = new Map<string, { kind: "root" | "covered"; label: string }>();
+  const flat = flattenPlan(root);
+  for (const f of flat) {
+    const label = "scanOf" in source ? f.node["Relation Name"] : source.ownerOf.get(f.id);
+    if (!label || !selected.includes(label)) continue;
+    marks.set(f.id, { kind: "root", label });
+    if ("scanOf" in source) continue;
+    for (const d of flat) {
+      if (d.path.startsWith(`${f.path}/`) && !marks.has(d.id)) marks.set(d.id, { kind: "covered", label });
+    }
+  }
+  return marks;
 }

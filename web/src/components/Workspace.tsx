@@ -1,18 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
 import Editor from "@monaco-editor/react";
 import MvCompare from "./MvCompare";
 import NodePanel from "./NodePanel";
 import PlanGraph from "./PlanGraph";
+import QueryPicker from "./QueryPicker";
 import {
   fetchPlan,
   getQuery,
   getSnapshot,
-  listQueries,
   type PlanResponse,
-  type QueryInfo,
   type Snapshot,
 } from "@/lib/api";
 import { mapNodeIds } from "@/lib/nodeIds";
@@ -48,7 +46,6 @@ export default function Workspace({
   const [sql, setSql] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
   const [original, setOriginal] = useState<string | null>(queryId ? null : PLAYGROUND_SQL);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [queries, setQueries] = useState<QueryInfo[]>([]);
 
   const [current, setCurrent] = useState<PlanResponse | null>(null);
   const [previous, setPrevious] = useState<PlanResponse | null>(null);
@@ -68,10 +65,6 @@ export default function Workspace({
   const currentRef = useRef<PlanResponse | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const originalRef = useRef<string | null>(queryId ? null : PLAYGROUND_SQL);
-
-  useEffect(() => {
-    listQueries().then(setQueries).catch(() => undefined);
-  }, []);
 
   useEffect(() => {
     if (!queryId) return;
@@ -157,9 +150,6 @@ export default function Workspace({
           ? null
           : "The live plan differs from the stored plan, so node ids cannot be matched.";
 
-  const idx = queries.findIndex((q) => q.id === queryId);
-  const prevQ = idx > 0 ? queries[idx - 1] : null;
-  const nextQ = idx >= 0 && idx < queries.length - 1 ? queries[idx + 1] : null;
   const costDelta =
     baseline && current && baseline !== current
       ? (current.plan["Total Cost"] - baseline.plan["Total Cost"]) / baseline.plan["Total Cost"]
@@ -170,16 +160,7 @@ export default function Workspace({
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-wrap items-center gap-3 border-b border-zinc-200 px-4 py-2 text-sm dark:border-zinc-800">
-        <Link href="/queries" className="text-zinc-500 hover:underline">
-          Queries
-        </Link>
-        <span className="font-semibold">{queryId ?? "Playground"}</span>
-        {queryId && (
-          <span className="flex gap-1">
-            {prevQ ? <Link href={`/queries/${prevQ.id}`} className="rounded border px-1.5 text-xs" title={prevQ.id}>←</Link> : null}
-            {nextQ ? <Link href={`/queries/${nextQ.id}`} className="rounded border px-1.5 text-xs" title={nextQ.id}>→</Link> : null}
-          </span>
-        )}
+        {queryId ? <QueryPicker queryId={queryId} /> : <span className="font-semibold">Playground</span>}
         {edited && <span className="rounded bg-amber-500 px-1.5 text-xs text-white">edited</span>}
 
         <span className="ml-2 flex overflow-hidden rounded-md border border-zinc-300 text-xs dark:border-zinc-700">

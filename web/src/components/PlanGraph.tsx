@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import {
   Background,
   Controls,
@@ -8,7 +8,10 @@ import {
   Panel,
   Position,
   ReactFlow,
+  useReactFlow,
+  useStore,
   type Node,
+  type NodeChange,
   type NodeProps,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
@@ -23,27 +26,37 @@ import {
   useNodeColors,
 } from "@/lib/nodeColors";
 import { costChange, shapeKey, type PlanDiff } from "@/lib/planDiff";
+import { useDarkMode } from "@/lib/useDarkMode";
 
 type CardData = PlanNodeData & {
-  diffStatus?: "same" | "moved" | "new";
+  diffStatus?: "same" | "moved" | "changed" | "new";
   diffLabel?: string;
   prevCost?: number;
   selected: boolean;
+  /** Set when the node is (or lies inside) a materialized view selection. */
+  mv?: MvMark;
   /** Number of workload queries containing this node (MV candidate), when known. */
   sharedBy?: number;
 };
 
+/** `root`: the node an MV materializes (or the MV scan in the rewritten plan); `covered`: inside it. */
+export interface MvMark {
+  kind: "root" | "covered";
+  label: string;
+}
+
 const BADGE: Record<string, string> = {
   new: "bg-blue-500 text-white",
   moved: "bg-amber-500 text-white",
+  changed: "bg-sky-600 text-white",
   replaced: "bg-red-500 text-white",
 };
 
 /** How a diff status is worded on the cards, e.g. the original plan calls "new" nodes "replaced". */
-export type DiffWording = Partial<Record<"new" | "moved", "new" | "moved" | "replaced" | null>>;
+export type DiffWording = Partial<Record<"new" | "moved" | "changed", "new" | "moved" | "changed" | "replaced" | null>>;
 
 function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
-  const { plan, costShare, diffStatus, diffLabel, prevCost, selected, sharedBy } = data;
+  const { plan, costShare, diffStatus, diffLabel, prevCost, selected, mv, sharedBy } = data;
   const { enabled, colors } = useNodeColors();
   const category = categoryOf(plan["Node Type"]);
   const accent = enabled ? categoryStyle(category, colors[category]) : null;
@@ -51,12 +64,16 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
   const change = costChange(prevCost, plan["Total Cost"]);
   const ring = selected
     ? "ring-2 ring-zinc-900 dark:ring-zinc-100"
-    : diffStatus === "new"
+    : mv?.kind === "root"
+      ? "ring-2 ring-violet-500"
+      : diffStatus === "new"
       ? "ring-2 ring-blue-500"
       : "";
   return (
     <div
-      className={`rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs shadow-sm dark:border-zinc-700 dark:bg-zinc-900 ${ring}`}
+      className={`rounded-lg border border-zinc-300 bg-white px-3 py-2 text-xs shadow-sm dark:border-zinc-700 dark:bg-zinc-900 ${ring} ${
+        mv?.kind === "covered" ? "border-dashed !border-violet-400 opacity-60" : ""
+      }`}
       style={{
         width: NODE_WIDTH,
         height: NODE_HEIGHT,
@@ -78,8 +95,16 @@ function PlanNodeCard({ data }: NodeProps<Node<CardData>>) {
             ×{sharedBy}
           </span>
         )}
+        {mv?.kind === "root" && (
+          <span
+            className="ml-auto rounded bg-violet-600 px-1 text-[10px] text-white"
+            title="Materialized view selected for this query"
+          >
+            MV {mv.label}
+          </span>
+        )}
         {diffLabel && BADGE[diffLabel] && (
-          <span className={`${sharedBy && sharedBy > 1 ? "" : "ml-auto "}rounded px-1 text-[10px] ${BADGE[diffLabel]}`}>
+          <span className={`${(sharedBy && sharedBy > 1) || mv?.kind === "root" ? "" : "ml-auto "}rounded px-1 text-[10px] ${BADGE[diffLabel]}`}>
             {diffLabel}
           </span>
         )}
@@ -147,10 +172,26 @@ function ColorPanel({ types }: { types: Set<string> }) {
   );
 }
 
-function labelFor(status: "same" | "moved" | "new" | undefined, wording?: DiffWording): string | undefined {
+function labelFor(status: "same" | "moved" | "changed" | "new" | undefined, wording?: DiffWording): string | undefined {
   if (!status || status === "same") return undefined;
   const w = wording?.[status];
   return w === null ? undefined : (w ?? status);
+}
+
+/**
+ * `fitView` on <ReactFlow> only fits once, at init. The pane is often still changing size then
+ * (editors loading, panels settling), which left the graph scrolled out of view. Re-fit whenever
+ * the container is resized, until the user pans or zooms themselves.
+ */
+function AutoFit({ userMoved }: { userMoved: RefObject<boolean> }) {
+  const { fitView } = useReactFlow();
+  const width = useStore((s) => s.width);
+  const height = useStore((s) => s.height);
+  useEffect(() => {
+    if (userMoved.current || width === 0 || height === 0) return;
+    void fitView({ duration: 0 });
+  }, [width, height, fitView, userMoved]);
+  return null;
 }
 
 export interface PlanGraphProps {
@@ -160,29 +201,59 @@ export interface PlanGraphProps {
   /** pre-order node id -> number of queries sharing that node */
   sharedBy?: Map<string, number> | null;
   wording?: DiffWording;
+  /** pre-order node id -> MV highlight */
+  mvMarks?: Map<string, MvMark> | null;
   onSelect?: (id: string | null, plan: PlanNode | null) => void;
 }
 
-export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, onSelect }: PlanGraphProps) {
+type Size = { width: number; height: number };
+
+export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, mvMarks, onSelect }: PlanGraphProps) {
+  const dark = useDarkMode();
   const layout = useMemo(() => layoutPlan(plan), [plan]);
+
+  // React Flow measures each node after it renders and keeps nodes hidden until then. With nodes
+  // passed in from outside, those measurements are lost whenever the array is rebuilt (diff and
+  // MV marks arrive after mount), and nodes stayed invisible. Keep them here and hand them back.
+  const [measured, setMeasured] = useState<Map<string, Size>>(() => new Map());
+  const onNodesChange = useCallback((changes: NodeChange[]) => {
+    setMeasured((prev) => {
+      let next: Map<string, Size> | null = null;
+      for (const c of changes) {
+        if (c.type !== "dimensions" || !c.dimensions) continue;
+        const old = prev.get(c.id);
+        if (old && old.width === c.dimensions.width && old.height === c.dimensions.height) continue;
+        next ??= new Map(prev);
+        next.set(c.id, { width: c.dimensions.width, height: c.dimensions.height });
+      }
+      return next ?? prev;
+    });
+  }, []);
+
   const nodes = useMemo(
     () =>
       layout.nodes.map((n) => ({
         ...n,
+        measured: measured.get(n.id),
         data: {
           ...n.data,
           diffStatus: diff?.nodes.get(n.id)?.status,
           diffLabel: labelFor(diff?.nodes.get(n.id)?.status, wording),
           prevCost: diff?.nodes.get(n.id)?.prevCost,
           selected: n.id === selectedId,
+          mv: mvMarks?.get(n.id),
           sharedBy: sharedBy?.get(n.id),
         } satisfies CardData,
       })),
-    [layout, diff, selectedId, sharedBy, wording],
+    [layout, measured, diff, selectedId, sharedBy, wording, mvMarks],
   );
   // Re-fit the viewport only when the plan's shape changes, not on every cost tweak.
   const key = useMemo(() => shapeKey(plan), [plan]);
   const types = useMemo(() => new Set(layout.nodes.map((n) => categoryOf(n.data.plan["Node Type"]))), [layout]);
+  const userMoved = useRef(false);
+  useEffect(() => {
+    userMoved.current = false; // a different plan shape starts from a fresh fit
+  }, [key]);
 
   return (
     <ReactFlow
@@ -190,15 +261,22 @@ export default function PlanGraph({ plan, diff, selectedId, sharedBy, wording, o
       nodes={nodes}
       edges={layout.edges}
       nodeTypes={nodeTypes}
+      onNodesChange={onNodesChange}
+      colorMode={dark ? "dark" : "light"}
       nodesConnectable={false}
       nodesDraggable={false}
       onNodeClick={(_, n) => onSelect?.(n.id, (n.data as CardData).plan)}
       onPaneClick={() => onSelect?.(null, null)}
       fitView
       minZoom={0.1}
+      // Only user-initiated moves carry a DOM event; programmatic fitView calls do not.
+      onMoveStart={(event) => {
+        if (event) userMoved.current = true;
+      }}
     >
+      <AutoFit userMoved={userMoved} />
       <Background />
-      <Controls showInteractive={false} />
+      <Controls showInteractive={false} className="plan-controls" />
       <ColorPanel types={types} />
     </ReactFlow>
   );

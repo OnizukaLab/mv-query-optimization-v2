@@ -249,6 +249,8 @@ export interface MvPlan {
     est_size_bytes: number;
     referenced_in_sql: boolean;
     used_in_plan: boolean;
+    /** Real tables inside the MV, to compare join orders across the rewrite. */
+    base_tables: string[];
   }[];
 }
 
