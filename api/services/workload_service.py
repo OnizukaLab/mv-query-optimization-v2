@@ -229,6 +229,28 @@ class WorkloadIndex:
             raise NodeNotFoundError(node_id)
         return [qp.query_files[i] for i in range(len(qp.query_files)) if qp.q_s_list[i][j]]
 
+    def base_tables(self, node_id: str) -> list[str]:
+        """Real tables an MV candidate is built from (a leaf's table, or the union over its children).
+
+        Lets a plan that scans ``non_leaf_7`` be compared with one that scans the tables inside it.
+
+        Raises:
+            NodeNotFoundError: Unknown node.
+        """
+        qm = self._ensure().qm
+        if node_id not in self._node_pos:
+            raise NodeNotFoundError(node_id)
+
+        def resolve(nid: str) -> frozenset[str]:
+            if nid in qm.leaf_nodes_map_r:
+                return frozenset([qm.leaf_nodes_map_r[nid][1]])
+            result: frozenset[str] = frozenset()
+            for child in qm.non_leaf_nodes_map_r.get(nid, []):
+                result |= resolve(child)
+            return result
+
+        return sorted(resolve(node_id))
+
     def original_sql(self, query_id: str) -> str:
         """Original SQL text of a workload query."""
         self.query_index(query_id)

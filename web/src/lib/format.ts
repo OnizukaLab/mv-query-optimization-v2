@@ -19,3 +19,11 @@ export function fmtBytes(b: number | null | undefined): string {
   }
   return `${v.toLocaleString(undefined, { maximumFractionDigits: v < 10 && i > 0 ? 1 : 0 })} ${units[i]}`;
 }
+
+/** Milliseconds as "0.42 ms" / "123 ms" / "1.8 s" / "2m 05s". */
+export function fmtMs(ms: number | null | undefined): string {
+  if (ms == null) return "–";
+  if (ms < 1) return `${ms.toFixed(2)} ms`;
+  if (ms < 1000) return `${ms.toFixed(ms < 10 ? 1 : 0)} ms`;
+  return fmtSeconds(ms / 1000);
+}

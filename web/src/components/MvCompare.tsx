@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import NodePanel from "./NodePanel";
-import PlanGraph from "./PlanGraph";
+import PlanGraph, { type DiffWording } from "./PlanGraph";
 import {
   ApiError,
   fetchMvPlan,
@@ -15,6 +15,10 @@ import { fmtBytes, fmtSeconds } from "@/lib/format";
 import { costChange, diffPlans, nodeById } from "@/lib/planDiff";
 
 const CUSTOM = "custom";
+
+// Stable references: a new object per render would rebuild the graph nodes every time.
+const ORIGINAL_WORDING: DiffWording = { new: "replaced", moved: null };
+const MV_WORDING: DiffWording = { moved: null };
 
 type Selection = { side: "original" | "mv"; id: string } | null;
 
@@ -225,7 +229,7 @@ export default function MvCompare({
               <PlanGraph
                 plan={originalPlan.plan}
                 diff={origDiff}
-                wording={{ new: "replaced", moved: null }}
+                wording={ORIGINAL_WORDING}
                 selectedId={selection?.side === "original" ? selection.id : null}
                 onSelect={(id) => setSelection(id ? { side: "original", id } : null)}
               />
@@ -236,7 +240,7 @@ export default function MvCompare({
               <PlanGraph
                 plan={shown.plan}
                 diff={mvDiff}
-                wording={{ moved: null }}
+                wording={MV_WORDING}
                 selectedId={selection?.side === "mv" ? selection.id : null}
                 onSelect={(id) => setSelection(id ? { side: "mv", id } : null)}
               />

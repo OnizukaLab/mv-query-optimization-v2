@@ -70,3 +70,26 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+/* Zoom/fit buttons of the plan graphs: clearly visible on both themes. */
+.plan-controls {
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.25);
+}
+.plan-controls .react-flow__controls-button {
+  width: 28px;
+  height: 28px;
+  background: var(--surface-1);
+  color: var(--foreground);
+  border-bottom: 1px solid var(--grid);
+}
+.plan-controls .react-flow__controls-button:hover {
+  background: var(--grid);
+}
+.plan-controls .react-flow__controls-button svg {
+  fill: currentColor;
+  max-width: 14px;
+  max-height: 14px;
+}

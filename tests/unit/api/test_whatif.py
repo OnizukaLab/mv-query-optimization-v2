@@ -42,6 +42,9 @@ class FakeWorkload:
             raise NodeNotFoundError(node)
         return ["1a", "1b"]
 
+    def base_tables(self, node):
+        return {"n1": ["title"], "n2": ["cast_info", "name"]}[node]
+
     def original_sql(self, qid):
         return f"SELECT 1 -- {qid}"
 
@@ -73,6 +76,12 @@ def test_plan_is_cached_and_flags_mv_usage(service):
     assert (first["cached"], again["cached"], service.calls) == (False, True, 1)
     assert first["mvs"][0]["used_in_plan"] and first["mvs"][0]["referenced_in_sql"]
     assert service.plan_with_mvs("1a", ["n1"], force=True)["cached"] is False
+
+
+def test_mvs_report_their_base_tables_even_when_cached(service):
+    fresh = service.plan_with_mvs("1a", ["n1"])
+    cached = service.plan_with_mvs("1a", ["n1"])
+    assert fresh["mvs"][0]["base_tables"] == cached["mvs"][0]["base_tables"] == ["title"]
 
 
 def test_large_mvs_need_confirmation(service):

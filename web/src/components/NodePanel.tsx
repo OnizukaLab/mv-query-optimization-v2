@@ -60,7 +60,13 @@ export default function NodePanel({
       <h2 className="text-sm font-semibold">{node["Node Type"]}</h2>
       {nodeDiff && (
         <p className="mt-1 text-zinc-500">
-          {nodeDiff.status === "new" ? "New in this plan" : nodeDiff.status === "moved" ? "Moved vs baseline" : "Same position as baseline"}
+          {nodeDiff.status === "new"
+            ? "New in this plan"
+            : nodeDiff.status === "moved"
+              ? "Moved vs baseline"
+              : nodeDiff.status === "changed"
+                ? "Same operation, condition changed"
+                : "Same position as baseline"}
           {change !== null && Math.abs(change) >= 0.01 && ` · cost ${nodeDiff.prevCost!.toFixed(0)} → ${node["Total Cost"].toFixed(0)}`}
         </p>
       )}
@@ -88,13 +94,13 @@ export default function NodePanel({
 }
 
 function DiffSummary({ diff }: { diff: PlanDiff }) {
-  const counts = { same: 0, moved: 0, new: 0 };
+  const counts = { same: 0, moved: 0, changed: 0, new: 0 };
   diff.nodes.forEach((d) => counts[d.status]++);
   return (
     <div className="mt-4 border-t border-zinc-200 pt-3 dark:border-zinc-800">
       <div className="font-medium text-zinc-700 dark:text-zinc-300">Changes vs baseline</div>
       <p className="mt-1">
-        {counts.same} unchanged · {counts.moved} moved · {counts.new} new · {diff.removed.length} removed
+        {counts.same} unchanged · {counts.moved} moved · {counts.changed} changed · {counts.new} new · {diff.removed.length} removed
       </p>
       {diff.removed.length > 0 && (
         <ul className="mt-2 list-disc pl-4">

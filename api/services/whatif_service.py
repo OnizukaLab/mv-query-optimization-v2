@@ -139,7 +139,7 @@ class WhatIfService:
         key = hashlib.sha1(f"{query_id}|{','.join(nodes)}|{analyze}".encode()).hexdigest()[:20]
         cache_file = self._cache / f"{key}.json"
         if not force and cache_file.exists():
-            return {**json.loads(cache_file.read_text()), "cached": True}
+            return self._with_base_tables({**json.loads(cache_file.read_text()), "cached": True})
 
         self._check_size(nodes, confirm_large)
         if not self._busy.acquire(blocking=False):
@@ -164,7 +164,13 @@ class WhatIfService:
         }
         self._cache.mkdir(parents=True, exist_ok=True)
         cache_file.write_text(json.dumps(out))
-        return {**out, "cached": False}
+        return self._with_base_tables({**out, "cached": False})
+
+    def _with_base_tables(self, out: dict[str, Any]) -> dict[str, Any]:
+        """Add each MV's underlying tables (computed per call, so older cache files gain them too)."""
+        for d in out["mvs"]:
+            d["base_tables"] = self._workload.base_tables(d["node_id"])
+        return out
 
     def _validate(self, query_id: str, nodes: list[str]) -> None:
         if not nodes:

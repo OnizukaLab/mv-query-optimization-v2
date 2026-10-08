@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { mapNodeIds } from "./nodeIds";
-import { costChange, diffPlans, shapeKey } from "./planDiff";
+import { costChange, diffPlans, mvMarks, shapeKey } from "./planDiff";
 import type { PlanNode } from "./plan";
 
 const n = (type: string, cost: number, extra: Partial<PlanNode> = {}, plans?: PlanNode[]): PlanNode =>
@@ -65,5 +65,56 @@ describe("mapNodeIds", () => {
 
   it("returns null when the shapes differ", () => {
     expect(mapNodeIds(n("Nested Loop", 1, {}, [scan("a"), scan("b")]), snap)).toBeNull();
+  });
+});
+
+describe("mvMarks", () => {
+  const plan = n("Hash Join", 100, {}, [n("Nested Loop", 50, {}, [scan("a"), scan("b")]), scan("c")]);
+  // ids: 0 Hash Join, 1 Nested Loop, 2 a, 3 b, 4 c
+
+  it("marks the selected node as root and everything beneath it as covered", () => {
+    const marks = mvMarks(plan, ["non_leaf_1"], { ownerOf: new Map([["1", "non_leaf_1"], ["4", "leaf_3"]]) });
+    expect(marks.get("1")).toEqual({ kind: "root", label: "non_leaf_1" });
+    expect(marks.get("2")?.kind).toBe("covered");
+    expect(marks.get("3")?.kind).toBe("covered");
+    expect(marks.has("0")).toBe(false);
+    expect(marks.has("4")).toBe(false);
+  });
+
+  it("marks scans of the selected MV in a rewritten plan", () => {
+    const rewritten = n("Hash Join", 10, {}, [scan("non_leaf_1"), scan("c")]);
+    const marks = mvMarks(rewritten, ["non_leaf_1"], { scanOf: true });
+    expect([...marks.keys()]).toEqual(["1"]);
+  });
+});
+
+describe("diffPlans: changed", () => {
+  const idxScan = (cond: string) =>
+    n("Index Scan", 5, { "Relation Name": "title", Alias: "t", "Index Name": "title_pkey", "Index Cond": cond });
+
+  it("treats the same scan with a different condition as changed, not new", () => {
+    const prev = n("Nested Loop", 100, {}, [scan("a"), idxScan("(id = mi.movie_id)")]);
+    const next = n("Nested Loop", 40, {}, [scan("a"), idxScan("(id = mv.movie_id)")]);
+    const d = diffPlans(prev, next);
+    expect(d.nodes.get("2")?.status).toBe("changed");
+    expect(d.nodes.get("2")?.prevCost).toBe(5);
+    expect(d.removed).toEqual([]);
+  });
+
+  it("matches a join with a rewritten condition only at the same position", () => {
+    const join = (cond: string, kids: PlanNode[]) => n("Hash Join", 50, { "Hash Cond": cond }, kids);
+    const prev = n("Aggregate", 60, {}, [join("(a.id = b.id)", [scan("a"), scan("b")])]);
+    const next = n("Aggregate", 20, {}, [join("(mv.id = b.id)", [scan("mv"), scan("b")])]);
+    const d = diffPlans(prev, next);
+    expect(d.nodes.get("1")?.status).toBe("changed");
+    expect(d.nodes.get("2")?.status).toBe("new"); // scan of a different table is genuinely new
+    expect(d.removed.map((x) => x["Relation Name"])).toEqual(["a"]);
+  });
+
+  it("does not match a join elsewhere in the tree", () => {
+    const join = (cond: string, kids: PlanNode[]) => n("Hash Join", 50, { "Hash Cond": cond }, kids);
+    const prev = n("Aggregate", 60, {}, [join("(a.id = b.id)", [scan("a"), scan("b")])]);
+    const next = n("Aggregate", 60, {}, [n("Sort", 55, {}, [join("(x.id = b.id)", [scan("x"), scan("b")])])]);
+    expect(diffPlans(prev, next).nodes.get("2")?.status).toBe("new");
   });
 });
